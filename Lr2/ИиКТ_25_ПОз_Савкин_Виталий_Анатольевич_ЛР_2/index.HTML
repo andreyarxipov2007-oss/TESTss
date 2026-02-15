@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Черно-белый сайт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⚫ ЧЕРНО-БЕЛЫЙ ⚪ САЙТ ⚫</h1>
+
+        <!-- Кнопки страниц -->
+        <div class="pages">
+            <button class="page-button active" data-page="page1">СТРАНИЦА 1</button>
+            <button class="page-button" data-page="page2">СТРАНИЦА 2</button>
+            <button class="page-button" data-page="page3">СТРАНИЦА 3</button>
+        </div>
+
+        <!-- Контент страниц -->
+        <div class="content">
+            <!-- СТРАНИЦА 1: Изменение цвета -->
+            <div class="page active" id="page1">
+                <h2>СТРАНИЦА 1 - ПЕРЕКЛЮЧАТЕЛЬ</h2>
+                
+                <div class="cards">
+                    <div class="card" id="card1">
+                        <div class="card-image"></div>
+                        <h3>КВАДРАТ 1</h3>
+                    </div>
+                    
+                    <div class="card" id="card2">
+                        <div class="card-image"></div>
+                        <h3>КВАДРАТ 2</h3>
+                    </div>
+                    
+                    <div class="card" id="card3">
+                        <div class="card-image"></div>
+                        <h3>КВАДРАТ 3</h3>
+                    </div>
+                </div>
+
+                <!-- Функция страницы 1 -->
+                <div class="function-block">
+                    <button class="function-btn" id="colorSwitch">ПЕРЕКЛЮЧИТЬ ЦВЕТ</button>
+                    <p id="colorDisplay">Сейчас: белый фон</p>
+                </div>
+
+                <div class="text-block">
+                    <p>Это первая страница. Здесь есть три квадрата и кнопка.</p>
+                    <p>Кнопка меняет цвет квадратов с белого на черный и обратно.</p>
+                </div>
+            </div>
+
+            <!-- СТРАНИЦА 2: Счетчик -->
+            <div class="page" id="page2">
+                <h2>СТРАНИЦА 2 - СЧЕТЧИК</h2>
+                
+                <div class="buttons-grid">
+                    <button class="big-btn" id="btnA">КНОПКА А</button>
+                    <button class="big-btn" id="btnB">КНОПКА Б</button>
+                    <button class="big-btn" id="btnC">КНОПКА В</button>
+                    <button class="big-btn" id="btnD">КНОПКА Г</button>
+                </div>
+
+                <!-- Функция страницы 2 -->
+                <div class="function-block">
+                    <p>Счетчик нажатий: <span id="counter">0</span></p>
+                    <button class="function-btn" id="resetCounter">ОБНУЛИТЬ</button>
+                </div>
+
+                <div class="text-block">
+                    <p>Это вторая страница. Четыре кнопки и счетчик.</p>
+                    <p>Каждое нажатие на любую кнопку увеличивает счетчик.</p>
+                </div>
+            </div>
+
+            <!-- СТРАНИЦА 3: Размер -->
+            <div class="page" id="page3">
+                <h2>СТРАНИЦА 3 - РАЗМЕР</h2>
+                
+                <div class="boxes">
+                    <div class="box" id="box1">БЛОК 1</div>
+                    <div class="box" id="box2">БЛОК 2</div>
+                    <div class="box" id="box3">БЛОК 3</div>
+                </div>
+
+                <!-- Функция страницы 3 -->
+                <div class="function-block">
+                    <button class="function-btn" id="smallSize">МАЛЕНЬКИЙ</button>
+                    <button class="function-btn" id="mediumSize">СРЕДНИЙ</button>
+                    <button class="function-btn" id="largeSize">БОЛЬШОЙ</button>
+                </div>
+
+                <div class="text-block">
+                    <p>Это третья страница. Три блока и три кнопки размера.</p>
+                    <p>Кнопки меняют размер всех блоков.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>⚫ ТРИ СТРАНИЦЫ ⚪ ТРИ ФУНКЦИИ ⚫</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
