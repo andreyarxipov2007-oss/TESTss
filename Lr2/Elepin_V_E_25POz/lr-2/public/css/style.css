@@ -1,0 +1,29 @@
+body{
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('../images/main_background.png') !important;
+}
+
+.navbar{
+    box-shadow: 0 10px 10px 0 #A2C3F3 !important;
+}
+
+.card-header, .card-footer{
+    background-color: #A2C3F3 !important;
+    /* border: 3px solid #3568FF !important; */
+}
+
+.card-body{
+    border: 3px solid #3568FF !important;
+    background-color: white !important;
+}
+
+.card-header{
+    border-width: 3px 3px 0 3px !important;
+    border-style: solid !important;
+    border-color: #3568FF !important;
+}
+
+.card-footer{
+    border-width: 0px 3px 3px 3px !important;
+    border-style: solid !important;
+    border-color: #3568FF !important;
+}
