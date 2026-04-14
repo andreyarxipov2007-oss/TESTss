@@ -1,0 +1,7 @@
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\bin\Debug\pr_1.exe.config
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\bin\Debug\pr_1.exe
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\bin\Debug\pr_1.pdb
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\obj\Debug\pr_1.csproj.AssemblyReference.cache
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\obj\Debug\pr_1.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\obj\Debug\pr_1.exe
+C:\Users\Пользователь\Sedov\НГТУ\2 семестр\ИКТ\PR_1\pr_1\obj\Debug\pr_1.pdb
