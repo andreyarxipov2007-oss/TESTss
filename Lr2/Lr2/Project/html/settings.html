@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Настройки</title>
+        <link rel="stylesheet" href="../css/settings_style.css">
+    </head>
+    <body>
+        <a href="main.html" id="backLink">
+            <img src="..//images/back.png" alt="Назад" style="width:40px; height:auto;">
+        </a>
+
+        <h1>Настройки</h1>
+
+        <div id="inputDiv">
+            <label>Имя пользователя:</label>
+            <input type="text" id="username"><br><br>
+
+            <label>Телефон:</label>
+            <input type="tel" id="phone" placeholder="+7(___)___-__-__"><br><br>
+
+            <label>Электронная почта:</label>
+            <input type="email" id="email"><br><br>
+        </div>
+        
+        <h2>Выберите аватарку</h2>
+        <div id="avatar">
+            <img src="..//images/avatars/avatar1.png" class="avatar"">
+            <img src="..//images/avatars/avatar2.png" class="avatar"">
+            <img src="..//images/avatars/avatar3.png" class="avatar"">
+            <img src="..//images/avatars/avatar4.png" class="avatar"">
+            <img src="..//images/avatars/avatar5.png" class="avatar"">
+            <img src="..//images/avatars/avatar6.png" class="avatar"">
+            <img src="..//images/avatars/avatar7.png" class="avatar"">
+            <img src="..//images/avatars/avatar8.png" class="avatar"">
+            <img src="..//images/avatars/avatar9.png" class="avatar"">
+        </div>
+
+
+        <h3>Текущий выбранный аватар</h3>
+        <div id="avatar">
+            <img id="currentAvatar" src="..//images/avatars/avatar1.png">
+        </div>
+        
+        <div id="buttonsDiv">
+            <button id="saveSettingsBtn" type="button">Сохранить настройки</button>
+            <button id="deleteSettingsBtn" type="button"">Очистить все данные</button>
+        </div>
+
+        <script src="../js/settings_script.js"></script>
+    </body>
+</html>
