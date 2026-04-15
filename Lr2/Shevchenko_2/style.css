@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f0e1 0%, #ffe6cc 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    color: #d47b3c;
+    margin-bottom: 30px;
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0c9a0;
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: #f5e6d3;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+    color: #a5662c;
+    font-weight: bold;
+}
+
+.tab-btn:hover {
+    background: #e6d0b5;
+}
+
+.tab-btn.active {
+    background: #d47b3c;
+    color: white;
+}
+
+/* Контент вкладок */
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ========== ВКЛАДКА 1: О КОТИКАХ ========== */
+.cat-profile {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.cat-avatar {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.avatar-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #d47b3c;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    display: block;
+    margin: 0 auto;
+}
+
+.cat-info {
+    flex: 2;
+    background: #fff9f0;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.cat-info h2 {
+    color: #d47b3c;
+    margin-bottom: 15px;
+}
+
+.cat-info p {
+    margin: 8px 0;
+    color: #5a3e2b;
+}
+
+.skills {
+    background: #f9e5cc;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.skills h3 {
+    color: #d47b3c;
+    margin-bottom: 10px;
+}
+
+.skills ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skills li {
+    padding: 5px 0;
+    color: #5a3e2b;
+    font-size: 1rem;
+}
+
+/* ========== ВКЛАДКА 2: ГАЛЕРЕЯ ========== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    background: #f9f9f9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item p {
+    padding: 12px;
+    text-align: center;
+    color: #d47b3c;
+}
+
+/* ========== ВКЛАДКА 3: ПОКОРМИ КОТИКА ========== */
+.feed-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Блок с фото котика */
+.cat-photo {
+    flex: 0 1 300px;
+    text-align: center;
+    background: #fff9f0;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cat-photo img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 20px;
+    border: 4px solid #d47b3c;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    display: block;
+    margin: 0 auto;
+}
+
+.cat-photo-caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #d47b3c;
+    font-weight: bold;
+}
+
+/* Блок с кормлением */
+.feed-block {
+    flex: 0 1 300px;
+    text-align: center;
+    padding: 30px;
+    background: #fff9f0;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feed-block p {
+    font-size: 1.3rem;
+    margin: 15px 0;
+}
+
+#fishCount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d47b3c;
+}
+
+.feed-btn {
+    background: #d47b3c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.feed-btn:hover {
+    background: #b85e1f;
+    transform: scale(1.05);
+}
+
+.feed-btn.reset {
+    background: #9e9e9e;
+}
+
+.feed-btn.reset:hover {
+    background: #757575;
+}
+
+#catMood {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #d47b3c;
+    min-height: 80px;
+}
+
+/* ========== ФУТЕР ========== */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0c9a0;
+    color: #a5662c;
+}

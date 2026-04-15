@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка баланса скобок</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Баланс скобок</h2>
+    <p>Введите строку для проверки:</p>
+    <input type="text" id="inputString" placeholder="Пример: {[()]}">
+    <button onclick="checkBalance()">Проверить по алгоритму</button>
+    <div id="result"></div>
+</div>
+
+<script>
+function checkBalance() {
+    // Ввод строки S
+    let S = document.getElementById('inputString').value;
+    let resDiv = document.getElementById('result');
+
+    // Инициализация
+    let ST = [];        //пустой стек
+    let i = 0;
+    let N = S.length;   // длина строки S
+    let flag = true;
+
+    while (i < N && flag === true) {
+        let ch = S[i];
+
+        // ch — открывающая '(', '[', '{' ?
+        if (ch === '(' || ch === '[' || ch === '{') {
+            ST.push(ch); // добавление в стек
+        } 
+        else {
+            // ch — закрывающая ')', ']', '}' ?
+            if (ch === ')' || ch === ']' || ch === '}') {
+                // Стек ST пуст?
+                if (ST.length === 0) {
+                    flag = false;
+                } else {
+                    let top = ST.pop(); // извлечение из стека
+                    
+                    // Пара соответствует?
+                    if (!isMatchingPair(top, ch)) {
+                        flag = false; // flag = false
+                    }
+                }
+            }
+        }
+        i = i + 1; // L: переход к следующему символу
+    }
+
+    // Финальная проверка
+    if (flag === true && ST.length === 0) {
+        resDiv.innerHTML = '<span class="success">Вывод: Баланс соблюдён</span>';
+    } else {
+        resDiv.innerHTML = '<span class="error">Вывод: Баланс нарушен</span>';
+    }
+}
+
+// Вспомогательная функция для проверки пар
+function isMatchingPair(open, close) {
+    if (open === '(' && close === ')') return true;
+    if (open === '[' && close === ']') return true;
+    if (open === '{' && close === '}') return true;
+    return false;
+}
+</script>
+
+</body>
+</html>
