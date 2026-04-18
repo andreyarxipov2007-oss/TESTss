@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт про котика</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🐱 Всё о моём котике Паштете 🐱</h1>
+        
+        <!-- Вкладки -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab1">✨ О котике</button>
+            <button class="tab-btn" data-tab="tab2">📸 Галерея</button>
+            <button class="tab-btn" data-tab="tab3">❤️ Покорми котика</button>
+        </div>
+
+        <div class="tabs-content">
+            <!-- Вкладка 1 -->
+            <div class="tab-pane active" id="tab1">
+                <div class="cat-profile">
+                    <div class="cat-avatar">
+                        <img src="pictures/cat_avatar.jpg" alt="Аватар котика" class="avatar-img">
+                    </div>
+                    <div class="cat-info">
+                        <h2>🐾 Мой пушистый друг</h2>
+                        <p><strong>Имя:</strong> Паштет</p>
+                        <p><strong>Порода:</strong> Невская маскарадная</p>
+                        <p><strong>Возраст:</strong> 1 год</p>
+                        <p><strong>Любимое занятие:</strong> Спать на клавиатуре</p>
+                    </div>
+                </div>
+                <div class="skills">
+                    <h3>🏆 Навыки:</h3>
+                    <ul>
+                        <li>🐟 Ловить рыбу во сне</li>
+                        <li>📦 Залезать в любую коробку</li>
+                        <li>🎵 Громко мурлыкать</li>
+                        <li>🚪 Открывать двери лапой</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Вкладка 2 -->
+            <div class="tab-pane" id="tab2">
+                <h2>📸 Мои любимые фото</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="pictures/cat1.jpg" alt="Котик 1">
+                        <p>Сплю на диване 😴</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pictures/cat2.jpg" alt="Котик 2">
+                        <p>Ем коробку 📦</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pictures/cat3.jpg" alt="Котик 3">
+                        <p>Фронталка открылась👀</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pictures/cat4.jpg" alt="Котик 4">
+                        <p>Красивый портрет📷</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pictures/cat5.jpg" alt="Котик 5">
+                        <p>Радуюсь😃</p>
+                    </div>
+					<div class="gallery-item">
+                        <img src="pictures/cat6.jpg" alt="Котик 5">
+                        <p>Маленький я✨</p>
+                    </div>
+					<div class="gallery-item">
+                        <img src="pictures/cat7.jpg" alt="Котик 5">
+                        <p>Играю🎮</p>
+                    </div>
+					<div class="gallery-item">
+                        <img src="pictures/cat8.jpg" alt="Котик 5">
+                        <p>Умер😳</p>
+                    </div>
+					<div class="gallery-item">
+                        <img src="pictures/cat9.jpg" alt="Котик 5">
+                        <p>Свечусь🎀</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка 3 -->
+            <div class="tab-pane" id="tab3">
+    <h2>❤️ Покорми Паштета</h2>
+    
+    <div class="feed-container">
+        <div class="cat-photo">
+            <img src="pictures/cat_feed.jpg" alt="Котик" id="catFeedImage">
+            <div class="cat-photo-caption">🐱 Твой голодный Паштет</div>
+        </div>
+        
+        <div class="feed-block">
+            <p>Паштет съел рыбок: <span id="fishCount">0</span></p>
+            <button id="feedBtn" class="feed-btn">🐟 Дай рыбку</button>
+            <button id="resetBtn" class="feed-btn reset">🔄 Сброс</button>
+            <p id="catMood">😐 Паштет ждёт рыбку... Покорми меня!</p>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer>
+            <p>2026 Паштет был тут | Шевченко Полина Андреевна 25-ПОз</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
