@@ -1,2 +1,5 @@
 Hellooooooo 1
 new Test
+
+A friend made changes to the test.txt file in the Lr1 folder
+I made changes to the test.txt file in the Lr1 folder
