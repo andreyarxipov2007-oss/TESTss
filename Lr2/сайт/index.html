@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Империя вкуса | Доставка еды</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <h1><a href="index.html">ИМПЕРИЯ ВКУСА</a></h1>
+        </div>
+        <button class="burger" id="burger-btn">☰</button>
+
+        
+        <nav class="nav">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="delivery.html">Доставка и оплата</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <button class="header-cart" id="open-cart">
+            <span class="material-icons">shopping_cart</span> <span id="cart-count">0</span> ₽
+        </button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://i.pinimg.com/originals/45/cd/bd/45cdbd94d1476d8d6a70cb813c824d33.png" alt="Империя вкуса — доставка еды" loading="lazy">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Империя вкуса</h2>
+            <p>Быстрая доставка для всей семьи</p>
+            <a href="menu.html" class="btn-hero">Перейти к меню</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">restaurant_menu</span> Популярные категории</h3>
+        <p class="section-subtitle">Выберите категорию и найдите любимое блюдо</p>
+        <div class="categories-grid">
+            <a href="menu.html#pizza" class="category-card">
+                <div class="category-card-img">
+                    <img src="https://i.pinimg.com/736x/8f/9a/9b/8f9a9ba86c05b6c48a9c542e16db7092.jpg" alt="Пицца" loading="lazy">
+                </div>
+                <div class="category-card-title"><span class="material-icons">local_pizza</span> Пицца</div>
+            </a>
+            <a href="menu.html#shawarma" class="category-card">
+                <div class="category-card-img">
+                    <img src="https://i.pinimg.com/736x/23/32/62/2332621233ff347d1169f908d29ba144.jpg" alt="Шаурма и донар" loading="lazy">
+                </div>
+                <div class="category-card-title"><span class="material-icons">kebab_dining</span> Шаурма и донар</div>
+            </a>
+            <a href="menu.html#home-food" class="category-card">
+                <div class="category-card-img">
+                    <img src="https://i.pinimg.com/736x/c7/26/10/c7261030c7f8270a5f809eb2e28700bc.jpg" alt="Домашняя еда" loading="lazy">
+                </div>
+                <div class="category-card-title"><span class="material-icons">soup_kitchen</span> Домашняя еда</div>
+            </a>
+            <a href="menu.html#drinks" class="category-card">
+                <div class="category-card-img">
+                    <img src="https://i.pinimg.com/originals/fd/7a/ff/fd7affc009f38d536efdcb575749f148.jpg" alt="Напитки" loading="lazy">
+                </div>
+                <div class="category-card-title"><span class="material-icons">local_cafe</span> Напитки</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="section" style="background: #fff3e0; max-width: 100%; padding: 50px 5%;">
+        <div style="max-width: 1300px; margin: 0 auto;">
+            <h3 class="section-title"><span class="material-icons">star</span> Почему выбирают нас</h3>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-icon"><span class="material-icons" style="font-size: 40px;">rocket_launch</span></div>
+                    <h4>Быстрая доставка</h4>
+                    <p>Доставим ваш заказ за 30–60 минут в любую точку города</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><span class="material-icons" style="font-size: 40px;">restaurant</span></div>
+                    <h4>Свежие продукты</h4>
+                    <p>Готовим только из свежих и качественных ингредиентов каждый день</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><span class="material-icons" style="font-size: 40px;">savings</span></div>
+                    <h4>Доступные цены</h4>
+                    <p>Вкусная еда не должна быть дорогой — у нас честные цены</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><span class="material-icons" style="font-size: 40px;">smartphone</span></div>
+                    <h4>Удобный заказ</h4>
+                    <p>Заказывайте через сайт или по телефону — как вам удобнее</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">local_fire_department</span> Хиты продаж</h3>
+        <p class="section-subtitle">Самые популярные блюда, которые заказывают снова и снова</p>
+        <div class="hits-grid">
+            <div class="card">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/85/ff/6190/pitstsa-pepperoni-_1768801896_1_g8sre7j_max.jpg" alt="Пицца Пепперони" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Пепперони</div>
+                    <div class="card-desc">Острая пепперони, моцарелла, томатный соус</div>
+                    <div class="card-bottom">
+                        <span class="price">550 ₽</span>
+                        <button class="add-to-cart" data-id="2" data-name="Пицца Пепперони" data-price="550">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/4f/d0/1276/domashnyaya-shaurma_1747837373_0_juxr1xc_max.jpg" alt="Шаурма с курицей" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Шаурма с курицей</div>
+                    <div class="card-desc">Курица гриль, свежие овощи, чесночный соус, лаваш</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="14" data-name="Шаурма с курицей" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/06/04/c2/0604c25ed97c18f9e11e81f2c3b74aec.jpg" alt="Плов по-восточному" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Плов по-восточному</div>
+                    <div class="card-desc">Ароматный плов с мясом по традиционному рецепту</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="39" data-name="Плов по-восточному" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/1a/4d/14/1a4d1465d13ee9d2e08f38de9a220e47.jpg" alt="Молочный коктейль" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Молочный коктейль</div>
+                    <div class="card-desc">Ваниль / шоколад / клубника, со взбитыми сливками</div>
+                    <div class="card-bottom">
+                        <span class="price">290 ₽</span>
+                        <button class="add-to-cart" data-id="46" data-name="Молочный коктейль" data-price="290">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">local_shipping</span> Условия доставки</h3>
+        <div class="delivery-brief">
+            <div class="delivery-brief-item">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">schedule</span></div>
+                <h4>30–60 минут</h4>
+                <p>Среднее время доставки по городу</p>
+            </div>
+            <div class="delivery-brief-item">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">money_off</span></div>
+                <h4>От 500 ₽ бесплатно</h4>
+                <p>Бесплатная доставка при заказе от 500 рублей</p>
+            </div>
+            <div class="delivery-brief-item">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">access_time</span></div>
+                <h4>10:00 — 23:00</h4>
+                <p>Работаем ежедневно без выходных</p>
+            </div>
+            <div class="delivery-brief-item">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">credit_card</span></div>
+                <h4>Любая оплата</h4>
+                <p>Наличные, карта, перевод</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-cart">
+            <button class="close-modal" id="close-cart">&times;</button>
+            <h2><span class="material-icons">shopping_cart</span> Ваш заказ</h2>
+            <ul class="cart-items" id="cart-list"></ul>
+            <div class="cart-total" id="cart-total">0 ₽</div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="clear-cart">Очистить</button>
+                <button class="btn btn-primary" id="checkout-btn">Оформить доставку</button>
+            </div>
+
+            <div id="order-form-container" class="order-form-container">
+                <h3>Контактные данные</h3>
+                <form class="order-form" id="delivery-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Ваше имя" id="order-name" required>
+                        <input type="tel" placeholder="Телефон" id="order-phone" required>
+                    </div>
+                    <input type="text" placeholder="Адрес доставки" id="order-address" required>
+                    <textarea rows="2" placeholder="Комментарий к заказу (этаж, домофон, пожелания)"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Подтвердить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-top" id="scroll-top">↑</button>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Империя вкуса</h4>
+                <p>Сервис быстрой доставки вкусной еды для всей семьи. Работаем ежедневно с 10:00 до 23:00.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p><span class="material-icons" style="font-size: 1rem;">phone</span> +7 (999) 123-45-67</p>
+                <p><span class="material-icons" style="font-size: 1rem;">email</span> info@imperiavkusa.ru</p>
+                <p><span class="material-icons" style="font-size: 1rem;">place</span> п. Мулино Нижегородской обл. ул. Школьная д. 12</p>
+            </div>
+            <div class="footer-col">
+                <h4>Режим работы</h4>
+                <p>Ежедневно: 10:00 — 23:00</p>
+                <p>Доставка: 30–60 минут</p>
+                <p>Бесплатно от 500 ₽</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Империя вкуса. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>

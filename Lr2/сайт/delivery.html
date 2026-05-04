@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка и оплата | Империя вкуса</title>
+    <link rel="icon" href="Favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    
+    <header class="header">
+        <div class="logo">
+            <h1><a href="index.html">ИМПЕРИЯ ВКУСА</a></h1>
+        </div>
+
+        
+        <button class="burger" id="burger-btn">☰</button>
+
+        
+        <nav class="nav">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="delivery.html" class="active">Доставка и оплата</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+
+        
+        <button class="header-cart" id="open-cart">
+            <span class="material-icons">shopping_cart</span> <span id="cart-count">0</span> ₽
+        </button>
+    </header>
+
+    
+    <div class="page-header">
+        <h2>Доставка и оплата</h2>
+        <p>Всё, что нужно знать о нашем сервисе доставки</p>
+    </div>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">local_shipping</span> Условия доставки</h3>
+        <p class="section-subtitle">Мы доставляем заказы быстро и аккуратно по всему поселку</p>
+        <div class="delivery-conditions">
+            <div class="delivery-card">
+                <div class="icon"><span class="material-icons" style="font-size: 40px;">place</span></div>
+                <h4>Зона доставки</h4>
+                <p>Доставляем по всему поселку и ближайшему округу в радиусе 15 км от центра</p>
+            </div>
+            <div class="delivery-card">
+                <div class="icon"><span class="material-icons" style="font-size: 40px;">schedule</span></div>
+                <h4>Время доставки</h4>
+                <p>Среднее время доставки — 30–60 минут в зависимости от загруженности и расстояния</p>
+            </div>
+            <div class="delivery-card">
+                <div class="icon"><span class="material-icons" style="font-size: 40px;">payments</span></div>
+                <h4>Стоимость доставки</h4>
+                <p>Бесплатно при заказе от 500 ₽. При заказе менее 500 ₽ — доставка 150 ₽</p>
+            </div>
+            <div class="delivery-card">
+                <div class="icon"><span class="material-icons" style="font-size: 40px;">inventory_2</span></div>
+                <h4>Минимальный заказ</h4>
+                <p>Минимальная сумма заказа для доставки — 200 ₽. Без ограничений при самовывозе</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">access_time</span> Время работы</h3>
+        <p class="section-subtitle">Мы работаем каждый день, чтобы вы могли заказать любимую еду</p>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>День недели</th>
+                    <th>Время работы</th>
+                    <th>Приём заказов</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Понедельник — Пятница</td>
+                    <td>10:00 — 23:00</td>
+                    <td>до 22:30</td>
+                </tr>
+                <tr>
+                    <td>Суббота</td>
+                    <td>10:00 — 23:00</td>
+                    <td>до 22:30</td>
+                </tr>
+                <tr>
+                    <td>Воскресенье</td>
+                    <td>11:00 — 22:00</td>
+                    <td>до 21:30</td>
+                </tr>
+                <tr>
+                    <td>Праздничные дни</td>
+                    <td>11:00 — 22:00</td>
+                    <td>до 21:30</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">credit_card</span> Способы оплаты</h3>
+        <p class="section-subtitle">Выберите удобный для вас способ оплаты заказа</p>
+        <div class="payment-methods">
+            <div class="payment-item">
+                <div class="icon"><span class="material-icons" style="font-size: 32px;">payments</span></div>
+                <span>Наличными курьеру</span>
+            </div>
+            <div class="payment-item">
+                <div class="icon"><span class="material-icons" style="font-size: 32px;">credit_card</span></div>
+                <span>Банковской картой</span>
+            </div>
+            <div class="payment-item">
+                <div class="icon"><span class="material-icons" style="font-size: 32px;">smartphone</span></div>
+                <span>Переводом по номеру</span>
+            </div>
+            <div class="payment-item">
+                <div class="icon"><span class="material-icons" style="font-size: 32px;">account_balance</span></div>
+                <span>СБП (Система быстрых платежей)</span>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">checklist</span> Как оформить заказ</h3>
+        <p class="section-subtitle">Всего 4 простых шага — и вкусная еда уже в пути к вам</p>
+        <div class="steps-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h4>Выберите блюда</h4>
+                <p>Откройте раздел «Меню» и добавьте понравившиеся блюда в корзину</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h4>Проверьте корзину</h4>
+                <p>Убедитесь, что всё верно, и нажмите «Оформить доставку»</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h4>Укажите данные</h4>
+                <p>Введите имя, телефон и адрес доставки в форме заказа</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h4>Ожидайте доставку</h4>
+                <p>Оператор подтвердит заказ, и курьер привезёт его в течение 30–60 минут</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">help_outline</span> Частые вопросы</h3>
+        <div class="faq-list" id="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">Можно ли заказать доставку за город?</button>
+                <div class="faq-answer">
+                    Да, мы доставляем в ближайшие населенные пункты в радиусе 15 км от кафе. Стоимость доставки рассчитывается индивидуально — уточняйте у оператора по телефону.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Как узнать статус моего заказа?</button>
+                <div class="faq-answer">
+                    После оформления заказа с вами свяжется оператор для подтверждения. Вы также можете позвонить по номеру +7 (999) 123-45-67 и уточнить статус.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Можно ли изменить или отменить заказ?</button>
+                <div class="faq-answer">
+                    Да, вы можете изменить или отменить заказ, позвонив нам в течение 5 минут после оформления. После начала приготовления изменения невозможны.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Есть ли у вас самовывоз?</button>
+                <div class="faq-answer">
+                    Да, вы можете забрать заказ самостоятельно по адресу: п. Мулино, ул. Школьная, д. 12. При самовывозе минимальная сумма заказа не ограничена.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Какая минимальная сумма заказа для бесплатной доставки?</button>
+                <div class="faq-answer">
+                    Бесплатная доставка действует при заказе от 500 ₽. При заказе на сумму менее 500 ₽ стоимость доставки составляет 150 ₽.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-cart">
+            <button class="close-modal" id="close-cart">&times;</button>
+            <h2><span class="material-icons">shopping_cart</span> Ваш заказ</h2>
+            <ul class="cart-items" id="cart-list"></ul>
+            <div class="cart-total" id="cart-total">0 ₽</div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="clear-cart">Очистить</button>
+                <button class="btn btn-primary" id="checkout-btn">Оформить доставку</button>
+            </div>
+            
+            <div id="order-form-container" class="order-form-container">
+                <h3>Контактные данные</h3>
+                <form class="order-form" id="delivery-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Ваше имя" id="order-name" required>
+                        <input type="tel" placeholder="Телефон" id="order-phone" required>
+                    </div>
+                    <input type="text" placeholder="Адрес доставки" id="order-address" required>
+                    <textarea rows="2" placeholder="Комментарий к заказу (этаж, домофон, пожелания)"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Подтвердить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="scroll-top" id="scroll-top">↑</button>
+
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Империя вкуса</h4>
+                <p>Сервис быстрой доставки вкусной еды для всей семьи. Работаем ежедневно с 10:00 до 23:00.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p>📞 +7 (999) 123-45-67</p>
+                <p>📧 info@imperiavkusa.ru</p>
+                <p>📍 п. Мулино, ул. Школьная, д. 6</p>
+            </div>
+            <div class="footer-col">
+                <h4>Режим работы</h4>
+                <p>Ежедневно: 10:00 — 23:00</p>
+                <p>Доставка: 30–60 минут</p>
+                <p>Бесплатно от 500 ₽</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Империя вкуса. Все права защищены.</p>
+        </div>
+    </footer>
+
+    
+    <script src="js/cart.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>
