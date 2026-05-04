@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Империя вкуса</title>
+    <link rel="icon" href="Favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    
+    <header class="header">
+        <div class="logo">
+            <h1><a href="index.html">ИМПЕРИЯ ВКУСА</a></h1>
+        </div>
+
+        
+        <button class="burger" id="burger-btn">☰</button>
+
+        
+        <nav class="nav">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="delivery.html">Доставка и оплата</a></li>
+                <li><a href="contacts.html" class="active">Контакты</a></li>
+            </ul>
+        </nav>
+
+        
+        <button class="header-cart" id="open-cart">
+            <span class="material-icons">shopping_cart</span> <span id="cart-count">0</span> ₽
+        </button>
+    </header>
+
+    
+    <div class="page-header">
+        <h2>Контакты</h2>
+        <p>Свяжитесь с нами любым удобным способом</p>
+    </div>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">call</span> Наши контакты</h3>
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">phone</span></div>
+                <h4>Телефон</h4>
+                <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                <p>Звоните ежедневно с 10:00 до 23:00</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">email</span></div>
+                <h4>Электронная почта</h4>
+                <p><a href="mailto:info@imperiavkusa.ru">info@imperiavkusa.ru</a></p>
+                <p>Ответим в течение 24 часов</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">place</span></div>
+                <h4>Адрес</h4>
+                <p>п.Мулино, ул.Школьная, д. 12</p>
+                <p>Рядом с торговым центром DNS</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon"><span class="material-icons" style="font-size: 36px;">chat</span></div>
+                <h4>Мессенджеры</h4>
+                <p>WhatsApp, Telegram</p>
+                <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">access_time</span> График работы</h3>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>День недели</th>
+                    <th>Кухня</th>
+                    <th>Доставка</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Понедельник — Пятница</td>
+                    <td>10:00 — 23:00</td>
+                    <td>10:00 — 22:30</td>
+                </tr>
+                <tr>
+                    <td>Суббота</td>
+                    <td>10:00 — 23:00</td>
+                    <td>10:00 — 22:30</td>
+                </tr>
+                <tr>
+                    <td>Воскресенье</td>
+                    <td>11:00 — 22:00</td>
+                    <td>11:00 — 21:30</td>
+                </tr>
+                <tr>
+                    <td>Праздничные дни</td>
+                    <td>11:00 — 22:00</td>
+                    <td>11:00 — 21:30</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    
+    <section class="section">
+        <h3 class="section-title"><span class="material-icons">mail</span> Напишите нам</h3>
+        <p class="section-subtitle">Оставьте заявку или задайте вопрос — мы ответим как можно скорее</p>
+        <div class="contact-form-wrapper">
+            <h3>Форма обратной связи</h3>
+            <form id="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-name">Ваше имя *</label>
+                        <input type="text" id="contact-name" placeholder="Введите ваше имя">
+                        <div class="form-error" id="error-name">Пожалуйста, введите ваше имя</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-phone">Телефон *</label>
+                        <input type="tel" id="contact-phone" placeholder="+7 (___) ___-__-__">
+                        <div class="form-error" id="error-phone">Введите корректный номер телефона</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Электронная почта</label>
+                    <input type="email" id="contact-email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-group">
+                    <label for="contact-subject">Тема обращения</label>
+                    <select id="contact-subject">
+                        <option value="">Выберите тему</option>
+                        <option value="order">Вопрос по заказу</option>
+                        <option value="delivery">Вопрос по доставке</option>
+                        <option value="complaint">Жалоба</option>
+                        <option value="suggestion">Предложение</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Сообщение *</label>
+                    <textarea id="contact-message" placeholder="Напишите ваше сообщение..."></textarea>
+                    <div class="form-error" id="error-message">Пожалуйста, введите сообщение</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+            </form>
+            
+            <div class="form-success" id="form-success">
+                ✅ Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="map-block">
+            <h3><span class="material-icons">place</span> Как нас найти</h3>
+            <div class="map-placeholder">
+                <p style="margin-bottom: 16px;"><span class="material-icons" style="font-size: 48px;">map</span></p>
+                <p><strong>п. Мулино, ул. Школьная, д. 12</strong></p>
+                <p style="margin-top: 10px;  #5color:f4d3b;">Ориентир торговый центр DNS</p>
+                <p style="margin-top: 10px;  #5color:f4d3b;">Вход со стороны главной улицы, вывеска «Империя вкуса»</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-cart">
+            <button class="close-modal" id="close-cart">&times;</button>
+            <h2><span class="material-icons">shopping_cart</span> Ваш заказ</h2>
+            <ul class="cart-items" id="cart-list"></ul>
+            <div class="cart-total" id="cart-total">0 ₽</div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="clear-cart">Очистить</button>
+                <button class="btn btn-primary" id="checkout-btn">Оформить доставку</button>
+            </div>
+            
+            <div id="order-form-container" class="order-form-container">
+                <h3>Контактные данные</h3>
+                <form class="order-form" id="delivery-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Ваше имя" id="order-name" required>
+                        <input type="tel" placeholder="Телефон" id="order-phone" required>
+                    </div>
+                    <input type="text" placeholder="Адрес доставки" id="order-address" required>
+                    <textarea rows="2" placeholder="Комментарий к заказу (этаж, домофон, пожелания)"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Подтвердить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="scroll-top" id="scroll-top">↑</button>
+
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Империя вкуса</h4>
+                <p>Сервис быстрой доставки вкусной еды для всей семьи. Работаем ежедневно с 10:00 до 23:00.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p>📞 +7 (999) 123-45-67</p>
+                <p>📧 info@imperiavkusa.ru</p>
+                <p>п. Мулино ул. Школьная д. 12</p>
+            </div>
+            <div class="footer-col">
+                <h4>Режим работы</h4>
+                <p>Ежедневно: 10:00 — 23:00</p>
+                <p>Доставка: 30–60 минут</p>
+                <p>Бесплатно от 500 ₽</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Империя вкуса. Все права защищены.</p>
+        </div>
+    </footer>
+
+    
+    <script src="js/cart.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>

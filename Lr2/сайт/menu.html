@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню | Империя вкуса</title>
+    <link rel="icon" href="Favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    
+    <header class="header">
+        <div class="logo">
+            <h1><a href="index.html">ИМПЕРИЯ ВКУСА</a></h1>
+        </div>
+        <button class="burger" id="burger-btn">☰</button>
+        <nav class="nav">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="menu.html" class="active">Меню</a></li>
+                <li><a href="delivery.html">Доставка и оплата</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <button class="header-cart" id="open-cart">
+            <span class="material-icons">shopping_cart</span> <span id="cart-count">0</span> ₽
+        </button>
+    </header>
+
+    
+    <div class="page-header">
+        <h2>Наше меню</h2>
+        <p>Выберите любимые блюда и добавьте в корзину</p>
+    </div>
+
+    
+    <div class="categories-filter" id="categories-filter">
+    <button class="category-btn active" data-category="all">Все</button>
+    
+    <button class="category-btn" data-category="pizza">
+        <span class="material-icons">local_pizza</span> Пицца</button>
+    
+    <button class="category-btn" data-category="drinks">
+        <span class="material-icons">local_cafe</span> Напитки</button>
+    
+    <button class="category-btn" data-category="shawarma">
+        <span class="material-icons">kebab_dining</span> Шаурма, донар</button>
+    
+    <button class="category-btn" data-category="home-food">
+        <span class="material-icons">soup_kitchen</span> Домашняя еда</button>
+    
+    <button class="category-btn" data-category="second courses">
+        <span class="material-icons">restaurant</span> Вторые блюда</button>
+    
+    <button class="category-btn" data-category="speciality dishes">
+        <span class="material-icons">star</span> Фирменные блюда</button>
+    
+    <button class="category-btn" data-category="cold snacks">
+        <span class="material-icons">flatware</span> Холодные закуски</button>
+    
+    <button class="category-btn" data-category="salad">
+        <span class="material-icons">eco</span> Салаты</button>
+    
+    <button class="category-btn" data-category="signature salads">
+        <span class="material-icons">workspace_premium</span> Фирменные салаты</button>
+    
+    <button class="category-btn" data-category="kebabs">
+        <span class="material-icons">outdoor_grill</span> Шашлыки</button>
+    
+    <button class="category-btn" data-category="sandwiches and bread">
+        <span class="material-icons">bakery_dining</span> Бутерброды и хлеб</button>
+</div>
+
+    
+    <section class="section">
+        <div class="menu-grid" id="menu-grid">
+
+            
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/ef/27/10853/picca-margarita-v-domashnix-usloviyax_1769509868_2_thatb2n_max.jpg" alt="Пицца Маргарита" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Маргарита</div>
+                    <div class="card-desc">Томатный соус, моцарелла, базилик, оливковое масло</div>
+                    <div class="card-bottom">
+                        <span class="price">750 ₽</span>
+                        <button class="add-to-cart" data-id="1" data-name="Пицца Маргарита" data-price="480">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/85/ff/6190/pitstsa-pepperoni-_1768801896_1_g8sre7j_max.jpg" alt="Пицца Пепперони" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Пепперони</div>
+                    <div class="card-desc">Острая пепперони, моцарелла, томатный соус</div>
+                    <div class="card-bottom">
+                        <span class="price">750 ₽</span>
+                        <button class="add-to-cart" data-id="2" data-name="Пицца Пепперони" data-price="550">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://main-cdn.sbermegamarket.ru/big2/hlr-system/107/191/764/342/517/42/100029319375b1.jpg" alt="Пицца Четыре сыра" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Четыре сыра</div>
+                    <div class="card-desc">Моцарелла, пармезан, горгонзола, фета, сливочный соус</div>
+                    <div class="card-bottom">
+                        <span class="price">680 ₽</span>
+                        <button class="add-to-cart" data-id="3" data-name="Пицца Четыре сыра" data-price="620">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://100pydov.ru/image/cache/catalog/product/img/pizza_europeiska/IMG_6318-700x700.jpg" alt="Пицца Европейская" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Европейская</div>
+                    <div class="card-desc">Ветчина, грибы, помидор, лук, сыр, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">850 ₽</span>
+                        <button class="add-to-cart" data-id="4" data-name="Пицца Европейская" data-price="850">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/80/43/c5/8043c58227d23361e50a9eb9623b0cd8.jpg" alt="Пицца Неаполитанская" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Неаполитанская</div>
+                    <div class="card-desc">Колбаса копчёная, лук, болгарский перец, помидор, сыр, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">800 ₽</span>
+                        <button class="add-to-cart" data-id="5" data-name="Пицца Неаполитанская" data-price="800">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://main-cdn.sbermegamarket.ru/big2/hlr-system/104/283/391/125/185/4/100045241499b0.jpg" alt="Пицца Мясная" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Мясная</div>
+                    <div class="card-desc">Бекон, грудинка, помидоры, маслины, сыр, грибы</div>
+                    <div class="card-bottom">
+                        <span class="price">950 ₽</span>
+                        <button class="add-to-cart" data-id="12" data-name="Пицца Мясная" data-price="950">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://static.1000.menu/res/380/img/content/27098/picca-morskaya_1526748430_2_max.jpg" alt="Пицца Морская" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Морская</div>
+                    <div class="card-desc">Кальмары, сыр, креветки, крабовые палочки, соус, помидоры</div>
+                    <div class="card-bottom">
+                        <span class="price">1000 ₽</span>
+                        <button class="add-to-cart" data-id="13" data-name="Пицца Морская" data-price="1000">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="pizza">
+                <div class="card-img"><img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/936/457/848/227/212/8/100048559808b0.png" alt="Пицца Куриная" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пицца Куриная</div>
+                    <div class="card-desc">Курица, грибы, сыр, лук, помидор, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">900 ₽</span>
+                        <button class="add-to-cart" data-id="8" data-name="Пицца Куриная" data-price="900">+</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card" data-category="shawarma">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/4f/d0/1276/domashnyaya-shaurma_1747837373_0_juxr1xc_max.jpg" alt="Шаурма с курицей" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Шаурма с курицей</div>
+                    <div class="card-desc">Курица гриль, свежие овощи, чесночный соус, лаваш</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="14" data-name="Шаурма с курицей" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="shawarma">
+                <div class="card-img"><img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/-19/619/481/638/122/44/100058609073b0.jpg" alt="Шаурма с говядиной" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Шаурма с говядиной</div>
+                    <div class="card-desc">Говядина, овощи, острый соус, зелень</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="15" data-name="Шаурма с говядиной" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="shawarma">
+                <div class="card-img"><img src="https://static.1000.menu/res/380/img/content-v2/32/3c/19232/shaurma-so-svininoi-domashnyaya_1616353272_23_max.jpg" alt="Шаурма со свининой" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Шаурма со свининой</div>
+                    <div class="card-desc">Лаваш тонкий, свинина, капуста, морковь, помидор, лук красный, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="16" data-name="Шаурма со свининой" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="shawarma">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/5b/e2/d8/5be2d87fb6ab44a9a27d07f90f983148.jpg" alt="Донар кебаб" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Донар кебаб</div>
+                    <div class="card-desc">Говядина с пряностями, овощи, соус, в пите</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="19" data-name="Донар кебаб" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="shawarma">
+                <div class="card-img"><img src="https://main-cdn.sbermegamarket.ru/big2/hlr-system/315/993/749/112/017/7/100029692473b0.jpg" alt="Донар с курицей" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Донар с курицей</div>
+                    <div class="card-desc">Лепёшка, курица, огурец, помидор, картофель, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="21" data-name="Донар с курицей" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://static.1000.menu/files/user-v2/ad/bc/974372/foto/f_09-05-2025-07-28-34.1746818917.jpg" alt="Шурпа" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Шурпа</div>
+                    <div class="card-desc">Говядина, морковь, болгарский перец, зелень, картофель, баклажан</div>
+                    <div class="card-bottom">
+                        <span class="price">400 ₽</span>
+                        <button class="add-to-cart" data-id="22" data-name="Шурпа" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/68/43/51063/bozbash-iz-govyadiny-po-azerbaidjanski-s-nutom_1604341452_15_max.jpg" alt="Бозбащ из говядины" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Бозбаш из говядины</div>
+                    <div class="card-desc">Нут, говядина, картофель, томаты, специи</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Бозбаш из говядины" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/c4/b4/52839/sup-bozbash-iz-baraniny-po-azerbaidjanski-s-nutom_1612815454_15_max.jpg" alt="Бозбаш из баранины" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Бозбаш из баранины</div>
+                    <div class="card-desc">Баранина с бульоном, нут, овощи, зелень</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Бозбаш из баранины" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://main-cdn.sbermegamarket.ru/big2/hlr-system/-30/938/269/921/223/0/100059989051b0.jpg" alt="Солянка" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Солянка</div>
+                    <div class="card-desc">Колбаса копчёная, Ветчина, картофель, маслины, сосиски, соленый огурец, лимон, сметана</div>
+                    <div class="card-bottom">
+                        <span class="price">220 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Солянка" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/6f/43/9d/6f439dcee06a068ff73f159464bd8773.jpg" alt="Солянка по сибирски" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Солянка по сибирски</div>
+                    <div class="card-desc">Колбаса копчёная, мясо, лимон, шампиньоны, картофель, маслины, ветчина, зелень, соленый огурец, сметана</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Солянка по сибирски" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/9f/ad/83/9fad83b31c7406ab1b45acb2dda1ea67.jpg" alt="Пельмени дщмашние" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пельмени домашние</div>
+                    <div class="card-desc">Бульон, майонез, зелень, чеснок</div>
+                    <div class="card-bottom">
+                        <span class="price">270 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Пельмени домашние" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/83/f8/9c/83f89c7676bfba7b73cd579a93558e6c.jpg" alt="Пельмени" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пельмени</div>
+                    <div class="card-desc">Зелень, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Пельмени" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/c7/91/91/c79191fcdf1c3827484d9b8dd3007c1c.jpg" alt="Суп пите" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Суп пите</div>
+                    <div class="card-desc">Баранина с соусом в горшочках</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Суп пите" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/85/d0/7b/85d07b39bd814ccd844df4155e7bba06.jpg" alt="Борщ" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Борщ/Щи</div>
+                    <div class="card-desc">Традиционный суп со сметаной и зеленью</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Борщ/Щи" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="home-food">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/0a/7a/14/0a7a146281801d6b897954c7d0b15fcd.jpg" alt="Кюфта" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Кюфта</div>
+                    <div class="card-desc">Фрикадельки, рис, картофель, морковь</div>
+                    <div class="card-bottom">
+                        <span class="price">280 ₽</span>
+                        <button class="add-to-cart" data-id="24" data-name="Кюфта" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/06/04/c2/0604c25ed97c18f9e11e81f2c3b74aec.jpg" alt="Плов по-восточному" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Плов по-восточному</div>
+                    <div class="card-desc">Ароматный плов с мясом по традиционному рецепту</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="39" data-name="Плов по-восточному" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://static.1000.menu/files/user-v2/ad/bc/974372/foto/f_03-05-2025-05-12-30.1746292353.jpg" alt="Долма" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Долма</div>
+                    <div class="card-desc">Баранина и говядина в виноградных листьях</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="35" data-name="Долма" data-price="280">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/82/b5/37213/otbivnye-po-francuzski_1763110278_0_qwi9g6r_max.jpg" alt="Мясо по-французски" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясо по-французски</div>
+                    <div class="card-desc">Свинина, грибы, помидор, картофель, сыр, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="38" data-name="Мясо по-французски" data-price="350">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/ad/5c/35/ad5c3590b1fdab3173e78f7a080bab17.jpg" alt="Манты" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Манты</div>
+                    <div class="card-desc">5 шт, с мясной начинкой</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="44" data-name="Манты" data-price="300">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/86/e6/b5/86e6b5ba96c5a7e4d3a5f30829829471.jpg" alt="Тава-кебаб" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Тава-кебаб</div>
+                    <div class="card-desc">Яичница, 2котлеты, соус, зелень</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="32" data-name="Тава-кебаб" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/57/89/bb/5789bb5b3d9c246c1e065ee10e0e3a64.jpg" alt="Фаршированные баклажаны" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Фаршированные баклажаны</div>
+                    <div class="card-desc">Баклажаны с мясом и овощями</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="32" data-name="Фаршированные баклажаны" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/4d/2f/3c/4d2f3c6e7c555c8ed1ed0bfbb7c4ca80.jpg" alt="Пельмени домашние" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Пельмени домашние</div>
+                    <div class="card-desc">Зелень, майонез, чеснок</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Пельмени домашние" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://static.1000.menu/img/content-v2/69/75/53915/yaichnica-iz-detstva-yaichnyi-ostrov-s-palmami-iz-sosisok_1618226215_1_max.jpg" alt="Яичница с сосиками" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Яичница с сосиками</div>
+                    <div class="card-desc">Яичница с сосиками и зеленью</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Яичница с сосиками" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://static.1000.menu/res/380/img/content/36147/kotlety-s-garnirom_1561320552_13_max.jpg" alt="Котлеты домашние" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Котлеты домашние</div>
+                    <div class="card-desc">2шт с гарниром</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Котлеты домашние" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/cb/15/22/cb152239af33eab1974f52d8277c7009.jpg" alt="Гуляш с гарниром" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Гуляш с гарниром</div>
+                    <div class="card-desc">Свинина тушоная с гарниром</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Гуляш с гарниром" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/d0/08/7b/d0087bdf5a63de96ed2dc616e90739c6.png?nii=t" alt="Куриное жаркое по домашнему" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Куриное жаркое по домашнему</div>
+                    <div class="card-desc">Мясо куриное с гарниром</div>
+                    <div class="card-bottom">
+                        <span class="price">240 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Куриное жаркое по домашнему" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/90/75/31/907531920cd6faa29ce4dcf7819b6e2a.webp" alt="Мясо жаркое по домашнему" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясо жаркое по домашнему</div>
+                    <div class="card-desc">Мясо говядина с гарниром</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Мясо жаркое по домашнему" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/de/1e/5d/de1e5defdc2939c3eecd6285a66fe4f5.jpg" alt="Семга по монастырски" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Семга по монастырски</div>
+                    <div class="card-desc">Семга, картофель, сыр, майонез, грибы</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Семга по монастырски" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/cd/d5/96/cdd59694233d7b98c9bcbad86766197a.jpg" alt="Семга по гречески" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Семга по гречески</div>
+                    <div class="card-desc">Семга, жареный лук, сыр, соленый огурец, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Семга по гречески" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/21/1e/e5/211ee574a5073b6d5c962ba29830ea84.jpg" alt="Семга жаренная с шпинатом" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Семга жареная со шпинатом</div>
+                    <div class="card-desc">Семга, сыр, лимон, чеснок, шпинат жареный, сметана</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Семга жареная с шпинатом" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/ff/f2/2b/fff22b608482a826c3b5c1cd04520409.png" alt="Мясо по боярски" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясо по боярски</div>
+                    <div class="card-desc">Свинина, картофель, морковь, сыр, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Мясо по боярски" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/10/1e/88/101e88517b4dd931fa9a813a3189fbea.jpg" alt="Мясо по Бакински Буглама" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясо по Бакински Буглама</div>
+                    <div class="card-desc">Баранина, картофель, морковь, помидор, огурец, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Мясо по Бакински Буглама" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/06/44/47/064447bffe42be7737cfbf5a8271dc4f.jpg" alt="Куриное филе с апельсиновым соусом" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Куриное филе с апельсиновым соусом</div>
+                    <div class="card-desc">Куриное филе, сметана, чеснок, сыр, апельсин</div>
+                    <div class="card-bottom">
+                        <span class="price">400 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Куриное филе с апельсиновым соусом" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/b7/44/42/b74442b65e25bc10bcac92af18306d01.jpg" alt="Грибной рай" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Грибной рай</div>
+                    <div class="card-desc">Шампиньоны, помидор, чеснок, майонез, сыр, лук пассированный</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Грибной рай" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/92/ff/af/92ffafc4095e615cba67d1e56beffeff.jpg" alt="Долма овощная" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Долма овощная</div>
+                    <div class="card-desc">Помидор, баклажан, Фаршированный перец</div>
+                    <div class="card-bottom">
+                        <span class="price">400 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Долма овощная" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://avatars.mds.yandex.net/i?id=4d84f3ddc7e07b1ac6e6730ddfe96ef2_l-5673134-images-thumbs&n=13" alt="Мясо по Тбилисски" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясо по Тбилисски</div>
+                    <div class="card-desc">Свинина, картофель по домашнему с приправами, красное вино</div>
+                    <div class="card-bottom">
+                        <span class="price">400 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Мясо по Тбилисски" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/88/23/72/88237239d372c377ac021b673eb4dfae.jpg" alt="Садж на горячем протвине" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Садж на горячем протвине</div>
+                    <div class="card-desc">Свинина, картофель, помидор, болгарский перец, баклажан, гранат, лук, зелень, лаваш</div>
+                    <div class="card-bottom">
+                        <span class="price">400 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Садж на горячем протвине" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/f1/e7/91/f1e7916cd8c8bc8496ffc2851c1605a5.jpg" alt="Жульен" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Жульен</div>
+                    <div class="card-desc">Куриное филе, лук, помидор, шампиньоны, сыр, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="29" data-name="Жульен" data-price="170">+</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" data-category="drinks">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/1a/4d/14/1a4d1465d13ee9d2e08f38de9a220e47.jpg" alt="Молочный коктейль" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Молочный коктейль</div>
+                    <div class="card-desc">Ваниль / шоколад / клубника, со взбитыми сливками</div>
+                    <div class="card-bottom">
+                        <span class="price">290 ₽</span>
+                        <button class="add-to-cart" data-id="46" data-name="Молочный коктейль" data-price="290">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="drinks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/7d/ec/e2/7dece290d4f734cb406295752c966a2d.jpg" alt="Лимонад домашний" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Лимонад домашний</div>
+                    <div class="card-desc">Лимон / Малина / Мята, натуральный, свежий</div>
+                    <div class="card-bottom">
+                        <span class="price">210 ₽</span>
+                        <button class="add-to-cart" data-id="47" data-name="Лимонад домашний" data-price="210">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="drinks">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/f7/58/24/f758246520f4578018aba9335e3d2648.png" alt="Чай в ассортименте" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Чай в ассортименте</div>
+                    <div class="card-desc">Чёрный / Зелёный / Фруктовый / Имбирный</div>
+                    <div class="card-bottom">
+                        <span class="price">120 ₽</span>
+                        <button class="add-to-cart" data-id="48" data-name="Чай в ассортименте" data-price="120">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="drinks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/e1/b2/45/e1b245b8a12e75b61252f24719ec52ad.jpg" alt="Кофе Американо" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Кофе Американо</div>
+                    <div class="card-desc">Ароматный свежесваренный кофе</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="49" data-name="Кофе Американо" data-price="150">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="drinks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/9b/6a/19/9b6a191b20d3de89748fd0ce43cb81dd.jpg" alt="Сок свежевыжатый" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Сок свежевыжатый</div>
+                    <div class="card-desc">Апельсиновый / Грейпфрутовый / Морковный</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="50" data-name="Сок свежевыжатый" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/66/a2/3c/66a23c4f63ddf0d0d605d82e2551a887.jpg" alt="Стейк из говядины" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Стейк из говядины</div>
+                    <div class="card-desc">Сочный стейк с гарниром из запеченного картофеля</div>
+                    <div class="card-bottom">
+                        <span class="price">750 ₽</span>
+                        <button class="add-to-cart" data-id="51" data-name="Стейк из говядины" data-price="750">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="second courses">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/bf/19/89/bf1989a0219e8422391b5f085e545fc4.jpg" alt="Котлеты по-киевски"></div>
+                <div class="card-content">
+                    <div class="card-title">Котлеты по-киевски</div>
+                    <div class="card-desc">Сливочное масло внутри, хрустящая корочка, подается с пюре</div>
+                    <div class="card-bottom">
+                        <span class="price">420 ₽</span>
+                        <button class="add-to-cart" data-id="60" data-name="Котлеты по-киевски" data-price="420">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="speciality dishes">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/6f/ed/ab/6fedab42b1d24835a67ce6cc53980b09.jpg" alt="Утка по-пекински" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Утка по-пекински</div>
+                    <div class="card-desc">Фирменный рецепт с медовой корочкой и соусом хойсин</div>
+                    <div class="card-bottom">
+                        <span class="price">1200 ₽</span>
+                        <button class="add-to-cart" data-id="52" data-name="Утка по-пекински" data-price="1200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/64/e0/97/64e097903c363e85a04dd9095cc9bd7a.jpg" alt="Ассорти сыров" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Ассорти сыров</div>
+                    <div class="card-desc">Пармезан, Дорблю, Камамбер с медом и орехами</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Ассорти сыров" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/a8/b5/93/a8b59337b750c23e78588079bea01056.jpg" alt="Овощной букет" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Овощной букет</div>
+                    <div class="card-desc">Помидор, огурец, укроп, петррушка, зеленый лук, редис, болгарский перец</div>
+                    <div class="card-bottom">
+                        <span class="price">400 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Овощной букет" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/07/3f/65/073f65786e8aa686c4540f13a601701e.jpg" alt="Красная икра" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Красная икра с сливочным маслом и зеленью</div>
+                    <div class="card-desc">200 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Красная икра" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://avatars.mds.yandex.net/get-eda/3725642/a8f72da88393227945c7dd8cf618369a/M_height" alt="Язык отварной" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Язык отварной с хреном</div>
+                    <div class="card-desc">200 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Язык отварной" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/c6/eb/08/c6eb08b57948f22e72afb7ed78f92947.jpg?nii=t" alt="Мясное ассорти" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясное ассорти</div>
+                    <div class="card-desc">250 гр. Карбонат, грудинка, шейка, колбаса сырокопченая</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Мясное ассорти" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/5c/32/10/5c32101a129f1126adb1c556b32cbda4.jpg" alt="Рыбное ассорти" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Рыбное ассорти</div>
+                    <div class="card-desc">200 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">700 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Рыбное ассорти" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/ff/d9/ec/ffd9eca3f2ef3736fd4fd3fc58cd4c4d.jpg" alt="Нарезка" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Нарезка</div>
+                    <div class="card-desc">200 гр, копчёная колбаса, сыр</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Нарезка" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/salted-herring-fish-sliced-fillet-wooden-board-with-thyme_89816-25164.jpg" alt="Сельдь" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Сельдь Форпост</div>
+                    <div class="card-desc">Сельдь, лук репчатый, картофель, укроп, лимон, масло</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Сельдь" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" data-category="cold snacks">
+                <div class="card-img"><img src="https://i.pinimg.com/474x/e3/dd/3d/e3dd3dde011e8c24318164b05dd13dd8.jpg?nii=t" alt="Оливки" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Оливки, маслины</div>
+                    <div class="card-desc">100 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="53" data-name="Оливки" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/f0/83/ab/f083ab2be8fc38aa9e8c42f72dcd65ff.jpg" alt="Греческий салат" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Греческий салат</div>
+                    <div class="card-desc">Свежие овощи, сыр фета, маслины, оливковое масло</div>
+                    <div class="card-bottom">
+                        <span class="price">320 ₽</span>
+                        <button class="add-to-cart" data-id="54" data-name="Греческий салат" data-price="320">+</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/caesar-salad-with-chicken-fillet-tomatoes-croutons-and-parmesan-in-a-plate-on-a-rustic-wooden-background-close-up_186456-3022.jpg?size=626&ext=jpg" alt="Цезарь с курицей"></div>
+                <div class="card-content">
+                    <div class="card-title">Цезарь с курицей</div>
+                    <div class="card-desc">Романо, курица гриль, гренки, пармезан, соус Цезарь</div>
+                    <div class="card-bottom">
+                        <span class="price">380 ₽</span>
+                        <button class="add-to-cart" data-id="61" data-name="Цезарь с курицей" data-price="380">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/f7/23/5d/f7235d8def2e193b0ddb9b4886fbf44f.jpg" alt="Быстрый"></div>
+                <div class="card-content">
+                    <div class="card-title">Быстрый</div>
+                    <div class="card-desc">Морковь, чеснок, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="89" data-name="Быстрый" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/83/53/a1/8353a17c56c5a89293491b376d5a2d9d.jpg" alt="Винегрет"></div>
+                <div class="card-content">
+                    <div class="card-title">Винегрет</div>
+                    <div class="card-desc">Свекла, морковь, маринованные огурцы, квашенная капуста, горошек, картофель</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="90" data-name="Винегрет" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/cf/c7/63/cfc7630e89c5fcaf7092305172a5eed7.jpg" alt="Ветчинный"></div>
+                <div class="card-content">
+                    <div class="card-title">Ветчинный</div>
+                    <div class="card-desc">Ветчина, пекинская капуста, огурец, горошек, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="91" data-name="Ветчинный" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/61/35/67/613567f1a571e9dd837866e71fe868e7.jpg" alt="Мясной"></div>
+                <div class="card-content">
+                    <div class="card-title">Мясной</div>
+                    <div class="card-desc">Зеленый лук, мясо, морковь, отварной картофель, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="92" data-name="Мясной" data-price="200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/glass-jar-with-homemade-sauerkraut-black-pepper-thyme-wooden-background-top-view_89816-39529.jpg?semt=ais_hybrid&w=740" alt="Капуста квашенная"></div>
+                <div class="card-content">
+                    <div class="card-title">Капуста квашенная</div>
+                    <div class="card-desc">150 гр</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="93" data-name="Капуста квашенная" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/474x/c1/09/9d/c1099dbfce8957f6051f848197f92515.jpg?nii=t" alt="Легкий"></div>
+                <div class="card-content">
+                    <div class="card-title">Легкий</div>
+                    <div class="card-desc">Яйцо, огурец, редис, зеленый лук, укроп, заправка</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="94" data-name="Легкий" data-price="150">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/0e/84/a6/0e84a6e41c9f655a961f8302575ac9e5.jpg" alt="Оливье"></div>
+                <div class="card-content">
+                    <div class="card-title">Оливье</div>
+                    <div class="card-desc">Отварной картофель, огурец, вареная колбаса, горошек, морковь, яйцо, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="95" data-name="Оливье" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/3d/3e/59/3d3e599e0f60fc69202cfc48778d1aa6.jpg" alt="Крабовый"></div>
+                <div class="card-content">
+                    <div class="card-title">Крабовый</div>
+                    <div class="card-desc">Крабовые палочки, яйцо, кукуруза, огурец, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="96" data-name="Крабовый" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/59/4f/81/594f814f8c017f7213907a9b9861746a.jpg" alt="Куриный"></div>
+                <div class="card-content">
+                    <div class="card-title">Куриный</div>
+                    <div class="card-desc">Грудка, кукуруза, пекинская капуста, сыр, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="97" data-name="Куриный" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/c9/1a/5c/c91a5ce83a2b7fc7fa5a72f872206afa.jpg"></div>
+                <div class="card-content">
+                    <div class="card-title">Свежий</div>
+                    <div class="card-desc">Огурец, помидор, болгарский перец, редис, лук, масло, сметана или майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="98" data-name="Свежий" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/23/08/2f/23082fb6fc8ee04096acc381deba8a09.jpg" alt="Быстро и вкусно"></div>
+                <div class="card-content">
+                    <div class="card-title">Быстро и вкусно</div>
+                    <div class="card-desc">Пекинская капуста, огурец, колбаса, яйцо, лук, помидор, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="99" data-name="Быстро и вкусно" data-price="200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/4a/83/bc/4a83bce116d949ffe5b40bc373b60940.jpg" alt="Витаминный"></div>
+                <div class="card-content">
+                    <div class="card-title">Витаминный</div>
+                    <div class="card-desc">Капуста, болгарский перец, помидор, огурец, зелень, масло, сок лимона</div>
+                    <div class="card-bottom">
+                        <span class="price">180 ₽</span>
+                        <button class="add-to-cart" data-id="100" data-name="Витаминный" data-price="180">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="salad">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/9d/26/ab/9d26ab8e39c7f0638bcfd87b4ba040a7.jpg" alt="Белковый удар"></div>
+                <div class="card-content">
+                    <div class="card-title">Белковый удар</div>
+                    <div class="card-desc">Куриное филе, болгарский перец, зеленый лук, яйца, сыр, листья салата, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="101" data-name="Белковый удар" data-price="200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="signature salads">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/ef/22/e8/ef22e8d769be5e3484c9a723631608d6.jpg" alt="Салат Шеф-повар" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Салат "Шеф-повар"</div>
+                    <div class="card-desc">Морепродукты, авокадо, кедровые орешки и секретный соус</div>
+                    <div class="card-bottom">
+                        <span class="price">580 ₽</span>
+                        <button class="add-to-cart" data-id="55" data-name="Салат Шеф-повар" data-price="580">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="signature salads">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/63/7e/7a/637e7a42871f2e9104f92331b26e90ce.jpg" alt="Грузинский"></div>
+                <div class="card-content">
+                    <div class="card-title">Грузинский</div>
+                    <div class="card-desc">Овощи в соевом соусе, грецкий орех, чеснок, зелень</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="79" data-name="Грузинский" data-price="200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="signature salads">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/01/ee/0e/01ee0efd6031c42f0d235ab567e751e8.jpg" alt="Гнездо"></div>
+                <div class="card-content">
+                    <div class="card-title">Гнездо</div>
+                    <div class="card-desc">Куриное филе, ветчина, пекинская капуста, грибы, огурец, сыр, майонез, сухарики, зелень</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="80" data-name="Гнездо" data-price="200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="signature salads">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/36/bf/cb/36bfcb0b82d196d09892438982a9cd96.jpg" alt="Гурман"></div>
+                <div class="card-content">
+                    <div class="card-title">Гурман</div>
+                    <div class="card-desc">Огурец, помидор, ветчина, куриное филе, грецкий орех, чеснок, зелень, сыр, листья салата, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="82" data-name="Гурман" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="signature salads">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/c5/26/9c/c5269c19a82b0b1d8c6afef2adf8ae23.jpg" alt="Пальчики оближешь"></div>
+                <div class="card-content">
+                    <div class="card-title">Пальчики оближешь</div>
+                    <div class="card-desc">Куриное филе, грибы, яйцо, чеснок, помидор, сыр, зелень, маслины, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">200 ₽</span>
+                        <button class="add-to-cart" data-id="83" data-name="Пальчики оближешь" data-price="200">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="signature salads">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/5a/dd/86/5add869c89c4a25ac0a2c34d6c0250a3.jpg?nii=t" alt="Цезарь по-Итальянски"></div>
+                <div class="card-content">
+                    <div class="card-title">Цезарь по-Итальянски</div>
+                    <div class="card-desc">Куриное филе, бекон, сухарики, помидор, листья салата, Соус:сок лимона, чеснок, горчица, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">250 ₽</span>
+                        <button class="add-to-cart" data-id="85" data-name="Цезарь по-Итальянски" data-price="250">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/2b/ed/5d/2bed5d9f90c3b5f287d3b32731cc3e5d.jpg" alt="Шашлык из свинины" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Шашлык из свинины</div>
+                    <div class="card-desc">Подается с маринованным луком и соусом шашлычным</div>
+                    <div class="card-bottom">
+                        <span class="price">490 ₽</span>
+                        <button class="add-to-cart" data-id="56" data-name="Шашлык из свинины" data-price="490">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/delicious-juicy-meat-bone-rack-lamb-grilled-veal_73989-69801.jpg?semt=ais_hybrid&w=740" alt="Шашлык из баранины на кости"></div>
+                <div class="card-content">
+                    <div class="card-title">Шашлык из баранины на кости</div>
+                    <div class="card-desc">200 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Шашлык из баранины на кости" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/appetizing-mini-kebabs-wooden-board_84130-7648.jpg?semt=ais_hybrid&w=740" alt="Шашлык из курици"></div>
+                <div class="card-content">
+                    <div class="card-title">Шашлык из курици</div>
+                    <div class="card-desc">200 гр</div>
+                    <div class="card-bottom">
+                        <span class="price">300 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Шашлык из курици" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/fd/21/e5/fd21e556b78b0a84f98b822c9ec9eb87.jpg" alt="Шашлык из форели"></div>
+                <div class="card-content">
+                    <div class="card-title">Шашлык из форели</div>
+                    <div class="card-desc">200 гр</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Шашлык из форели" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://avatars.mds.yandex.net/i?id=8108c53376ecd2a4ee293a99f45099c0a89bc914-8207704-images-thumbs&n=13" alt="Шашлык из Семги"></div>
+                <div class="card-content">
+                    <div class="card-title">Шашлык из сумги</div>
+                    <div class="card-desc">200 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Шашлык из Семги" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>                    
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/lula-kebab-with-pita-bread-wooden-board_210632-316.jpg?semt=ais_hybrid&w=740&q=80" alt="Люля-кебаб"></div>
+                <div class="card-content">
+                    <div class="card-title">Люля-кебаб из баранины</div>
+                    <div class="card-desc">Традиционный кебаб на углях, подается в лаваше с луком</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Люля-кебаб" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/0d/f1/b1/0df1b137854c311983bc2ac5b89a0c99.jpg" alt="Люля-кебаб"></div>
+                <div class="card-content">
+                    <div class="card-title">Люля-кебаб из курици</div>
+                    <div class="card-desc">Традиционный кебаб на углях из куриного мяса, подается в лаваше с луком</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Люля-кебаб" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/474x/48/fa/f7/48faf7fd6133b6d1524dabd512f6c4af.jpg?nii=t" alt="Люля-кебаб"></div>
+                <div class="card-content">
+                    <div class="card-title">Люля-кебаб</div>
+                    <div class="card-desc">250 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">450 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Люля-кебаб" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/cd/bc/b4/cdbcb4ddfaf08696995d5ed9977ccdfc.jpg" alt="Овощи на углях"></div>
+                <div class="card-content">
+                    <div class="card-title">Овощи на углях</div>
+                    <div class="card-desc">болгарский перец, помидор, баклажан 1 порция 250 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">350 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Овощи на углях" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/0d/b2/90/0db290fbae26f0fdcfafcad11b145f11.jpg" alt="Картофель на углях"></div>
+                <div class="card-content">
+                    <div class="card-title">Картофель на углях</div>
+                    <div class="card-desc">150 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Картофель на углях" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="kebabs">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/34/3d/40/343d407d4dd924247e3f86eba656e3b8.jpg" alt="Шампиньоны на углях"></div>
+                <div class="card-content">
+                    <div class="card-title">Шампиньоны на углях</div>
+                    <div class="card-desc">150 гр.</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="62" data-name="Шампиньоны на углях" data-price="450">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/9d/87/fa/9d87faf4cb7846dae428403a202852e8.jpg" alt="Хлебная корзина" loading="lazy"></div>
+                <div class="card-content">
+                    <div class="card-title">Хлебная корзина</div>
+                    <div class="card-desc">Ассорти из свежеиспеченного хлеба разных сортов</div>
+                    <div class="card-bottom">
+                        <span class="price">150 ₽</span>
+                        <button class="add-to-cart" data-id="57" data-name="Хлебная корзина" data-price="150">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://img.freepik.com/free-photo/sandwich-with-salami-lettuce-tomato-arugula_2829-8445.jpg?semt=ais_hybrid&w=740&q=80" alt="Бутерброд с колбасой"></div>
+                <div class="card-content">
+                    <div class="card-title">Бутерброд с колбасой</div>
+                    <div class="card-desc">100 гр</div>
+                    <div class="card-bottom">
+                        <span class="price">70 ₽</span>
+                        <button class="add-to-cart" data-id="109" data-name="Бутерброд с колбасой" data-price="70">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/c1/68/6b/c1686b934b29178ec86517576c363c02.jpg" alt="Горячий бутерброд"></div>
+                <div class="card-content">
+                    <div class="card-title">Горячий бутерброд</div>
+                    <div class="card-desc">100 гр</div>
+                    <div class="card-bottom">
+                        <span class="price">70 ₽</span>
+                        <button class="add-to-cart" data-id="110" data-name="Горячий бутерброд" data-price="70">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/originals/11/3f/a4/113fa4ad52ff75b26583cc8c998d15c6.jpg" alt="Бутерброд с котлетой"></div>
+                <div class="card-content">
+                    <div class="card-title">Бутерброд с котлетой</div>
+                    <div class="card-desc">Котлета, зелень, сыр, помидор, огурец, соус</div>
+                    <div class="card-bottom">
+                        <span class="price">120 ₽</span>
+                        <button class="add-to-cart" data-id="111" data-name="Бутерброд с котлетой" data-price="120">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/videos/thumbnails/originals/3c/23/8a/3c238a84fd9b9a8cb550553631fe07ad.0000000.jpg" alt="Бутерброд с шпротами"></div>
+                <div class="card-content">
+                    <div class="card-title">Бутерброд с шпротами</div>
+                    <div class="card-desc">Помидор, огурец, чеснок, шпроты, майонез</div>
+                    <div class="card-bottom">
+                        <span class="price">80 ₽</span>
+                        <button class="add-to-cart" data-id="112" data-name="Бутерброд с шпротами" data-price="80">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/d7/2a/41/d72a4128b7d488cd45738d72c3c34d4f.jpg" alt="Бутерброд с икрой"></div>
+                <div class="card-content">
+                    <div class="card-title">Бутерброд с икрой</div>
+                    <div class="card-desc">Икра лососевая, сливочное масло с сыром</div>
+                    <div class="card-bottom">
+                        <span class="price">100 ₽</span>
+                        <button class="add-to-cart" data-id="113" data-name="Бутерброд с икрой" data-price="100">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://img.freepik.com/premium-photo/pita-bread-dark-background-arabic-lebanese-bread-traditional-food-closeup-dark-background_187166-67893.jpg?semt=ais_hybrid&w=740" alt="Лаваш толстый"></div>
+                <div class="card-content">
+                    <div class="card-title">Лаваш толстый</div>
+                    <div class="card-desc">1 шт</div>
+                    <div class="card-bottom">
+                        <span class="price">50 ₽</span>
+                        <button class="add-to-cart" data-id="114" data-name="Лаваш толстый" data-price="50">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/80/5c/e4/805ce4772278c0618bf826a838da78d1.jpg" alt="Лаваш тонкий"></div>
+                <div class="card-content">
+                    <div class="card-title">Лаваш тонкий</div>
+                    <div class="card-desc">1 шт</div>
+                    <div class="card-bottom">
+                        <span class="price">30 ₽</span>
+                        <button class="add-to-cart" data-id="115" data-name="Лаваш тонкий" data-price="30">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-category="sandwiches and bread">
+                <div class="card-img"><img src="https://i.pinimg.com/736x/c0/c4/19/c0c419725485aff58fa15c753825a92d.jpg" alt="Хлеб ржано-пшеничный"></div>
+                <div class="card-content">
+                    <div class="card-title">Хлеб ржано-пшеничный</div>
+                    <div class="card-desc">Буханка</div>
+                    <div class="card-bottom">
+                        <span class="price">50 ₽</span>
+                        <button class="add-to-cart" data-id="116" data-name="Хлеб ржано-пшеничный" data-price="50">+</button>
+                    </div>
+                </div>
+            </div>
+</div>
+    </section>
+
+
+    <section class="section">
+        <div class="combo-section">
+            <h3><span class="material-icons">card_giftcard</span> Комбо-наборы</h3>
+            <p>Выгодные наборы для компании и всей семьи</p>
+            <div class="combo-grid">
+                <div class="combo-card">
+                    <h4>Комбо «Для двоих»</h4>
+                    <p>2 пиццы Маргарита + 2 напитка на выбор</p>
+                    <div class="combo-price">1400 ₽</div>
+                </div>
+                <div class="combo-card">
+                    <h4>Комбо «Семейный»</h4>
+                    <p>4 пиццы на выбор + 4 напитка</p>
+                    <div class="combo-price">2850 ₽</div>
+                </div>
+                <div class="combo-card">
+                    <h4>Комбо «Шаурма-пати»</h4>
+                    <p>4 шаурмы на выбор + 2 лимонада</p>
+                    <div class="combo-price">800 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="order-link">
+            <button class="btn btn-primary" id="open-cart-from-menu"><span class="material-icons">shopping_cart</span> Перейти к оформлению заказа</button>
+        </div>
+    </section>
+
+    
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-cart">
+            <button class="close-modal" id="close-cart">&times;</button>
+            <h2><span class="material-icons">shopping_cart</span> Ваш заказ</h2>
+            <ul class="cart-items" id="cart-list"></ul>
+            <div class="cart-total" id="cart-total">0 ₽</div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="clear-cart">Очистить</button>
+                <button class="btn btn-primary" id="checkout-btn">Оформить доставку</button>
+            </div>
+            <div id="order-form-container" class="order-form-container">
+                <h3>Контактные данные</h3>
+                <form class="order-form" id="delivery-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Ваше имя" id="order-name" required>
+                        <input type="tel" placeholder="Телефон" id="order-phone" required>
+                    </div>
+                    <input type="text" placeholder="Адрес доставки" id="order-address" required>
+                    <textarea rows="2" placeholder="Комментарий к заказу (этаж, домофон, пожелания)"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Подтвердить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="scroll-top" id="scroll-top">↑</button>
+
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Империя вкуса</h4>
+                <p>Сервис быстрой доставки вкусной еды для всей семьи. Работаем ежедневно с 10:00 до 23:00.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p><span class="material-icons" style="font-size: 1rem;">phone</span> +7 (999) 123-45-67</p>
+                <p><span class="material-icons" style="font-size: 1rem;">email</span> info@imperiavkusa.ru</p>
+                <p><span class="material-icons" style="font-size: 1rem;">place</span> Нижегородская обл. Володарский р-н. п. Мулино ул. Школьная д.12</p>
+            </div>
+            <div class="footer-col">
+                <h4>Режим работы</h4>
+                <p>Ежедневно: 10:00 — 23:00</p>
+                <p>Доставка: 30–60 минут</p>
+                <p>Бесплатно от 500 ₽</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Империя вкуса. Все права защищены.</p>
+        </div>
+    </footer>
+
+    
+    <script src="js/cart.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>
