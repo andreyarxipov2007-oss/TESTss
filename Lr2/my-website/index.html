@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия в Горы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">MountainTrip</div>
+        <nav>
+            <button class="tab-btn active" data-tab="home">Главная</button>
+            <button class="tab-btn" data-tab="about">О нас</button>
+            <button class="tab-btn" data-tab="contact">Заявки</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Вкладка 1: Главная -->
+        <section id="home" class="tab-content active">
+            <h1>Популярные маршруты</h1>
+            <p class="intro-text">Выберите свое следующее приключение. Нажмите «Подробнее», чтобы увидеть фото и детали.</p>
+            
+            <div class="routes-gallery">
+                <!-- Маршрут 1 -->
+                <div class="route-card">
+                    <img src="alps.jpg" alt="Горы Альпы" class="route-img">
+                    <div class="route-info">
+                        <h3>Тур по Альпам</h3>
+                        <p>Сложность: Средняя | 7 дней</p>
+                        <button class="route-btn" data-route="alps">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Маршрут 2 -->
+                <div class="route-card">
+                    <img src="everest.jpg" alt="Гора Эверест" class="route-img">
+                    <div class="route-info">
+                        <h3>Базовый лагерь Эвереста</h3>
+                        <p>Сложность: Высокая | 14 дней</p>
+                        <button class="route-btn" data-route="everest">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Маршрут 3 -->
+                <div class="route-card">
+                    <img src="dombayarhiz.jpg" alt="Домбай и Архыз" class="route-img">
+                    <div class="route-info">
+                        <h3>Домбай и Архыз</h3>
+                        <p>Сложность: Легкая | 5 дней</p>
+                        <button class="route-btn" data-route="caucasus">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #ddd;">
+
+            <!-- Блок приветствия -->
+            <div class="greeting-block">
+                <button id="greet-btn">Получить случайное приветствие</button>
+                <p id="greet-output"></p>
+            </div>
+        </section>
+
+        <!-- Вкладка 2: О нас -->
+        <section id="about" class="tab-content">
+            <h1>Наша миссия</h1>
+            <p>Мы организуем безопасные и захватывающие путешествия с 2010 года.</p>
+            
+            <ul class="features-list">
+                <li>Опытные гиды</li>
+                <li>Полное снаряжение</li>
+                <li>Страховка включена</li>
+            </ul>
+
+            <div class="stats-box">
+                <p>Проведено экспедиций: <span id="exp-count">0</span></p>
+                <button id="count-btn">Увеличить счетчик</button>
+            </div>
+
+            <!-- Новый блок с адресом и картой -->
+            <div class="location-section">
+                <h2>Наш офис</h2>
+                <address class="office-address">
+                    <strong>MountainTrip HQ</strong><br>
+                    г. Нижний Новгород, ул. Большая Покровская, д. 82<br>
+                    Телефон: +7 (999) 878-87-77<br>
+                    Email: info@mountaintrip.ru
+                </address>
+
+                <div class="map-container">
+                    <iframe 
+                        id="map-frame"
+                        width="1000" 
+                        height="400" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A00983e14b34ca88a3fe0303db8d36078b811b3c858ca7e14bffe65a62a0f9545&amp;source=constructor"  
+                        style="border: 1px solid #ccc; border-radius: 8px;">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Вкладка 3: Заявки -->
+        <section id="contact" class="tab-content">
+            <h1>Свяжитесь с нами</h1>
+            <form id="contact-form">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" placeholder="Иван Иванов" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="example@mail.com" required>
+                
+                <button type="submit">Отправить заявку</button>
+            </form>
+            <p id="form-status"></p>
+        </section>
+    </main>
+
+    <!-- Модальное окно для деталей маршрута -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Название маршрута</h2>
+            <div id="modal-image" style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 4px;">
+                Фото
+            </div>
+            <p id="modal-desc">Описание маршрута...</p>
+            <button class="book-btn">Забронировать</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MountainTrip</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
