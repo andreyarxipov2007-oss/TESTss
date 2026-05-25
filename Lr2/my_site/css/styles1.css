@@ -1,0 +1,838 @@
+
+/* Шрифт Strogo */
+@font-face {
+    font-family: 'Strogo';
+    src: url('/fonts/Strogo-Regular.woff2');
+}
+
+
+
+
+
+
+/* CSS-стили */
+body{
+    background-color: #4A4A4A;
+    
+}
+
+h2 {
+    font-family: 'Strogo'; 
+    font-size: 46px; 
+    color: #FFFFFF;
+    font-weight: 400; 
+    line-height: 115%;
+    margin-top: 0;
+}
+
+.h1-index{
+    font-family: 'Strogo';
+    font-size: 104px;
+    font-weight: 400px;
+    color: #FEF0FF;
+}
+
+section{
+    width: 1325px;
+    margin: 204px auto;
+}
+
+.dark-blocks{
+    background-color: #282828;
+    border-radius: 50px;
+}
+
+
+
+.center-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ХЕДЕР */
+a{
+    all: unset;
+    cursor: pointer;
+}
+
+ul{
+    display: flex;
+    gap: 22px;
+    list-style-type: none;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+.header-container{
+    background-color :#FFFFFF;
+    border-radius: 100px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 25px;
+    width: 1325px; 
+    z-index: 100;
+}
+
+.nav-menu{
+    font-family: 'Manrope';
+    color: #FFFFFF;
+    background-color: #4A4A4A;
+    font-size: 18px;
+    height: 41px;
+    border-radius: 100px;
+    padding: 13px 26px;
+}
+
+.nav-menu:hover{
+    background-color: #F8D3FF;
+    color: #4A4A4A;
+}
+
+.center-navmenu{
+    display: flex;
+    gap: 13px;
+}
+
+.list-menu{
+    display: flex;
+    justify-content: space-between;
+    width: 1255px;  
+    margin: 0px;
+    padding: 0px 35px;
+}
+
+
+
+/* БЛОК: Первый экран */
+.txt-firstly{
+    font-family: 'Manrope';
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 500;
+    width: 541px;
+    margin-left: 235px;
+}
+
+.firstly-container{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 60% 40%;
+    align-items: center;
+}
+
+.img-firstly{
+    width: 100%;
+    height: 100%;
+}
+
+.h1-index{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+/* БЛОК: Перемены */
+.container-changes{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    
+}
+
+.blocks-changes{
+    height: 624px;
+    width: 652px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-changes{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-changes{
+    font-family: 'Manrope';
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 115%;
+    padding: 66px 80px 95px 52px;
+    align-items: flex-start;
+}
+
+.price-changes{
+    font-family: 'Manrope';
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 115%;
+    color: #FFFFFF;
+    padding-bottom: 125px;
+    align-self: center;
+}
+
+.text-15{
+    font-family: 'Manrope';
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 115%;
+    color: #909090;
+    text-decoration:line-through;
+    margin-right: 20px;
+}
+
+.text-revenge{
+    font-family: 'Manrope';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 115%;
+    color: #FFFFFF;
+    align-self: flex-end;
+    padding-bottom: 48px;
+    padding-right: 44px;
+    
+}
+
+.signup-changes{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.link-signup{
+    border-radius: 50px;
+    font-family: 'Manrope';
+    color: #4A4A4A;
+    width: 204px;
+    background-color: #FEF0FF;
+    text-align: center;
+    font-size: 28px;
+    padding: 10px 5px;
+    margin-top: 33px;
+}
+
+.link-signup:hover{
+    background-color: #F8D3FF;
+}
+
+
+
+
+/* БЛОК "УСЛУГИ" НА ГЛАВНОЙ СТРАНИЦЕ */
+
+.slider{
+    height: 392px;
+    width: 316px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-family: 'Manrope';
+    color: #FFFFFF;
+    
+}
+
+.slide-name{
+    font-size: 36px;
+    font-weight: 600;
+    margin: 250px 30px auto 30px;
+}
+
+.slide-info{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px 30px 48px 30px;
+}
+
+.container-slider{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+.btns{
+    display: flex;
+    justify-content: flex-end;
+    margin: 50px;
+    gap: 20px;
+}
+
+.btn-services{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 71px;
+    height: 71px;
+    border-radius: 100%;
+    font-size: 35px;
+    background-color: #4A4A4A;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+/*БЛОК: Наши работы*/
+.our-works{
+    margin: 102px auto;
+}
+
+.ourworks-blocks{
+    border-radius: 50px;
+    width: 428px;
+    height: 408px;
+    color: #FFFFFF;
+    font-family: 'Manrope';
+    font-size: 46px;
+    line-height: 408px; 
+    text-align: center;
+}
+
+.container-ourworks{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    grid-gap: 20px;
+    margin-top: 53px;
+}
+
+/* БЛОК: О студии */
+.container-studio{
+    display: flex;
+    gap: 20px;
+}
+
+
+.blocks-studio{
+    width: 652px;
+    height: 624px;
+    border-radius: 50px;
+}
+
+.img-studio{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.left-block-studio{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: #FFFFFF;
+    font-family: 'Manrope';
+}
+
+.text-studio{
+font-size: 28px;
+font-weight: 400;
+line-height: 115%;
+padding: 108px 60px 228px 0px;
+}
+
+.place-studio{
+    display: flex;
+}
+
+.img-place-studio{
+    height: 60px;
+    width: 40px;
+    padding-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+/* <БЛОК: Почему нам доверяют? */
+.block-trust{
+    display: flex;
+    justify-content: center;
+    gap: 63px; 
+    margin-top: 75px;
+}
+
+.circle-blocks{
+    height: 324px;
+    width: 324px;
+    border-radius: 100%;
+    background-color: #282828;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-txt{
+    color: #FFFFFF;
+    text-align: center;
+    position: absolute;
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 22px;
+    max-width: 200px;
+}
+.img-trust{
+    position: relative;
+}
+
+
+/* БЛОК: FAQ */
+.accordion-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+    color: #FFFFFF;
+    font-family: 'Manrope';
+    font-size: 22px;
+    margin-top: 80px;
+}
+
+.accordion-header{
+    height: 108px;
+    max-width: 652px;
+    border-radius: 100px;
+    border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.plus-styles{
+    margin-right: 50px;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.accordion-txt{
+    margin: 0px;
+}
+
+.accordion-content{
+    padding: 40px 40px;
+    border: #FFFFFF 1px solid;
+    border-top: none;
+    display: none;
+}
+
+.accordion-item.active .accordion-header{    /* ДЛЯ JS */
+    border-radius: 50px 50px 0px 0px;
+    border-bottom: none;
+}
+
+
+.accordion-item.active .accordion-content{    /* ДЛЯ JS */
+    display: flex;
+    border-radius: 0px 0px 50px 50px;
+}
+
+.accordion-item.active .plus-styles{     /* ДЛЯ JS */
+    transform: rotate(45deg);
+}
+
+
+
+
+/* БЛОК: Запишись */
+.signup-txt{
+    font-family: 'Manrope';
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 600;
+    padding-right: 20px;
+}
+
+.block-singup{
+    height: 572px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 50px;
+}
+
+.right-signup{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.data-signup{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 42px;
+}
+
+.input-block{
+    background-color:#4A4A4A;
+    height: 54px;
+    width: 560px;
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+}
+
+.label-signup{
+    margin-left: 28px;
+}
+
+.label-consent{
+    margin-left: 12px;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.minutes-txt{
+    margin-top: 80px;
+    margin-bottom: 102px;
+    width: 560px;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    }
+
+input{
+    font-family: 'Manrope';
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: white 1px solid;
+}
+.name-input{
+    width: 436px;
+}
+
+.num-input{
+    width: 327px;
+}
+
+.consent{
+    width: 560px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.checkbox-input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 28px;
+    height: 28px;
+    border:#FEF0FF solid 1px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.checkbox-input:checked{
+    background-color: #FEF0FF
+}
+
+.checkbox-input:checked::after{
+    content: "✓";
+    color: #4A4A4A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-block{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-signup{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    color: #FEF0FF;
+    border-color: #FEF0FF;
+    font-weight: 400;
+    font-family: 'Manrope';
+    font-size: 28px;
+    width: 293px;
+    height: 60px;
+    border-radius: 100px;
+    margin-bottom: 120px;
+    cursor: pointer;
+}
+
+.btn-signup:hover{
+    color: #F8D3FF;
+    border-color: #F8D3FF;
+}
+
+
+
+
+
+
+/* Футер */
+footer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 125px;
+
+}
+
+.footer-container{
+    color: #FFFFFF;
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 55px;
+    width: 1325px;
+}
+
+.footer-blocks{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.h-footer{
+    font-weight: 600;
+}
+
+.head-footer{
+    font-family: 'Strogo';
+    font-size: 104px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.block-links-footer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.first-block-footer{
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+}
+
+.link-footer{
+    color: #FFFFFF;
+}
+
+.docs-link{
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+
+.bottom-links-footer{
+    margin-top: 70px;
+}
+
+
+/* СТРАНИЦА С УСЛУГАМИ */
+.h1-services{
+    font-family: 'Strogo'; 
+    font-size: 46px; 
+    color: #FFFFFF;
+    font-weight: 400; 
+    line-height: 115%;
+    margin-top: 0;
+}
+
+.name-service{
+    color: #FEF0FF;
+    font-size: 104px;
+    transform: rotate(90deg);
+    font-weight: 400;
+}
+
+.ourservices-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1131px;
+}
+
+.service-info{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 119px;
+    margin-bottom: 119px;
+}
+
+
+.block-name-service{
+    width: 120px;
+}
+
+.text-info{
+    color: white;
+    font-family: 'Manrope';
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.about-service{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 30px;
+    margin-right: 20px;
+    width: 537px;
+}
+
+.headline-service{
+    color: white;
+    font-family: 'Manrope';
+    font-size: 38px;
+    font-weight: 600;
+    margin-top: 0px;
+}
+
+.link-service{
+    background-color: white;
+    color: #4A4A4A;
+    font-size: 36px;
+    font-weight: 600;
+    width: 252px;
+    height: 61px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    font-family: 'Manrope';
+}
+
+
+.img-service{
+    border-radius: 50px;
+    width: 428px;
+}
+
+.ourservices{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #FFFFFF;
+    font-family: 'Manrope';
+    border-bottom: solid 1px #FFFFFF; 
+    padding-left: 0px;
+}
+
+.price-list{
+    display: flex;
+    padding: 0px;
+    flex-direction: column;
+}
+
+.service-description{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.price-about-service{
+    font-weight: 600;
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+.li-size{
+    height: 80px;
+}
+
+
+
+/* СТРАНИЦА "КТО МЫ?"*/
+.headline-aboutus{
+    color: white;
+    font-family: 'Strogo';
+    font-size: 46px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutus-info{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 115px;
+}
+
+
+
+.left-aboutus{
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    font-family: 'Manrope';
+    font-size: 22px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 650px;
+    gap: 15px;
+}
+
+.about-us-txt{
+    margin: 0px;
+}
+
+.center-txt-aboutus{
+    margin: 0px;
+}
+
+.center-txt-aboutus{
+    font-size: 28px;
+    font-weight: 600;
+}
