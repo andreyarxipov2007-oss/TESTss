@@ -1,0 +1,385 @@
+﻿/* Корневые CSS-переменные: единая палитра и цвета интерфейса */
+:root {
+  --bg: #131820;
+  --bg-soft: #1d2430;
+  --card: #242c38;
+  --card-border: #364255;
+  --text-main: #e8eef7;
+  --text-muted: #a7b3c6;
+  --accent: #5bb7ff;
+  --accent-strong: #3f9fe7;
+  --danger: #ff6b6b;
+  --success: #98e08e;
+  --pending: #778297;
+}
+
+/* Базовый сброс: корректный расчёт размеров элементов */
+* {
+  box-sizing: border-box;
+}
+
+/* Общие стили страницы: фон, шрифт и базовая типографика */
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-main);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #25344e 0%, var(--bg) 44%, #0f141b 100%);
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* Шапка сайта: фиксируется сверху при прокрутке */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  background: rgba(14, 19, 27, 0.9);
+  border-bottom: 1px solid #2b374a;
+  backdrop-filter: blur(8px);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+}
+
+.brand-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(91, 183, 255, 0.7);
+}
+
+/* Навигация: кнопки переключения между секциями */
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.nav-link {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  border-color: #3d4c63;
+}
+
+.nav-link.active {
+  color: #f4f8ff;
+  border-color: #415873;
+  background: #273648;
+}
+
+/* Основной контейнер страниц и логика показа активной вкладки */
+.main-content {
+  padding: 1.5rem 0 2.4rem;
+}
+
+.page-section {
+  display: none;
+  animation: fadeIn 0.25s ease;
+}
+
+.page-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Карточки: общий визуальный стиль блоков контента */
+.card {
+  background: linear-gradient(180deg, var(--card) 0%, #222b36 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hero-card h1,
+.section-title {
+  margin-top: 0;
+}
+
+.hero-card p,
+.card p {
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.two-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.clean-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  line-height: 1.5;
+}
+
+.clean-list li {
+  margin-bottom: 0.25rem;
+}
+
+/* Блок тренировки: зона набора текста и подсказка старта */
+.meta-line {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.instruction {
+  margin: 0.75rem 0 0.95rem;
+}
+
+.typing-area {
+  position: relative;
+  min-height: 170px;
+  border: 1px solid #4b5f7c;
+  border-radius: 12px;
+  background: #171e28;
+  padding: 1rem;
+  cursor: text;
+  user-select: none;
+}
+
+.typing-area:focus-visible {
+  outline: 2px solid rgba(91, 183, 255, 0.45);
+  border-color: var(--accent);
+}
+
+.typing-area.blurred .text-display {
+  filter: blur(2.2px);
+  opacity: 0.82;
+}
+
+.start-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(16, 22, 30, 0.45);
+  color: #eef6ff;
+  font-weight: 600;
+  border-radius: 12px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.text-display {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Подсветка символов: правильный, ошибочный, текущий и ожидающий символ */
+.char {
+  transition: color 0.15s ease, background 0.15s ease;
+  border-radius: 4px;
+}
+
+.char.correct {
+  color: #ffffff;
+}
+
+.char.error {
+  color: var(--danger);
+}
+
+.char.pending {
+  color: var(--pending);
+}
+
+.char.current {
+  background: rgba(91, 183, 255, 0.2);
+}
+
+/* Прогресс-бар: визуально показывает процент пройденного текста */
+.progress-box {
+  margin-top: 0.95rem;
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: 999px;
+  background: #1b2431;
+  border: 1px solid #314059;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #4dacef 0%, #85d2ff 100%);
+  transition: width 0.18s ease;
+}
+
+.progress-text {
+  margin: 0.45rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Кнопки: единый стиль и разные типы действий */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.95rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.56rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0f1f31;
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn-secondary {
+  background: #46566f;
+  color: #edf4ff;
+}
+
+.btn-secondary:hover {
+  background: #516582;
+}
+
+.btn-danger {
+  background: #8c3d49;
+  color: #ffe9eb;
+}
+
+.btn-danger:hover {
+  background: #a04755;
+}
+
+/* Блок результата: карточка и сетка с итоговой статистикой */
+.result-card {
+  border-color: #4a6587;
+  background: linear-gradient(180deg, #2c394e 0%, #253447 100%);
+}
+
+.result-message {
+  margin-top: 0;
+  color: #f0f6ff;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.result-grid div {
+  background: #1a2430;
+  border: 1px solid #344861;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+}
+
+.result-grid span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  margin-bottom: 0.15rem;
+}
+
+.result-grid strong {
+  font-size: 1.06rem;
+}
+
+/* Textarea для режима "Свой текст" */
+textarea {
+  width: 100%;
+  border: 1px solid #3a4a62;
+  border-radius: 10px;
+  background: var(--bg-soft);
+  color: var(--text-main);
+  font: inherit;
+  line-height: 1.5;
+  padding: 0.7rem;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: 2px solid rgba(91, 183, 255, 0.35);
+  border-color: var(--accent);
+}
+
+.warning {
+  color: #ff9c9c;
+  margin: 0.7rem 0 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Адаптивность: на узких экранах блоки встают в одну колонку */
+@media (max-width: 920px) {
+  .two-columns,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

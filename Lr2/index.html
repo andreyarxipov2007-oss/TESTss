@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тренажёр скорости печати</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Шапка сайта: логотип и верхнее меню -->
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">FastTyping</span>
+      </div>
+
+      <!-- Навигация по основным разделам страницы -->
+      <nav class="main-nav" aria-label="Навигация">
+        <button class="nav-link active" data-section="home">Главная</button>
+        <button class="nav-link" data-section="training">Тренировка</button>
+        <button class="nav-link" data-section="custom">Свой текст</button>
+        <button class="nav-link" data-section="about">О сайте</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Главная секция: приветствие, описание и быстрый переход к тренировке -->
+    <section id="home" class="page-section active">
+      <div class="card hero-card">
+        <h1>Тренажёр скорости печати</h1>
+        <p>
+          FastTyping - удобный тренажёр для развития скорости печати.
+          Регулярные тренировки помогут вам печатать быстрее, увереннее и делать меньше ошибок.
+        </p>
+        <!-- Кнопка переводит пользователя во вкладку тренировки -->
+        <button id="goToTrainingBtn" class="btn btn-primary">Начать тренировку</button>
+      </div>
+
+      <div class="grid two-columns">
+        <article class="card">
+          <h2>Почему это полезно</h2>
+          <ul class="clean-list">
+            <li>Увеличивает скорость и уверенность при наборе.</li>
+            <li>Помогает лучше чувствовать ритм текста и знаки препинания.</li>
+            <li>Формирует привычку печатать без случайных ошибок.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Возможности проекта</h2>
+          <ul class="clean-list">
+            <li>Поэтапные уровни сложности.</li>
+            <li>Посимвольная проверка текста, включая пробелы и знаки препинания.</li>
+            <li>Сохранение прогресса между запусками.</li>
+            <li>Режим «Свой текст», позволяющий тренироваться на любом тексте.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Секция тренировки: здесь проходит набор текста и проверка символов -->
+    <section id="training" class="page-section">
+      <h2 class="section-title">Тренировка</h2>
+
+      <div class="card training-card">
+        <p class="meta-line">Режим: <span id="modeLabel">Уровень</span></p>
+        <p class="meta-line">Текущий уровень: <span id="levelLabel">1</span></p>
+        <p class="instruction" id="trainingInstruction">
+          Нажмите на блок с текстом, затем печатайте строго по символам.
+        </p>
+
+        <!-- Основной блок текста для печати; по клику он активирует тренировку -->
+        <div
+          id="typingArea"
+          class="typing-area blurred"
+          tabindex="0"
+          role="button"
+          aria-label="Область тренировки печати"
+        >
+          <!-- Подсказка поверх блока, пока тренировка не запущена -->
+          <div id="startOverlay" class="start-overlay">Нажмите, чтобы начать</div>
+          <!-- Здесь отрисовывается текст с подсветкой правильных и ошибочных символов -->
+          <div id="textDisplay" class="text-display" aria-live="polite"></div>
+        </div>
+
+        <!-- Прогресс-бар показывает, сколько текста уже напечатано -->
+        <div class="progress-box" aria-label="Прогресс прохождения текста">
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <p id="progressText" class="progress-text">Прогресс: 0%</p>
+        </div>
+
+        <!-- Кнопки управления: перезапуск, переход дальше и сброс прогресса -->
+        <div class="btn-row">
+          <button id="retryBtn" class="btn btn-secondary">Ещё раз</button>
+          <button id="nextLevelBtn" class="btn btn-primary hidden">Далее</button>
+          <button id="resetProgressBtn" class="btn btn-danger">Сбросить прогресс</button>
+        </div>
+      </div>
+
+      <!-- Блок результата: показывается после завершения текста -->
+      <div id="resultCard" class="card result-card hidden" aria-live="polite">
+        <h3>Результат</h3>
+        <p id="resultMessage" class="result-message"></p>
+
+        <div class="result-grid">
+          <div><span>Слов в минуту</span><strong id="finalWpm">0</strong></div>
+          <div><span>Символов в минуту</span><strong id="finalCpm">0</strong></div>
+          <div><span>Точность</span><strong id="finalAccuracy">0%</strong></div>
+          <div><span>Ошибки</span><strong id="finalErrors">0</strong></div>
+          <div><span>Общее время</span><strong id="finalTime">00:00</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция "Свой текст": пользователь задаёт свой материал для тренировки -->
+    <section id="custom" class="page-section">
+      <h2 class="section-title">Свой текст</h2>
+
+      <div class="card">
+        <p>Вставьте или напишите свой текст. После нажатия «Печатать» откроется тренировка с этим текстом.</p>
+        <!-- Поле ввода пользовательского текста -->
+        <textarea
+          id="customTextInput"
+          rows="8"
+          placeholder="Введите ваш текст для тренировки..."
+          spellcheck="false"
+        ></textarea>
+
+        <div class="btn-row">
+          <!-- Кнопка запускает тренировку на основе текста из textarea -->
+          <button id="useCustomTextBtn" class="btn btn-primary">Печатать</button>
+        </div>
+
+        <p id="customWarning" class="warning hidden">Поле пустое. Добавьте текст перед запуском.</p>
+      </div>
+    </section>
+
+    <!-- Секция "О сайте": краткая информация о проекте и технологиях -->
+    <section id="about" class="page-section">
+      <h2 class="section-title">О сайте</h2>
+
+      <div class="card">
+        <p>
+          FastTyping — это клавиатурный тренажёр, который помогает развивать скорость печати и уменьшать количество ошибок при наборе текста.
+          Сайт позволяет пользователю пройти тренировку, проверить точность ввода и посмотреть итоговую статистику после завершения текста.
+        </p>
+
+        <h3>Технологии</h3>
+        <ul class="clean-list">
+          <li><strong>HTML</strong> - отвечает за структуру страниц, вкладки и элементы интерфейса.</li>
+          <li><strong>CSS</strong> - используется для оформления сайта: тёмная тема, карточки интерфейса и адаптивная вёрстка.</li>
+          <li><strong>JavaScript</strong> - реализует основную логику приложения: обработку ввода с клавиатуры, проверку текста, подсчёт статистики и отображение прогресса.</li>
+        </ul>
+
+        <h3>Как работает тренажёр</h3>
+        <p>
+          Пользователь выбирает текст и начинает печатать.
+          Каждый введённый символ сравнивается с символом исходного текста.
+          Если допущена ошибка, её необходимо исправить перед продолжением.
+        </p>
+        <p>
+          После завершения текста тренажёр показывает результат тренировки: скорость печати, точность, количество ошибок, затраченное время.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подключаем файл с уровнями, затем основной скрипт с логикой тренажёра -->
+  <script src="levels.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
