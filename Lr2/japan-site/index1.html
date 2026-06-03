@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Страна восходящего солнца</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #f6f1eb;
+      --bg-2: #fffaf6;
+      --text: #1f1f1f;
+      --muted: #5f5f5f;
+      --accent: #b22222;
+      --accent-2: #d85b7b;
+      --card: rgba(255, 255, 255, 0.88);
+      --line: rgba(0, 0, 0, 0.08);
+      --shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      --radius: 24px;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(216,91,123,0.10), transparent 28%),
+        radial-gradient(circle at top left, rgba(178,34,34,0.10), transparent 30%),
+        linear-gradient(180deg, var(--bg-2), var(--bg));
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image:
+        linear-gradient(45deg, transparent 47%, rgba(178,34,34,0.12) 48%, transparent 49%),
+        linear-gradient(-45deg, transparent 47%, rgba(178,34,34,0.12) 48%, transparent 49%);
+      background-size: 90px 90px;
+      z-index: 0;
+    }
+
+    .petals {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle at 30% 30%, #ffdbe5, #f3a8bb 70%);
+      border-radius: 70% 0 70% 0;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-40px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) translateX(60px) rotate(360deg);
+      }
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 3;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .header-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(178,34,34,0.22);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      border: none;
+      background: rgba(178,34,34,0.08);
+      color: var(--accent);
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(178,34,34,0.18);
+    }
+
+    .burger {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 14px;
+      background: rgba(178,34,34,0.08);
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    .burger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .hero {
+      padding: 34px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-text,
+    .hero-slider {
+      background: var(--card);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .hero-text {
+      padding: 34px;
+    }
+
+    .hero-text .small {
+      display: inline-block;
+      background: rgba(178,34,34,0.08);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+      font-size: 1.03rem;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .hero-links button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .hero-links .ghost {
+      background: rgba(178,34,34,0.08);
+      color: var(--accent);
+    }
+
+    .hero-slider {
+      position: relative;
+      min-height: 500px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.56));
+    }
+
+    .slide-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .slide-caption h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .slide-caption p {
+      line-height: 1.6;
+      max-width: 540px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .dots {
+      position: absolute;
+      left: 24px;
+      bottom: 14px;
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .dot.active {
+      width: 28px;
+      border-radius: 999px;
+      background: #fff;
+    }
+
+    main {
+      padding-bottom: 50px;
+    }
+
+    .section {
+      display: none;
+      padding: 18px 0 34px;
+      animation: fadeIn 0.45s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-head {
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 950px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1.22rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .info-item {
+      background: rgba(178,34,34,0.06);
+      border: 1px solid rgba(178,34,34,0.08);
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: #6b3535;
+      font-weight: 600;
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(var(--accent), var(--accent-2));
+      border-radius: 999px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 52px;
+      margin-bottom: 22px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 5px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      border: 5px solid var(--accent);
+      box-shadow: 0 0 0 5px rgba(178,34,34,0.08);
+    }
+
+    .timeline-item h4 {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .city-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .city-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .city-body {
+      padding: 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .tag-pill {
+      background: rgba(178,34,34,0.08);
+      color: var(--accent);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 250px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.9);
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .search-box button {
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .map-box {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .map-box img {
+      width: 100%;
+      display: block;
+    }
+
+    .marker {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border: 3px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 8px 16px rgba(178,34,34,0.25);
+      cursor: pointer;
+    }
+
+    .marker span {
+      position: absolute;
+      top: -42px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.78);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: 0.25s;
+      pointer-events: none;
+    }
+
+    .marker:hover span {
+      opacity: 1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      min-height: 210px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item span {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(0,0,0,0.36);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .quiz-option {
+      border: 2px solid rgba(178,34,34,0.12);
+      background: rgba(255,255,255,0.74);
+      border-radius: 16px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: 0.25s;
+      margin-bottom: 12px;
+    }
+
+    .quiz-option:hover {
+      border-color: rgba(178,34,34,0.35);
+      transform: translateX(4px);
+    }
+
+    .quiz-result {
+      display: none;
+      margin-top: 14px;
+      background: rgba(178,34,34,0.08);
+      color: #5f2f2f;
+      padding: 16px;
+      border-radius: 16px;
+      line-height: 1.75;
+      font-weight: 600;
+    }
+
+    .travel-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.76);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .travel-table th,
+    .travel-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.7;
+    }
+
+    .travel-table th {
+      background: rgba(178,34,34,0.08);
+      color: var(--accent);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 0 42px;
+      line-height: 1.8;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 54px;
+      height: 54px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 12px 22px rgba(178,34,34,0.25);
+      display: none;
+      z-index: 1500;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      position: relative;
+      width: min(1000px, 100%);
+    }
+
+    .modal-box img {
+      width: 100%;
+      max-height: 82vh;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--accent);
+      font-size: 1.25rem;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 10px;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .header-wrap {
+        flex-wrap: wrap;
+      }
+
+      .hero-slider {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text {
+        padding: 24px;
+      }
+
+      .info-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="petals" id="petals"></div>
+
+<header>
+  <div class="container header-wrap">
+    <div class="logo">
+      <div class="logo-mark">日</div>
+      <div>Страна восходящего солнца</div>
+    </div>
+
+    <button class="burger" id="burgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="navMenu">
+      <button class="tab-btn active" data-tab="home">Главная</button>
+      <button class="tab-btn" data-tab="culture">Культура</button>
+      <button class="tab-btn" data-tab="cities">Города</button>
+      <button class="tab-btn" data-tab="modern">Современность</button>
+      <button class="tab-btn" data-tab="kitchen">Кухня</button>
+      <button class="tab-btn" data-tab="travel">Путешествия</button>
+    </nav>
+  </div>
+</header>
+
+<div class="container hero">
+  <div class="hero-grid">
+    <div class="hero-text reveal show">
+      <div class="small">Япония: традиции, города, культура и технологии</div>
+      <h1>Страна восходящего солнца</h1>
+      <p>
+        Япония — одно из самых интересных государств мира, в котором древние традиции удивительным образом
+        сочетаются с достижениями современности. Здесь можно увидеть старинные храмы и тихие сады,
+        а уже через несколько минут оказаться среди неоновых вывесок, скоростных поездов и современной архитектуры.
+      </p>
+      <p>
+        Эта страна привлекает туристов богатой историей, необычной культурой, национальной кухней,
+        вежливостью людей, красивой природой и особой атмосферой. Япония известна своими праздниками,
+        цветением сакуры, чайной церемонией, аниме, высокими технологиями и бережным отношением к традициям.
+      </p>
+      <p>
+        На этом сайте можно познакомиться с культурой Японии, её знаменитыми городами,
+        современной жизнью, кухней и полезной информацией для путешествий.
+      </p>
+
+      <div class="hero-links">
+        <button onclick="openTab('culture')">Смотреть культуру</button>
+        <button class="ghost" onclick="openTab('cities')">Открыть города</button>
+      </div>
+    </div>
+
+    <div class="hero-slider reveal show">
+      <div class="slide active" style="background-image:url('images/hero-fuji.jpg')">
+        <div class="slide-caption">
+          <h3>Гора Фудзи</h3>
+          <p>Один из главных символов Японии, вдохновляющий художников, туристов и фотографов.</p>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image:url('images/hero-tokyo.jpg')">
+        <div class="slide-caption">
+          <h3>Токио</h3>
+          <p>Город будущего, в котором кипит жизнь, а технологии и мегаполисный ритм ощущаются повсюду.</p>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image:url('images/hero-sakura.jpg')">
+        <div class="slide-caption">
+          <h3>Сакура</h3>
+          <p>Цветение вишни стало символом японской красоты, нежности и быстротечности времени.</p>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image:url('images/hero-kyoto.jpg')">
+        <div class="slide-caption">
+          <h3>Киото</h3>
+          <p>Старинные улицы, храмы и спокойная атмосфера делают Киото настоящим воплощением традиционной Японии.</p>
+        </div>
+      </div>
+
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+
+  <section class="section active" id="home">
+    <div class="section-head reveal">
+      <h2>Главная</h2>
+      <p>
+        Япония часто называется страной контрастов, потому что здесь удивительным образом соединяются прошлое и будущее.
+        С одной стороны, это страна древних храмов, самурайской истории, национальных праздников и утончённой эстетики.
+        С другой — это мир современных технологий, робототехники, скоростного транспорта, мегаполисов и массовой культуры.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>Что можно узнать на сайте</h3>
+        <p>
+          На сайте собрана информация о самых интересных сторонах Японии: от исторического наследия
+          и духовных традиций до известных городов, современной молодёжной культуры, кухни и путешествий.
+          Такой формат помогает увидеть страну целиком, а не только через один аспект.
+        </p>
+        <div class="info-list">
+          <div class="info-item">История и религия</div>
+          <div class="info-item">Традиции и фестивали</div>
+          <div class="info-item">Города и достопримечательности</div>
+          <div class="info-item">Поп-культура и технологии</div>
+          <div class="info-item">Национальная кухня</div>
+          <div class="info-item">Советы для туристов</div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3>Почему Япония интересна людям по всему миру</h3>
+        <p>
+          Япония вызывает интерес у очень разных людей. Кто-то любит её за аниме и мангу,
+          кто-то мечтает увидеть Токио и прокатиться на Синкансэне, кого-то привлекает чайная церемония,
+          древние святилища и спокойные японские сады. Эта страна умеет удивлять именно тем,
+          что она многогранна и в ней каждый может найти что-то своё.
+        </p>
+        <p>
+          Особую роль играет эстетика повседневности: красота улиц, аккуратность, внимание к деталям,
+          уважение к окружающим и умение сочетать простоту с изяществом.
+        </p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <h3>Галерея</h3>
+      <p>
+        Ниже представлена небольшая галерея, которая передаёт разные образы Японии:
+        природу, города, традиции, кухню и транспорт.
+      </p>
+      <div class="gallery">
+        <div class="gallery-item"><img src="images/fuji.jpg" alt="Фудзи"><span>Фудзи</span></div>
+        <div class="gallery-item"><img src="images/temple.jpg" alt="Храм"><span>Храм</span></div>
+        <div class="gallery-item"><img src="images/shinkansen.jpg" alt="Синкансэн"><span>Синкансэн</span></div>
+        <div class="gallery-item"><img src="images/sakura-gallery.jpg" alt="Сакура"><span>Сакура</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="culture">
+    <div class="section-head reveal">
+      <h2>Культура и традиции</h2>
+      <p>
+        Культура Японии формировалась на протяжении многих веков. Для неё характерны уважение к истории,
+        внимание к ритуалам, любовь к природе и стремление к внутренней гармонии.
+        Даже повседневные действия в японской культуре нередко наполнены особым смыслом и эстетикой.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>Краткая история</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Древний период</h4>
+            <p>
+              В ранние времена формировались основы японской мифологии, религии и государственности.
+              Уже тогда большое значение имели природные силы, духовные представления и культ предков.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Эпоха самураев</h4>
+            <p>
+              Самураи стали важной частью японской истории. Их идеалы чести, преданности и дисциплины
+              глубоко повлияли на представление о характере и нравственных ценностях.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Период изоляции</h4>
+            <p>
+              В течение долгого времени Япония развивалась достаточно обособленно,
+              благодаря чему сумела сохранить множество своих уникальных традиций и форм искусства.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Современное развитие</h4>
+            <p>
+              Позже страна начала активно модернизироваться, сохранив при этом уважение к прошлому.
+              Благодаря этому Япония стала примером гармонии между традицией и прогрессом.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3>Религия и духовные основы</h3>
+        <p>
+          В Японии большое влияние имеют синтоизм и буддизм. Синтоизм связан с почитанием духов природы,
+          святынь и предков. Буддизм принёс идеи внутреннего спокойствия, созерцательности и философского отношения к жизни.
+        </p>
+        <p>
+          Для японского общества характерно мирное сосуществование этих традиций.
+          Поэтому многие японцы участвуют в обрядах обеих религий, не ощущая противоречия.
+        </p>
+        <ul>
+          <li>Синтоизм — уважение к природе, чистоте и священным местам.</li>
+          <li>Буддизм — размышление, гармония и духовное развитие.</li>
+          <li>Ритуалы — важная часть праздников, семейной жизни и традиций.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <h3>Праздники и фестивали</h3>
+        <p>
+          Японские праздники часто сопровождаются шествиями, музыкой, традиционными костюмами и уличной едой.
+          Особенно известны ханами — любование сакурой, а также Танабата и различные мацури.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Искусство</h3>
+        <p>
+          Каллиграфия, икебана, театр Но и Кабуки, поэзия, гравюра и оформление садов —
+          всё это отражает японское стремление к выразительности через простоту и символику.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Чайная церемония и кимоно</h3>
+        <p>
+          Чайная церемония считается особым ритуалом, где важны спокойствие, уважение и красота деталей.
+          Кимоно остаётся одним из самых узнаваемых символов традиционной Японии.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cities">
+    <div class="section-head reveal">
+      <h2>Города и достопримечательности</h2>
+      <p>
+        Города Японии очень разные по характеру. Одни сохраняют дух старой страны,
+        другие поражают современным ритмом, архитектурой и технологиями.
+        Именно поэтому путешествие по Японии позволяет увидеть множество разных сторон одного государства.
+      </p>
+    </div>
+
+    <div class="search-box reveal">
+      <input type="text" id="citySearch" placeholder="Поиск: Токио, Киото, Фудзи, Нара..." />
+      <button onclick="filterCities()">Найти</button>
+    </div>
+
+    <div class="grid-3" id="cityGrid">
+      <div class="card city-card reveal city-item" data-name="токио сибуя мегаполис технологии">
+        <img src="images/tokyo.jpg" alt="Токио">
+        <div class="city-body">
+          <h3>Токио</h3>
+          <p>
+            Токио — столица Японии и один из самых известных мегаполисов мира.
+            Здесь сосредоточены деловые районы, современные торговые улицы, музеи, мода,
+            неоновые кварталы и множество технологических достижений.
+          </p>
+          <div class="tags">
+            <span class="tag-pill">Сибуя</span>
+            <span class="tag-pill">неон</span>
+            <span class="tag-pill">технологии</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card city-card reveal city-item" data-name="киото храмы история традиции">
+        <img src="images/kyoto.jpg" alt="Киото">
+        <div class="city-body">
+          <h3>Киото</h3>
+          <p>
+            Киото считается одним из главных культурных центров Японии.
+            Здесь особенно хорошо сохранились старинные храмы, сады, узкие улочки и традиционная атмосфера.
+          </p>
+          <div class="tags">
+            <span class="tag-pill">храмы</span>
+            <span class="tag-pill">история</span>
+            <span class="tag-pill">традиции</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card city-card reveal city-item" data-name="осака кухня развлечения современность">
+        <img src="images/osaka.jpg" alt="Осака">
+        <div class="city-body">
+          <h3>Осака</h3>
+          <p>
+            Осака известна оживлённой атмосферой, гастрономией, уличной жизнью и большим количеством развлечений.
+            Этот город часто называют гастрономическим центром Японии.
+          </p>
+          <div class="tags">
+            <span class="tag-pill">еда</span>
+            <span class="tag-pill">улицы</span>
+            <span class="tag-pill">развлечения</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card city-card reveal city-item" data-name="нара парк олени храмы история">
+        <img src="images/nara.jpg" alt="Нара">
+        <div class="city-body">
+          <h3>Нара</h3>
+          <p>
+            Нара знаменита древними памятниками, большими храмами и парком с ручными оленями.
+            Это место особенно интересно тем, кто любит спокойную атмосферу и исторические места.
+          </p>
+          <div class="tags">
+            <span class="tag-pill">олени</span>
+            <span class="tag-pill">парки</span>
+            <span class="tag-pill">история</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card city-card reveal city-item" data-name="хоккайдо природа зима горы">
+        <img src="images/hokkaido.jpg" alt="Хоккайдо">
+        <div class="city-body">
+          <h3>Хоккайдо</h3>
+          <p>
+            Хоккайдо — северный регион страны, известный красивой природой, снежными зимами,
+            чистым воздухом, горами и живописными пейзажами.
+          </p>
+          <div class="tags">
+            <span class="tag-pill">природа</span>
+            <span class="tag-pill">зима</span>
+            <span class="tag-pill">горы</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card city-card reveal city-item" data-name="фудзи гора природа символ">
+        <img src="images/fuji.jpg" alt="Фудзи">
+        <div class="city-body">
+          <h3>Фудзи</h3>
+          <p>
+            Гора Фудзи — один из самых узнаваемых символов Японии. Она считается священной,
+            часто изображается в искусстве и является популярным местом для путешественников.
+          </p>
+          <div class="tags">
+            <span class="tag-pill">символ</span>
+            <span class="tag-pill">природа</span>
+            <span class="tag-pill">пейзажи</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card map-box reveal">
+        <img src="images/map-japan.png" alt="Карта Японии">
+        <div class="marker" style="top: 35%; left: 82%;"><span>Хоккайдо</span></div>
+        <div class="marker" style="top: 55%; left: 73%;"><span>Токио</span></div>
+        <div class="marker" style="top: 60%; left: 66%;"><span>Киото</span></div>
+        <div class="marker" style="top: 64%; left: 64%;"><span>Осака</span></div>
+        <div class="marker" style="top: 62%; left: 68%;"><span>Нара</span></div>
+      </div>
+
+      <div class="card reveal">
+        <h3>Известные места Японии</h3>
+        <ul>
+          <li><strong>Гора Фудзи</strong> — природный символ страны.</li>
+          <li><strong>Киёмидзу-дэра</strong> — один из самых известных храмов Киото.</li>
+          <li><strong>Район Сибуя</strong> — символ современной городской Японии.</li>
+          <li><strong>Замок Химэдзи</strong> — один из красивейших замков страны.</li>
+          <li><strong>Святилище Ицукусима</strong> — знаменитое место на острове Миядзима.</li>
+        </ul>
+        <p>
+          Японские города и достопримечательности интересны тем, что каждый регион показывает
+          свою особую атмосферу: где-то сильнее чувствуется история, где-то — темп современного мира,
+          а где-то — удивительная близость к природе.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="modern">
+    <div class="section-head reveal">
+      <h2>Современность и технологии</h2>
+      <p>
+        Современная Япония известна своими инновациями, поп-культурой, транспортом,
+        уличной модой и высоким уровнем организации городской жизни.
+        При этом современность здесь не уничтожает традиции, а существует рядом с ними.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <h3>Аниме и манга</h3>
+        <p>
+          Аниме и манга давно стали важной частью японской культурной идентичности и приобрели мировую популярность.
+          Через них Япония влияет на моду, музыку, кинематограф и молодёжную культуру во многих странах.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Мода и уличная культура</h3>
+        <p>
+          Районы вроде Харадзюку известны своей необычной молодёжной модой,
+          экспериментами со стилем и свободой самовыражения.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Робототехника и инновации</h3>
+        <p>
+          Япония ассоциируется с высокими технологиями, инженерией и стремлением делать повседневную жизнь удобнее.
+          Это проявляется как в промышленности, так и в городской инфраструктуре.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>Синкансэн</h3>
+        <p>
+          Скоростные поезда Синкансэн стали одним из символов современной Японии.
+          Они показывают, как технический прогресс может сочетаться с безопасностью,
+          комфортом и уважением ко времени пассажиров.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Жизнь в мегаполисах</h3>
+        <p>
+          Жизнь в японских мегаполисах отличается высокой плотностью,
+          хорошей транспортной системой, большим количеством сервисов и аккуратно организованной городской средой.
+        </p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <h3>Мини-квиз</h3>
+      <p>Выбери вариант, который тебе ближе.</p>
+
+      <div class="quiz-option" onclick="showQuizResult('tradition')">
+        Мне ближе древние храмы, чайная церемония, кимоно и спокойная атмосфера.
+      </div>
+
+      <div class="quiz-option" onclick="showQuizResult('modern')">
+        Мне интереснее Токио, технологии, аниме, транспорт и современный городской ритм.
+      </div>
+
+      <div class="quiz-option" onclick="showQuizResult('mix')">
+        Мне нравится и традиционная, и современная Япония одновременно.
+      </div>
+
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  </section>
+
+  <section class="section" id="kitchen">
+    <div class="section-head reveal">
+      <h2>Японская кухня</h2>
+      <p>
+        Японская кухня известна разнообразием, эстетикой подачи, свежестью продуктов и вниманием к сезонности.
+        Здесь еда воспринимается не только как питание, но и как часть культуры.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <h3>Суши</h3>
+        <p>
+          Суши считаются одним из самых известных японских блюд в мире.
+          Они ассоциируются с лёгкостью, аккуратностью приготовления и красивой подачей.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Рамен</h3>
+        <p>
+          Рамен — это популярное и сытное блюдо, имеющее множество региональных вариантов.
+          Его любят за насыщенный вкус, ароматный бульон и разнообразие ингредиентов.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Темпура и уличная еда</h3>
+        <p>
+          Темпура и блюда вроде такояки показывают,
+          насколько разнообразной и интересной может быть японская кухня.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>Традиции питания</h3>
+        <p>
+          В Японии большое значение имеет сезонность. Люди стараются подбирать блюда,
+          которые соответствуют времени года, и ценят естественный вкус ингредиентов.
+        </p>
+        <ul>
+          <li>Весной популярны лёгкие сезонные блюда.</li>
+          <li>Летом предпочитают более освежающие варианты.</li>
+          <li>Осенью появляются насыщенные вкусы и сезонные продукты.</li>
+          <li>Зимой особенно ценятся тёплые и сытные блюда.</li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h3>Этикет за столом</h3>
+        <p>
+          В японской культуре важны аккуратность, уважение к еде и правильное использование палочек.
+          Поведение за столом считается частью общей культуры человека.
+        </p>
+        <ul>
+          <li>Не принято небрежно обращаться с посудой.</li>
+          <li>Палочки нужно использовать аккуратно и уважительно.</li>
+          <li>Подача блюд тоже имеет значение.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <h3>Изображения кухни</h3>
+      <div class="gallery">
+        <div class="gallery-item"><img src="images/sushi.jpg" alt="Суши"><span>Суши</span></div>
+        <div class="gallery-item"><img src="images/ramen.jpg" alt="Рамен"><span>Рамен</span></div>
+        <div class="gallery-item"><img src="images/temple.jpg" alt="Япония"><span>Традиции</span></div>
+        <div class="gallery-item"><img src="images/shinkansen.jpg" alt="Япония"><span>Современность</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="travel">
+    <div class="section-head reveal">
+      <h2>Путешествия</h2>
+      <p>
+        Япония — очень привлекательное направление для туристов. Здесь можно увидеть старинные храмы,
+        современные районы, горные пейзажи, парки, музеи, замки и морские побережья.
+        Однако путешествие будет комфортнее, если заранее знать некоторые особенности страны.
+      </p>
+    </div>
+
+    <div class="card reveal" style="margin-bottom: 22px;">
+      <h3>Полезная информация</h3>
+      <table class="travel-table">
+        <tr>
+          <th>Тема</th>
+          <th>Описание</th>
+        </tr>
+        <tr>
+          <td>Лучшее время</td>
+          <td>Весна подходит для цветения сакуры, а осень — для красивых пейзажей и комфортной погоды.</td>
+        </tr>
+        <tr>
+          <td>Транспорт</td>
+          <td>Поезда и метро позволяют удобно передвигаться как внутри городов, так и между регионами.</td>
+        </tr>
+        <tr>
+          <td>Поведение</td>
+          <td>Важно уважать местные правила, сохранять вежливость и соблюдать порядок в общественных местах.</td>
+        </tr>
+        <tr>
+          <td>Маршрут</td>
+          <td>Для первого знакомства часто выбирают Токио, Киото и Осаку.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>Маршрут на 3 дня</h3>
+        <p>
+          За короткую поездку можно познакомиться с Токио, увидеть современные районы,
+          парки, музеи и известные городские улицы. Такой вариант подходит для первого впечатления о стране.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Маршрут на 5–7 дней</h3>
+        <p>
+          Более длительная поездка позволяет совместить Токио, Киото и Осаку,
+          чтобы увидеть как современную, так и традиционную сторону Японии.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>Что удобно для туриста</h3>
+        <ul>
+          <li>Развитый транспорт.</li>
+          <li>Большой выбор достопримечательностей.</li>
+          <li>Интересное сочетание природы и городов.</li>
+          <li>Разнообразная кухня и культурные впечатления.</li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h3>Что важно помнить</h3>
+        <ul>
+          <li>Нужно заранее продумывать маршрут.</li>
+          <li>Полезно знать базовые правила поведения.</li>
+          <li>Стоит выучить несколько вежливых фраз.</li>
+          <li>Важно уважать местную культуру и традиции.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>
+      Учебный проект по теме Японии<br>
+      Название сайта: <strong>Страна восходящего солнца</strong>
+    </p>
+  </div>
+</main>
+
+<button class="back-top" id="backTop">↑</button>
+
+<div class="modal" id="imgModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeModal">×</button>
+    <img id="modalImage" src="" alt="Изображение">
+  </div>
+</div>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  burgerBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+  });
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.section');
+
+  function openTab(id) {
+    tabs.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === id);
+    });
+
+    sections.forEach(sec => {
+      sec.classList.toggle('active', sec.id === id);
+    });
+
+    navMenu.classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    revealElements();
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openTab(btn.dataset.tab);
+    });
+  });
+
+  const slides = document.querySelectorAll('.slide');
+  const dotsWrap = document.getElementById('dots');
+  let currentSlide = 0;
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (index === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsWrap.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function goToSlide(index) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  setInterval(() => {
+    let next = currentSlide + 1;
+    if (next >= slides.length) next = 0;
+    goToSlide(next);
+  }, 3500);
+
+  function showQuizResult(type) {
+    const result = document.getElementById('quizResult');
+    result.style.display = 'block';
+
+    if (type === 'tradition') {
+      result.textContent = 'Тебе ближе традиционная Япония. Вероятно, тебя особенно привлекают храмы, история, чайная церемония, кимоно и спокойная эстетика.';
+    } else if (type === 'modern') {
+      result.textContent = 'Тебе ближе современная Япония. Похоже, тебе интересны мегаполисы, технологии, транспорт, аниме и динамика городской жизни.';
+    } else {
+      result.textContent = 'Тебе нравится Япония в её полном виде. Именно сочетание традиций и современности делает эту страну особенно интересной.';
+    }
+  }
+
+  function filterCities() {
+    const value = document.getElementById('citySearch').value.toLowerCase().trim();
+    const items = document.querySelectorAll('.city-item');
+
+    items.forEach(item => {
+      const text = item.dataset.name;
+      item.style.display = (text.includes(value) || value === '') ? 'block' : 'none';
+    });
+  }
+
+  document.getElementById('citySearch').addEventListener('input', filterCities);
+
+  const revealItems = document.querySelectorAll('.reveal');
+  function revealElements() {
+    revealItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80) {
+        item.classList.add('show');
+      }
+    });
+  }
+
+  revealElements();
+  window.addEventListener('scroll', revealElements);
+
+  const backTop = document.getElementById('backTop');
+
+  window.addEventListener('scroll', () => {
+    backTop.style.display = window.scrollY > 250 ? 'block' : 'none';
+  });
+
+  backTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const modal = document.getElementById('imgModal');
+  const modalImage = document.getElementById('modalImage');
+  const closeModal = document.getElementById('closeModal');
+
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.classList.add('open');
+      modalImage.src = img.src;
+    });
+  });
+
+  closeModal.addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+
+  const petals = document.getElementById('petals');
+
+  for (let i = 0; i < 18; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = (8 + Math.random() * 8) + 's';
+    petal.style.animationDelay = Math.random() * 8 + 's';
+    petal.style.opacity = 0.4 + Math.random() * 0.5;
+    petal.style.transform = `scale(${0.7 + Math.random() * 0.9})`;
+    petals.appendChild(petal);
+  }
+</script>
+
+</body>
+</html>
