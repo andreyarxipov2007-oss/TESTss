@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт с вкладками</title>
+    <style>
+        body {
+          font-family: Arial;
+          margin: 0;
+          padding: 0;
+
+        }
+        .tabs {
+          display: flex;
+          justify-content: center;
+          background-color: #333;
+        }
+        .tab {
+          padding: 15px 25px;
+          cursor: pointer;
+          color: white;
+          border: 1px solid #333;
+          transition: background 0.5s;
+        }
+        .tab:hover {
+          background-color: #555;
+        }
+        .tab.active {
+          background-color: #444;
+        }
+        .content {
+          display: none;
+          text-align: center;
+          padding: 20px;
+        }
+        .content.active {
+            display: block;
+        }
+
+
+        .accordion-item {
+          margin-bottom: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          overflow: hidden;
+        }
+
+
+      .accordion-header {
+        width: 100%;
+        background-color: #f7f7f7;
+        border: none;
+        padding: 15px;
+        text-align: left;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+        background-color: #eaeaea;
+        }
+
+
+        .accordion-content {
+        padding: 0 15px 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s , padding 0.5s ;
+        }
+
+
+
+    .info-block {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .info-block2 {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: left;
+        display: inline-grid;
+        justify-content: center;
+    }
+
+
+    .download-block {
+        text-align: center;
+    }
+
+
+    .download-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+
+    .download-btn:hover {
+        background-color: #0056b3;
+    }
+
+
+    .poll-checkbox {
+        display: none;
+    }
+
+
+
+    .result-text {
+        margin-top: 20px;
+    }
+
+    .yes-message, .no-message {
+        display: none;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .yes-message {
+         background-color: #d1e7dd;
+         color: #0f5132;
+    }
+
+    .no-message {
+         background-color: #f8d7da;
+         color: #842029;
+    }
+
+
+    #answer-yes:checked ~ .result-text .yes-message {
+        display: block;
+    }
+
+
+    #answer-no:checked ~ .result-text .no-message {
+        display: block;
+    }
+
+        #main-content {
+            display: block;
+            background-color: #f5f5f5;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main-content" class="content">
+          <h2>Добро пожаловать!</h2>
+          <b>Данный сайт предназначен для помощи студентам в выполнении контрольной работы №2 по информатике. Желаем успехов в выполнении!</b>
+      </div>
+
+<div class="tabs">
+    <div class="tab active" onclick="openTab(event, 'Вкладка1')">План</div>
+    <div class="tab" onclick="openTab(event, 'Вкладка2')">Информация</div>
+    <div class="tab" onclick="openTab(event, 'Вкладка3')">Итоги</div>
+</div>
+
+
+<div id="Вкладка1" class="content active">
+<h1>ПЛАН ВЫПОЛНЕНИЯ КОНТРОЛЬНОЙ РАБОТЫ</h1>
+
+    <h2>Для чего необходим</h2>
+    <p>Для успешной сдачи контрольной необходимо четко следовать плану выполнения!
+      <br>План был рассчитан с условием выполнения на 12 недель с момента получения задания до дедлайна сдачи.</br>
+      <br>При минимальном отклонении шанс не сдачи составляет <b><span style="color: red;">90%</b></span> </br></p>
+    <br></br>
+    <br></br>
+    <br></br>
+    <h2>План выполнения по неделям:</h2>
+
+    <div id="inner-content">
+        <div class="accordion-item">
+            <button class="accordion-header">1-8 Неделя</button>
+            <div class="accordion-content">
+                <p>Пока отдыхаем, времени еще много.</p>
+                <img src="djigan.gif">
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">9-11 Неделя</button>
+            <div class="accordion-content">
+                <p>Все еще отдыхаем, но уже немного напрягаемся. <span style="color: red;">Не теряем выдержку!</b></span></p>
+                <img src="vtorned.gif">
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">12 Неделя</button>
+            <div class="accordion-content">
+                <p>Вспоминаем про дедлайн, спидраним сайт и отчет.</p>
+                <img src="speedrun.gif">
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">ДЕДЛАЙН!</button>
+            <div class="accordion-content">
+                <p>День сдачи. Включаем веб камеру в Яндекс.телемост и плачем, чтобы надавить на жалость. Получаем результат.</p>
+                <img src="willem.gif">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Вкладка2" class="content">
+    <h1>НЕОБХОДИМАЯ ИНФОРМАЦИЯ</h1>
+    <p>Здесь представлена вся информация для выполнения контрольной работы.</p>
+
+        <div class="info-block">
+            <h3>СОЗДАНИЕ ВЕБ-САЙТА</h3>
+            <p>Лабораторная творческая, возможны какие угодно реализации, от html кода в блокноте до использования фреймворков.</p>
+        </div>
+
+        <br></br>
+        <h3>ОБЩИЕ ТРЕБОВАНИЯ:</h3>
+        <div class="info-block2">
+            <ul>
+                <li>От 3 вкладок, наличие хотя бы нескольких элементов на каждой вкладке. (Если на вкладке две-три строки, такая лабораторная принята не будет, нужно хотя бы нечто отдаленно похожее на сайт).</li>
+                <li>При использовании каскадных таблиц стилей, наличие хотя бы нескольких элементов, которые их задействуют на каждой вкладке.</li>
+                <li>При использовании JS, наличие хотя бы нескольких скриптов (от 2-3), понимание того, как эти скрипты работают.</li>
+            </ul>
+
+        </div>
+
+        <br></br>
+        <h3>КРИТЕРИИ:</h3>
+        <div class="info-block2">
+            <ul>
+                <li>Оценка «3»: Использование только HTML тегов.</li>
+                <li>Оценка «4»: HTML + Применение CSS.</li>
+                <li>Оценка «5»: HTML + Применение CSS + Наличие 2-3 скриптов JS.</li>
+            </ul>
+        </div>
+
+        <div class="download-block">
+          <h3>ПРИМЕР ОТЧЕТА</h3>
+            <a href="document.docx" download>
+                <button class="download-btn">Скачать файл</button>
+            </a>
+        </div>
+</div>
+
+<div id="Вкладка3" class="content">
+    <h1>ИТОГИ РАБОТЫ</h1>
+
+        <div class="info-block">
+            <h3>Благодарим за посещение!</h3>
+            <p>Мы ценим, что вы уделили время нашему сайту. Надеемся, информация была для вас полезной.</p>
+
+            <h3>Удалось ли сдать работу?</h3>
+
+
+            <input type="checkbox" id="answer-yes" class="poll-checkbox">
+            <input type="checkbox" id="answer-no" class="poll-checkbox">
+
+
+            <label for="answer-yes" class="download-btn">Да</label>
+            <label for="answer-no" class="download-btn">Нет</label>
+
+
+            <div class="result-text">
+                <p class="yes-message">Отлично! Мы в Вас не сомневались. Осталась последняя лаба!</p>
+                <p class="no-message">Жаль это слышать. Мы в Вас сомневались изначально. Документы на отчисление уже подготавливают, всего хорошего!</p>
+            </div>
+        </div>
+
+        <div class="info-block">
+            <h3>Специальное предложение!</h3>
+            <p>Только сегодня и только для вас — скидка 20% на выполнение контрольных работ. Успейте воспользоваться выгодным предложением!
+            <br>Время работы: 16:00 - 16:05. Без выходных!</br></p>
+        </div>
+</div>
+
+<footer>
+    © 2026 Gordeich
+</footer>
+
+<script>
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            const isOpen = content.style.maxHeight;
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    otherHeader.nextElementSibling.style.maxHeight = null;
+                }
+            });
+
+            if (isOpen) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
