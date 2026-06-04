@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
+</head>
+<body>
+    <section class="reviews_section">
+        <section class="feedback_section">
+        <h2 class="reviews_title">Отзывы наших клиентов</h2>
+    <div class="cards_container">
+        <!-- Карточка 1 -->
+        <div class="review_card card-1">
+            <span class="quote">“</span>
+            <p>Ваш сервис превзошел все ожидания. Очень довольна результатом!</p>
+            <div class="author">Анна Иванова</div>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="review_card card-2">
+            <span class="quote">“</span>
+            <p>Профессиональный подход и внимание к деталям. Рекомендую!</p>
+            <div class="author">Игорь Петров</div>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="review_card card-3">
+            <span class="quote">“</span>
+            <p>Отличная команда! Помогли реализовать проект в кратчайшие сроки.</p>
+            <div class="author">Ольга Сидорова</div>
+        </div>
+        <!-- Карточка 4 -->
+        <div class="review_card card-4">
+        <span class="quote">“</span>
+        <p>Лесной поход был сказочным! Маршрут продуман до мелочей, а вечер у костра - лучшее завершение недели. Спасибо за перезагрузку!</p>
+        <div class="author">Артем Волков</div>
+        </div>
+        <!-- Карточка 5 -->
+        <div class="review_card card-5">
+        <span class="quote">“</span>
+        <p>Горное восхождение превзошло все ожидания. Виды — космос, а гид - настоящий профи. Чувствовал себя в полной безопасности.</p>
+        <div class="author">Дмитрий С.</div>
+        </div>
+</section>
+    <section class="feedback_section">
+    <div class="container">
+        <div class="feedback_box">
+            <h2 class="form_title">Оставить отзыв</h2>
+            
+            <form action="#" class="review_form">
+                <!-- Строка: Имя и Email -->
+                <div class="form_row">
+                    <div class="form_group">
+                        <label>Имя*</label>
+                        <input type="text" placeholder="Иван" required>
+                    </div>
+                    <div class="form_group">
+                        <label>Email*</label>
+                        <input type="email" placeholder="ivanov@gmail.com" required>
+                    </div>
+                </div>
+                <!-- Строка: Телефон -->
+                <div class="form_group half_width">
+                    <label>Телефон*</label>
+                    <input type="tel" placeholder="+7 (999) 999-99-99" required>
+                </div>
+
+                <!-- Оценка -->
+                <div class="form_group">
+                    <label>Оценка</label>
+                    <div class="rating_options">
+                        <label><input type="radio" name="rating" value="1"> 1</label>
+                        <label><input type="radio" name="rating" value="2"> 2</label>
+                        <label><input type="radio" name="rating" value="3"> 3</label>
+                        <label><input type="radio" name="rating" value="4"> 4</label>
+                        <label><input type="radio" name="rating" value="5" checked> 5</label>
+                    </div>
+                </div>
+
+                <!-- Сообщение -->
+                <div class="form_group">
+                    <label>Отзыв</label>
+                    <textarea placeholder="Введите текст"></textarea>
+                </div>
+
+                <!-- Кнопки -->
+                <div class="form_actions">
+                    <button type="reset" class="btn-reset">Отмена (сбросить)</button>
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </div>
+                <p class="form_footer-note">*Поля помеченные звездочкой обязательны к заполнению</p>
+            </form>
+        </div>
+    </div>
+</section>
+</section>
+    <header class="header">
+    <div class="header_container">
+       <nav class="header_nav">
+        <ul class="header_list">
+            <a href="home.html" class="logo">
+                <img src="images/fav.png" alt="Логотип">
+            </a>
+            <li class="header_list-item">
+                <a class="header_list-link" href="home.html">Главная</a>
+            </li>
+             <li class="header_list-item">
+                <a class="header_list-link" href="company.html">О компании</a>
+            </li>
+             <li class="header_list-item">
+                <a class="header_list-link" href="services.html">Услуги</a>
+            </li>
+             <li class="header_list-item">
+                <a class="header_list-link active" href="reviews.html">Отзывы</a>
+            </li>
+             <li class="header_list-item">
+                <a class="header_list-link" href="FAQ.html">FAQ</a>
+            </li>
+        </ul>
+       </nav> 
+    </div>
+   </header>
+</body>
+<script src="JavaScript/script.js"></script>
+</html>
