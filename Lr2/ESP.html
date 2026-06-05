@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- Добавил meta viewport для корректного отображения на мобильнике -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Sensor Dashboard</title>
+    <style>
+        /*  СТИЛИ (CSS)  */
+        /* Я решил начать с обнуления отступов, потому что браузеры по умолчанию 
+           добавляют свои отступы :с */
+        * {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box - чтобы padding не увеличивал ширину элемента,
+               иначе потом мучаешься с расчетами */
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Сделал градиентный фон, потому что однотонный для неудачников XD.
+               Подобрал цвета вручную на сайте get-color.ru */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* min-height: 100vh - чтобы фон занимал всю высоту экрана, 
+               даже если контента мало */
+            min-height: 100vh;
+            /* Использую flex для центрирования контейнера по центру экрана, самый оптимальный способ который нашел */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Основной белый контейнер - карточка сайта */
+        .app-container {
+            background-color: white;
+            width: 100%;
+            /* max-width чтобы на больших экранах сайт не растягивался на всю ширину и не бесил */
+            max-width: 1200px;
+            border-radius: 20px;
+            /* Тень делает карточку объемной над фоном, а не просто как табличка */
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            /* overflow: hidden чтобы контент не вылезал за скругленные углы и не портил труды дизайна */
+            overflow: hidden;
+        }
+
+        /* Шапка сайта с градиентом - сделал по аналогии с фоном но в других цветах */
+        header {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            /* Текст с тенью так же для объема а не просто плоского скучного объекта*/
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Навигационное меню */
+        nav {
+            display: flex;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* Стили для пунктов меню */
+        .nav-item {
+            padding: 15px 30px;
+            /* cursor: pointer - чтобы курсор менялся на руку, показывая что это кнопка, а то для тех кто видит сайт первый раз не сразу понятно что это кнопка  */
+            cursor: pointer;
+            font-weight: 600;
+            color: #495057;
+            /* transition для плавной анимации при наведении, это уже не детский уровень XD */
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        /* Эффект при наведении на пункт меню, добавил потому что понравилось */
+        .nav-item:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        /* Активный пункт меню - текущая страница */
+        .nav-item.active {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            background-color: white;
+        }
+
+        /* Основной контент */
+        main {
+            padding: 30px;
+            min-height: 500px;
+        }
+
+        /* Страницы вкладки - по умолчанию скрыты */
+        .page {
+            display: none;
+            /* Анимация появления будет применяться ко всем страницам */
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Активная страница отображается */
+        .page.active-page {
+            display: block;
+        }
+
+        /* Тут магия вне хогвартса мы описываем анимацию появления - плавное появление и небольшой сдвиг снизу */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Сетка для карточек датчиков на главной */
+        .cards-grid {
+            /* grid - современный способ создавать сетки. увидел на одном из роликов YouTube захотел повторить 
+               auto-fit сам подбирает количество колонок, лучше пусть компьютер сам работает XD */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        /* Карточка датчика */
+        .sensor-card {
+            /* Сделал легкий градиент внутри карточки для объема */
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            /* Плавное изменение тени и позиции при наведении чтобы было понятно что навелся */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Цветная полоска слева для идентификации типа датчика */
+            border-left: 5px solid #3498db;
+        }
+
+        /* Эффект при наведении на карточку - приподнимается :З */
+        .sensor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Разные цвета для разных датчиков (красный - температура и т.д.) чтоб не путаться интуитивно */
+        .sensor-card.temperature {
+            border-left-color: #e74c3c;
+        }
+        .sensor-card.door {
+            border-left-color: #f39c12;
+        }
+        .sensor-card.leak {
+            border-left-color: #3498db;
+        }
+
+        /* Заголовок датчика с иконкой */
+        .sensor-title {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Большое значение датчика */
+        .sensor-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 15px 0;
+        }
+
+        /* Стили для статусов (Открыто/Закрыто и т.д.) */
+        .status-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        /* Разные цвета для разных статусов */
+        .status-open, .status-yes {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .status-closed, .status-no {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        /* Стили для таблицы истории */
+        .history-section {
+            margin-top: 40px;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse; /* Убираем двойные границы в таблице, без этого не камельфо*/
+            margin-top: 15px;
+        }
+
+        .history-table th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .history-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .history-table tr:hover {
+            background-color: #f1f3f5; /* Подсветка строки при наведении */
+        }
+
+        /* Стили для панели настроек */
+        .settings-panel {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none; /* У последнего элемента убираем разделитель, многого захотел */
+        }
+
+        /* ТУТ Я ДЕЛАЮ СВОЙ ПЕРЕКЛЮЧАТЕЛЬ(МЕТКА ДЛЯ СЕБЯ) /
+        /* Стандартный checkbox не найс, поэтому я его скрываю и рисую свой - надеюсь не зря ахах*/
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Прячем стандартный checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* Ползунок - фон переключателя */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        /* Кружок внутри ползунка */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        /* Когда чекбокс отмечен - меняем цвет фона */
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        /* И сдвигаем кружок вправо */
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* ЭТОТ БЛОК ДЛЯ СМАРТФОНОВ, ТЕСТ САЙТА И НА МОБИЛЬНИКЕ */
+        /* На узких экранах меню должно переноситься */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            .nav-item {
+                flex: 1 1 auto; /* Растягиваем пункты меню */
+                text-align: center;
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+ <!-- Погнали по самому главному тело сайта B) 
+   буду пользоваться эмодзи чтобы не возиться с изображениемиями, 
+   а еще хочу скинуть работу одним файлом а не скидывать еще и изображения для локального сайта -->
+    <div class="app-container">
+        <!-- Шапка -->
+        <header>
+            <h1>🏠 ESP32 Мониторинг</h1>
+            <p>Данные с датчиков: двери, температуры и протечки</p>
+        </header>
+
+        <!-- НАВИГАЦИЯ (3 вкладки) -->
+        <!-- Использую data-атрибут data-page, чтобы связать пункт меню с id страницы.
+             Это удобно: в JavaScript я просто читаю этот атрибут и показываю нужную страницу
+             Без лишнего гемора и слез -->
+        <nav>
+            <div class="nav-item active" data-page="dashboard">📊 Дашборд</div>
+            <div class="nav-item" data-page="sensors">📡 Датчики</div>
+            <div class="nav-item" data-page="settings">⚙️ Настройки</div>
+        </nav>
+
+        <!-- ОСНОВНАЯ ИНФА О ДАТЧИКАХ -->
+        <main>
+            <!--  1: ИНФА О ДАТЧИКАХ В ВИДЕ ДОСКИ  -->
+            <!-- id соответствует значению data-page в меню -->
+            <div id="dashboard" class="page active-page">
+                <h2>📊 Текущее состояние</h2>
+                <div class="cards-grid">
+                    <!-- Карточка температуры -->
+                    <!-- У каждой карточки уникальный id, чтобы JS мог обновлять значения -->
+                    <div class="sensor-card temperature" id="dashboard-temp">
+                        <div class="sensor-title">
+                            🌡️ Температура
+                        </div>
+                        <!-- Заглушка "-- °C" пока данные не загрузились, 
+                         Не ну а что ? 
+                         А кому сейчас легко ?-->
+                        <div class="sensor-value" id="dashboard-temp-value">-- °C</div>
+                        <div class="sensor-desc">Внутри помещения</div>
+                    </div>
+                    
+                    <!-- Карточка двери -->
+                    <div class="sensor-card door" id="dashboard-door">
+                        <div class="sensor-title">
+                            🚪 Дверь
+                        </div>
+                        <div class="sensor-value" id="dashboard-door-value">--</div>
+                        <div>
+                            <!-- Здесь будет статус с соответствующим классом для цвета -->
+                            <span class="status-badge" id="dashboard-door-status">Загрузка...</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Карточка протечки -->
+                    <div class="sensor-card leak" id="dashboard-leak">
+                        <div class="sensor-title">
+                            💧 Протечка воды
+                        </div>
+                        <div class="sensor-value" id="dashboard-leak-value">--</div>
+                        <div>
+                            <span class="status-badge" id="dashboard-leak-status">Загрузка...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Дополнительная информация на главной -->
+                <div style="margin-top: 40px; background-color: #e3f2fd; padding: 20px; border-radius: 15px;">
+                    <h3>ℹ️ Статус системы</h3>
+                    <p id="system-status-text">Система мониторинга активна. Данные обновляются каждые 3 секунды.</p>
+                    <p>Последнее обновление: <span id="last-update">никогда</span></p>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА 2: Датчики более детально + история -->
+            <div id="sensors" class="page">
+                <h2>📡 Детальная информация по датчикам</h2>
+                
+                <!-- Таблица с текущими показаниями -->
+                <div style="margin-bottom: 30px; background-color: #f8f9fa; padding: 20px; border-radius: 15px;">
+                    <h3>Текущие показания</h3>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Датчик</th>
+                                <th>Значение</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Здесь тоже все id для JS -->
+                            <tr>
+                                <td>🌡️ Температура</td>
+                                <td id="sensors-temp-value">-- °C</td>
+                                <td id="sensors-temp-status">--</td>
+                            </tr>
+                            <tr>
+                                <td>🚪 Датчик двери</td>
+                                <td id="sensors-door-value">--</td>
+                                <td id="sensors-door-status">--</td>
+                            </tr>
+                            <tr>
+                                <td>💧 Датчик протечки</td>
+                                <td id="sensors-leak-value">--</td>
+                                <td id="sensors-leak-status">--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Блок истории изменений -->
+                <div class="history-section">
+                    <h3>📜 История изменений (последние 5 событий)</h3>
+                    <table class="history-table" id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Датчик</th>
+                                <th>Значение</th>
+                            </tr>
+                        </thead>
+                        <!-- tbody будет заполняться динамически через JS :З -->
+                        <tbody id="history-body">
+                            <tr><td colspan="3">Ожидание данных...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3: Настройки -->
+            <div id="settings" class="page">
+                <h2>⚙️ Настройки симуляции</h2>
+                
+                <div class="settings-panel">
+                    <div class="setting-item">
+                        <span>🔄 Симуляция данных</span>
+                        <!-- Переключатель для включения/выключения симуляции -->
+                        <label class="switch">
+                            <input type="checkbox" id="simulation-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <span>⏱️ Интервал обновления</span>
+                        <!-- Выпадающий список с интервалами. Значения в миллисекундах -->
+                        <select id="update-interval">
+                            <option value="1000">1 секунда</option>
+                            <option value="3000" selected>3 секунды</option>
+                            <option value="5000">5 секунд</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <span>🌡️ Диапазон температуры</span>
+                        <span>18°C - 30°C</span>
+                    </div>
+                </div>
+
+                <!-- Дополнительная инфа о датчиках -->
+                <div style="margin-top: 30px; padding: 20px; background-color: #f1f3f5; border-radius: 15px;">
+                    <h3>ℹ️ О датчиках</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Датчик температуры:</strong> симулирует температуру от 18 до 30 градусов.</li>
+                        <li><strong>Датчик двери:</strong> может быть "Открыта" или "Закрыта".</li>
+                        <li><strong>Датчик протечки:</strong> определяет наличие воды (Да/Нет).</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ЖАБАСКРИПТ -->
+    <!-- Весь код оберну в DOMContentLoaded, чтобы скрипт выполнился только после 
+         полной загрузки HTML. Иначе он не найдет элементы по id 
+         И это будет фиаско  -->
+    <script>
+        // СКРИПТ 1: Переключение вкладок 
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим все пункты меню и все страницы
+            const navItems = document.querySelectorAll('.nav-item');
+            const pages = document.querySelectorAll('.page');
+
+            // Функция переключения между страницами
+            function switchPage(pageId) {
+                // Сначала скрываем все страницы
+                // Использую forEach для перебора всех элементов, думаю самое разумное его использовать 
+                pages.forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                
+                // Убираем активный класс у всех пунктов меню
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Показываем нужную страницу по её id
+                const activePage = document.getElementById(pageId);
+                activePage.classList.add('active-page');
+
+                // Подсвечиваем нужный пункт меню
+                // Использую CSS-селектор с data-атрибутом для поиска
+                const activeNavItem = document.querySelector(`.nav-item[data-page="${pageId}"]`);
+                activeNavItem.classList.add('active');
+            }
+
+            // Добавляем обработчики событий на каждый пункт меню
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Получаем id страницы из data-атрибута
+                    const pageId = this.getAttribute('data-page');
+                    switchPage(pageId);
+                });
+            });
+
+            // Вот и вся магия 
+
+
+            // СКРИПТ 2: Симуляция данных с датчиков
+            // (поскольку сайт без реального микроконтроллера и датчиков на нем, будем симулировать :))))))
+            
+            // Объект для хранения текущих показаний датчиков
+            // Выбрал объект, потому что удобно хранить связанные данные вместе
+            let sensorData = {
+                temperature: 22,  // начальное значение
+                door: 'closed',    // 'open' or 'closed'
+                leak: 'no'         // 'yes' or 'no'
+            };
+
+            // Массив для истории изменений. Каждый элемент будет объектом 
+            // с временем, датчиком и значением
+            let historyLog = [];
+
+            // Получаем ссылки на элементы интерфейса, которые будем обновлять
+            // Сохраняю их в переменные, чтобы каждый раз не искать через getElementById
+            // Даже мастер йода бы так не смог :)
+            const dashboardTempValue = document.getElementById('dashboard-temp-value');
+            const dashboardDoorValue = document.getElementById('dashboard-door-value');
+            const dashboardDoorStatus = document.getElementById('dashboard-door-status');
+            const dashboardLeakValue = document.getElementById('dashboard-leak-value');
+            const dashboardLeakStatus = document.getElementById('dashboard-leak-status');
+            
+            const sensorsTempValue = document.getElementById('sensors-temp-value');
+            const sensorsTempStatus = document.getElementById('sensors-temp-status');
+            const sensorsDoorValue = document.getElementById('sensors-door-value');
+            const sensorsDoorStatus = document.getElementById('sensors-door-status');
+            const sensorsLeakValue = document.getElementById('sensors-leak-value');
+            const sensorsLeakStatus = document.getElementById('sensors-leak-status');
+            
+            const lastUpdateSpan = document.getElementById('last-update');
+            const systemStatus = document.getElementById('system-status-text');
+            const historyBody = document.getElementById('history-body');
+
+            // Элементы настроек
+            const simulationToggle = document.getElementById('simulation-toggle');
+            const intervalSelect = document.getElementById('update-interval');
+            
+            // Переменные для управления интервалом
+            let simulationInterval = null;
+            let isSimulationActive = true; // По умолчанию симуляция включена
+
+            // Функция генерации случайных данных
+            function generateRandomData() {
+                // Если симуляция выключена - ничего не делаем отдыхаем 
+                if (!isSimulationActive) return;
+
+                // Генерируем новые значения 
+                // Math.random() дает число от 0 до 1
+                const newData = {
+                    // Для температуры: random * диапазон + минимум
+                    // Диапазон 30-18=12, плюс 1 чтобы включить 30, Math.floor округляет вниз
+                    //кручу верчу обмануть хочу :)
+                    temperature: Math.floor(Math.random() * (30 - 18 + 1) + 18),
+                    // если random > 0.5 то 'open', иначе 'closed'
+                    door: Math.random() > 0.5 ? 'open' : 'closed',
+                    // Для разнообразия сделал 30% вероятность протечки 
+                    // не кому не посоветуешь ахахах
+                    leak: Math.random() > 0.7 ? 'yes' : 'no'
+                };
+
+                // Проверяем, изменилось ли что-то по сравнению с предыдущими значениями
+                // Это нужно чтобы не засорять историю, если значение не поменялось 
+                // а то насмотрелся я на историю без этого правильного и своевременного решения
+                let changed = false;
+                if (newData.temperature !== sensorData.temperature) changed = true;
+                if (newData.door !== sensorData.door) changed = true;
+                if (newData.leak !== sensorData.leak) changed = true;
+
+                // Обновляем данные
+                sensorData = newData;
+
+                // Если данные изменились и симуляция активна - добавляем записи в историю
+                if (changed && isSimulationActive) {
+                    addToHistory('temperature', sensorData.temperature + '°C');
+                    addToHistory('door', sensorData.door === 'open' ? 'Открыта' : 'Закрыта');
+                    addToHistory('leak', sensorData.leak === 'yes' ? 'Есть протечка' : 'Нет протечки');
+                }
+
+                // Обновляем интерфейс
+                updateUI();
+            }
+
+            // СКРИПТ 3: Обновление интерфейса и история
+            
+            // Функция обновления всех элементов на странице
+            function updateUI() {
+                // Обновляем дашборд
+                dashboardTempValue.textContent = sensorData.temperature + ' °C';
+                
+                // Дверь на дашборде
+                const doorStatus = sensorData.door === 'open' ? 'Открыта' : 'Закрыта';
+                dashboardDoorValue.textContent = doorStatus;
+                dashboardDoorStatus.textContent = doorStatus;
+                // Меняем класс для цвета таблички (красный/зеленый)
+                dashboardDoorStatus.className = 'status-badge ' + (sensorData.door === 'open' ? 'status-open' : 'status-closed');
+                
+                // Протечка на дашборде
+                const leakStatus = sensorData.leak === 'yes' ? 'Есть протечка' : 'Нет протечки';
+                const leakClass = sensorData.leak === 'yes' ? 'status-yes' : 'status-no';
+                dashboardLeakValue.textContent = leakStatus;
+                dashboardLeakStatus.textContent = leakStatus;
+                dashboardLeakStatus.className = 'status-badge ' + leakClass;
+
+                // Обновляем страницу "Датчики"
+                sensorsTempValue.textContent = sensorData.temperature + ' °C';
+                // Добавил текстовую интерпретацию температуры (холодно/жарко)
+                sensorsTempStatus.textContent = sensorData.temperature > 25 ? 'Жарко' : (sensorData.temperature < 20 ? 'Холодно' : 'Норма');
+                
+                sensorsDoorValue.textContent = doorStatus;
+                sensorsDoorStatus.textContent = doorStatus;
+                
+                sensorsLeakValue.textContent = leakStatus;
+                sensorsLeakStatus.textContent = leakStatus;
+
+                // Обновляем время последнего обновления
+                const now = new Date();
+                lastUpdateSpan.textContent = now.toLocaleTimeString();
+
+                // Обновляем текст статуса системы
+                systemStatus.textContent = isSimulationActive ? 
+                    '✅ Симуляция активна. Данные обновляются каждые ' + (parseInt(intervalSelect.value) / 1000) + ' сек.' : 
+                    '⏸️ Симуляция приостановлена. Данные не обновляются.';
+            }
+
+            // Функция добавления записи в историю
+            function addToHistory(sensor, value) {
+                const time = new Date().toLocaleTimeString();
+                
+                // Преобразуем техническое название датчика в читаемое с эмодзи
+                // если бы не эмодзи пришлось бы делать фотографии и фотокарточки :) 
+                let sensorName = '';
+                switch(sensor) {
+                    case 'temperature': sensorName = '🌡️ Температура'; break;
+                    case 'door': sensorName = '🚪 Дверь'; break;
+                    case 'leak': sensorName = '💧 Протечка'; break;
+                    default: sensorName = sensor;
+                }
+
+                // Добавляем в начало массива (unshift), чтобы новые записи были сверху
+                // мы же не арабы наоброт читать 
+                historyLog.unshift({
+                    time: time,
+                    sensor: sensorName,
+                    value: value
+                });
+
+                // Ограничиваем историю 10 записями, чтобы таблица не растягивалась
+                if (historyLog.length > 10) {
+                    historyLog.pop(); // pop удаляет последний элемент
+                }
+
+                // Обновляем отображение таблицы истории
+                updateHistoryTable();
+            }
+
+            // Функция обновления таблицы истории
+            function updateHistoryTable() {
+                if (historyLog.length === 0) {
+                    historyBody.innerHTML = '<tr><td colspan="3">История пуста</td></tr>';
+                    return;
+                }
+
+                // Формируем HTML строку из массива historyLog
+                let html = '';
+                historyLog.forEach(item => {
+                    html += `<tr>
+                        <td>${item.time}</td>
+                        <td>${item.sensor}</td>
+                        <td>${item.value}</td>
+                    </tr>`;
+                });
+                historyBody.innerHTML = html;
+            }
+
+            // Функция настройки интервала обновления
+            function setupSimulationInterval() {
+                // Останавливаем предыдущий интервал, если он был
+                if (simulationInterval) {
+                    clearInterval(simulationInterval);
+                }
+                
+                // Запускаем новый, если симуляция активна
+                if (isSimulationActive) {
+                    const intervalTime = parseInt(intervalSelect.value);
+                    simulationInterval = setInterval(generateRandomData, intervalTime);
+                }
+            }
+
+            // Обработчик переключателя симуляции
+            simulationToggle.addEventListener('change', function(e) {
+                // this.checked - true если чекбокс включен, false если выключен
+                isSimulationActive = this.checked;
+                
+                if (isSimulationActive) {
+                    setupSimulationInterval();
+                } else {
+                    // Останавливаем интервал
+                    if (simulationInterval) {
+                        clearInterval(simulationInterval);
+                        simulationInterval = null;
+                    }
+                }
+                
+                // Обновляем статус в интерфейсе
+                updateUI();
+            });
+
+            // Обработчик изменения интервала
+            intervalSelect.addEventListener('change', function(e) {
+                if (isSimulationActive) {
+                    setupSimulationInterval();
+                }
+                updateUI(); // Обновляем текст статуса с новым интервалом
+            });
+
+            // Инициализация: запускаем симуляцию
+            setupSimulationInterval();
+            
+            // Генерируем первые данные сразу, чтобы не ждать первый интервал 
+            // кто нам запрещает ^^
+            generateRandomData();
+            
+            // Добавляем начальные записи в историю для красоты, чтобы таблица не была пустой
+            // Использую setTimeout, чтобы не мешать основной инициализации
+            setTimeout(() => {
+                if (historyLog.length === 0) {
+                    addToHistory('temperature', '22°C');
+                    addToHistory('door', 'Закрыта');
+                    addToHistory('leak', 'Нет протечки');
+                }
+            }, 500);
+        }); // Конец DOMContentLoaded
+    </script>
+</body>
+</html>
+<!--Вот и всё :) что-то заработало сразу что-то пришлось менять но главное получилось :))))))))-->
