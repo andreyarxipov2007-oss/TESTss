@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Арсений Павлов | Личный сайт</title>
+  <link rel="icon" type="image/x-icon" href="icon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f8fafc 0%, #eef2f5 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #0a1c2f;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+	
+	/* заголовок */
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1E3C72, #2A5298);
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand .tagline {
+      font-size: 1.0rem;
+      color: #4a627a;
+      font-weight: 450;
+    }
+
+    /* навигация */
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 60px;
+      padding: 0.3rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      font-size: 1.2rem;
+      font-weight: 550;
+      font-family: inherit;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #2c3e50;
+      backdrop-filter: blur(4px);
+    }
+
+    .tab-btn:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: #1e3a5f;
+    }
+
+    .tab-btn.active {
+      background: #1e3a5f;
+      color: white;
+      box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* вкладки */
+    .main-content {
+      flex: 1;
+      max-width: 1280px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeInUp 0.35s ease-out;
+    }
+
+    .tab-panel.active-panel {
+      display: block;
+    }
+	
+	/* основная вкладка */
+    .card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s;
+	  vertical-align: top;
+	  align-items: top;
+    }
+
+    .card h2 {
+      font-size: 1.9rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #2a6f8f;
+      padding-left: 1rem;
+      color: #0f2b3d;
+    }
+	
+    .card div {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: #2c3e50;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      color: #5c5e80;
+    }
+
+	.card-column {
+		display: flex;
+		gap: 20px
+	}
+	
+	hr {
+      margin: 1rem 0;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #cbd5e1, transparent);
+    }
+	
+	/* карточки */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: #f9fbfd;
+      border-radius: 24px;
+      padding: 1.1rem;
+      transition: all 0.2s;
+      border: 1px solid #e9edf2;
+    }
+
+    .project-card h3 {
+      font-size: 1.0rem;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      color: #4a5b6e;
+      font-size: 0.9rem;
+    }
+	
+	.project-card img {
+      width: 220px;
+      height: 220px;
+    }
+	
+	.project-card span{
+	  display: inline-block;
+	  margin-top: 0.8rem;
+	  font-size: 0.75rem;
+	  color: #6c86a3;
+	  align: bottom;
+	}
+	
+	/* стили контактов */
+    .contact-info {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+      background: #f8fafc;
+      padding: 0.8rem 1rem;
+      border-radius: 60px;
+      width: fit-content;
+    }
+
+    .contact-row img {
+      max-width: 22px;
+	  max-height: 22px;
+	  border-radius: 2px;
+	  margin-left: auto;
+	  margin-right: auto;
+	  object-fit: contain;
+    }
+
+    /* футер */
+    .site-footer {
+      background: #0f1a24;
+      color: #cddfe7;
+      margin-top: 2rem;
+      padding: 2rem 2rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: #bdd3e6;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+	
+	/* стили карусели */
+	.carousel {
+        position: relative;
+        width: 100%;
+        max-width: 1000px;
+        margin: 2rem auto;
+    }
+        
+    .carousel-images {
+		max-height: 600px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+        
+    .carousel-images img {
+        width: 100%;
+        object-fit: cover;
+        display: none;
+    }
+        
+    .carousel-images img.active {
+        display: block;
+        animation: fade 0.5s;
+    }
+        
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+        
+    .carousel button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+        
+    .prev {
+        left: 10px;
+    }
+        
+    .next {
+        right: 10px;
+    }
+        
+    .carousel button:hover {
+        background: rgba(0,0,0,0.8);
+    }
+	 
+	.carousel-caption {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.0));
+		padding: 2rem;
+		z-index: 10;
+	}
+	
+	.carousel-caption h3 {
+		color: white;
+		font-size: 37px;
+	}
+	
+	/* форма обратной связи */
+	.form-container {
+        background: white;
+        border-radius: 1rem;
+        max-width: 1200px;
+        width: 100%;
+    }
+        
+    .subtitle {
+        color: #666;
+        margin-bottom: 2rem;
+    }
+        
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+        
+    .form-container label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #555;
+    }
+        
+    .form-container input, textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e1e5e9;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.3s;
+        font-family: inherit;
+    }
+        
+    .form-container input:focus, textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+    }
+        
+    .form-container textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+        
+    .form-container button {
+        width: 100%;
+        padding: 0.75rem;
+        background: linear-gradient(135deg, #1e3a5f 0%, #1e3a5f 100%);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+        
+    .form-container button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+    }
+        
+    .form-container button:active {
+        transform: translateY(0);
+    }
+        
+    .message {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        display: none;
+        animation: slideDown 0.3s ease;
+    }
+        
+    .success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+        
+    .error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+        
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+        
+    .required:after {
+        content: " *";
+        color: #dc3545;
+    }
+    
+  </style>
+  <!--чтобы встроился вк-->
+  <script
+	  type="text/javascript"
+	  src="https://vk.ru/js/api/openapi.js?168"
+	  charset="windows-1251"
+  ></script>
+</head>
+<body>
+<div class="app-wrapper">
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <h1>Elvendan</h1>
+        <div class="tagline">Арсений Павлов</div>
+      </div>
+      <div class="tab-nav" role="tablist" aria-label="personal site sections">
+        <button class="tab-btn active" data-tab="tab1" aria-selected="true">🏠 Главная</button>
+        <button class="tab-btn" data-tab="tab2" aria-selected="false">🎵 Музыка</button>
+        <button class="tab-btn" data-tab="tab3" aria-selected="false">🧪 Проекты</button>
+        <button class="tab-btn" data-tab="tab4" aria-selected="false">📷 Фотографии</button>
+        <button class="tab-btn" data-tab="tab5" aria-selected="false">📬 Контакты</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Главная -->
+  <main class="main-content">
+    <div id="tab1" class="tab-panel active-panel">
+      <div class="card">
+        <h2>Привет! Я Арсений.</h2>
+		<hr>
+		<div class="card-column">
+			<img src="images/av111.png" style="max-height:320px; max-width:320px;" ></img>
+			<div>
+				Профессионально занимаюсь программированием.
+				<p>
+				  Использую VB.NET и C# для .NET разработки.</br>
+				  Работаю с базами данных и иногда занимаюсь веб-разработкой.</br>
+				</p>
+				Любительски — музыкой, сочинительством, дизайном и прочим креативом.
+				<p>
+				  Мои релизы можно найти на соответствующей вкладке.</br>
+				  А ещё я люблю ролевые игры и делаю смешные картинки и видео про них.</br>
+				</p>
+				Я создал этот сайт в качестве лабораторной работы по ИКТ.
+				<p>
+				  Мне всегда хотелось иметь страничку со своими проектами и личными мыслями.</br>
+				  Вы можете ознакомиться с некоторыми из них, переключая вкладки сверху.</br>
+				</p>
+			</div>
+		</div>
+        <hr>
+        <p style="color: #3e6b8c; font-size: 0.9rem;">✨ В будущем надо будет выложить этот сайт куда-нибудь и пользоваться им вместо соцсетей.</p>
+      </div>
+    </div>
+
+    <!-- Музыка -->
+    <div id="tab2" class="tab-panel">
+      <div class="card">
+        <h2 class="section-title">78~KMKM</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Эндинги</h3>
+			<img src="images/album11.jpg"></img>
+            <p>песня-размышление о типичной для меня теме смерти</p>
+            <span>
+				<a href="https://open.spotify.com/album/0xtUmFW5Sq0i17a2wuaOPU">Spotify</a> | 
+				<a href="https://music.yandex.ru/album/39741213">Яндекс Музыка</a>	
+			</span>
+          </div>
+          <div class="project-card">
+            <h3>Мистери Залипуха</h3>
+			<img src="images/album12.png"></img>
+            <p>песня об эскапизме и копинг-стратегиях в целом</p>
+            <span>
+				<a href="https://music.yandex.ru/album/35916356">Яндекс Музыка</a>	
+			</span>
+          </div>
+          <div class="project-card">
+            <h3>Одноимённый</h3>
+			<img src="images/album13.jpg"></img>
+            <p>EP-презентация моей виртуальной группы</p>
+            <span>
+				<a href="https://open.spotify.com/album/7drdpNsTWhKnponVbMaEWk">Spotify</a> | 
+				<a href="https://music.yandex.ru/album/27876288">Яндекс Музыка</a>	
+			</span>
+          </div>
+          <div class="project-card">
+            <h3>Следом за светом</h3>
+			<img src="images/album14.jpg"></img>
+            <p>концептуальный альбом о личной трансформации</p>
+            <span>
+				<a href="https://open.spotify.com/album/2yYjvLcSqxdK8lBg4lKztY">Spotify</a> | 
+				<a href="https://music.yandex.ru/album/11577828">Яндекс Музыка</a>	
+			</span>
+          </div>
+        </div>
+		</br>
+		
+        <h2 class="section-title">Elvenaudio</h2>
+		<div class="project-grid">
+			<div class="project-card">
+				<h3>idontreallyfindthatamusing</h3>
+				<img src="images/album21.png"></img>
+				<p>инструментальный альбом о насущных тревогах последних лет</p>
+				<span>
+					<a href="https://open.spotify.com/album/6nXPssGO5Y1eguvNzjHQTb?si=bYKmVvJAR52uB9dOc7D4iA">Spotify</a> | 
+					<a href="https://music.yandex.ru/album/33658623">Яндекс Музыка</a>	
+				</span>
+			</div>	  
+          <div class="project-card">
+            <h3>ещё на Soundcloud</h3>
+			<img src="images/album22.jpg"></img>
+            <p>старые треки и аудио для игр сделанные на гейм-джемах</p>
+			<span>
+				<a href="https://soundcloud.com/elvenaudio">Soundcloud</a>	
+			</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Проекты -->
+    <div id="tab3" class="tab-panel">
+      <div class="card">
+        <h2 class="section-title">⏰ ЕМ ЧАСЫ</h2>
+		<div style="display: flex; gap: 1rem; align-items: flex-start; background: #f1f5f9; border-radius: 3rem; padding: 1.5rem;">
+			<div id='vk_post_-119901308_3016'></div>
+				<script type="text/javascript">
+				   VK.Widgets.Post('vk_post_-119901308_3016', -119901308, 3016, '8eWsx9eBRgNWrL_uJnt8FDHtIwHU', {width: 28});
+				</script>
+			<div id='vk_post_-119901308_2984'></div>
+				<script type="text/javascript">
+				   VK.Widgets.Post('vk_post_-119901308_2984', -119901308, 2984, 'lHSLUANXZXRQpcdSo86LEKmqVIM2', {width: 28});
+				</script>
+			<div id='vk_post_-119901308_2876'></div>
+				<script type="text/javascript">
+				   VK.Widgets.Post('vk_post_-119901308_2876', -119901308, 2876, 'pM9Emx8y57KfiAmP_zht3YcxizEN', {width: 28});
+				</script>
+			<div id='vk_post_-119901308_2628'></div>
+				<script type="text/javascript">
+				   VK.Widgets.Post('vk_post_-119901308_2628', -119901308, 2628, 'ddDaM_Z2JPJ7KMRgX4mo1DTgOP8V', {width: 28});
+				</script>
+		</div>
+		<h2 class="section-title">🔮 Эльфийское Радио</h2>
+		<div style="display: flex; gap: 1rem; align-items: flex-start; background: #f1f5f9; border-radius: 3rem; padding: 1.5rem;">
+		  <script async src="https://telegram.org/js/telegram-widget.js?23" data-telegram-post="elvenradio/56" data-width="28%" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
+		  <script async src="https://telegram.org/js/telegram-widget.js?23" data-telegram-post="elvenradio/54" data-width="28%" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
+		  <script async src="https://telegram.org/js/telegram-widget.js?23" data-telegram-post="elvenradio/50" data-width="28%" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
+		</div>
+      </div>
+    </div>
+
+    <!-- Фотографии -->
+    <div id="tab4" class="tab-panel">
+      <div class="card">
+		<div class="carousel">
+			<div class="carousel-images">
+				<div class="carousel-caption">
+					<div id="caption-content">
+						<h3>Болдино</h3>
+					</div>
+				</div>
+				<img src="photos/photo1.png" class="active" alt="Image 1" data-text="<h3>Болдино</h3>"></img>
+				<img src="photos/photo2.png" alt="Image 2" data-text="<h3>Свияжск</h3>"></img>
+				<img src="photos/photo3.png" alt="Image 3" data-text="<h3>Казань</h3>"></img>
+				<img src="photos/photo4.png" alt="Image 4" data-text="<h3>Москва</h3>"></img>
+				<img src="photos/photo5.png" alt="Image 5" data-text="<h3>Павлово</h3>"></img>
+				<img src="photos/photo6.png" alt="Image 6" data-text="<h3>Гороховец</h3>"></img>
+				<img src="photos/photo7.png" alt="Image 7" data-text="<h3>Киселиха</h3>"></img>
+				<img src="photos/photo8.png" alt="Image 8" data-text="<h3>Санкт-Петербург</h3>"></img>
+				<img src="photos/photo9.png" alt="Image 9" data-text="<h3>Череповец</h3>"></img>
+				<img src="photos/photo0.png" alt="Image 0" data-text="<h3>Самара</h3>"></img>
+			</div>
+			<button class="prev">❮</button>
+			<button class="next">❯</button>
+		</div>
+        <hr>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem; text-align: right;">📷 <em>Фотографии сделаны на телефон, простите за низкое качество.</em></p>
+      </div>
+    </div>
+
+	<!-- Контакты -->
+    <div id="tab5" class="tab-panel">
+		<div class="card">
+			<h2 class="section-title">📬 Как со мной связаться</h2>
+			<div class="contact-info">
+			  <div class="contact-row">
+				<span><img src="images/gmail.png"></img></span> <span>elvendan@gmail.com</span>
+			  </div>
+			  <div class="contact-row">
+				<span><img src="images/telegram.png"></img></span> <span>@elvendan</span>
+			  </div>
+			  <div class="contact-row">
+				<span><img src="images/youtube.png"></img></span> <span>@Elvendan</span>
+			  </div>
+			  <div class="contact-row">
+				<span><img src="images/steam.png"></img></span> <span>/id/Elvendan</span>
+			  </div>
+			</div>
+			<h2 class="section-title">📝 Форма обратной связи</h2>
+			<div class="form-container">
+				<div id="messageBox"></div>
+				<form id="feedbackForm">
+					<div class="form-group">
+						<label for="name" class="required">Ваше имя</label>
+						<input type="text" id="name" name="name" required>
+					</div>
+					
+					<div class="form-group">
+						<label for="email" class="required">Ваш E-mail</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+					
+					<div class="form-group">
+						<label for="feedback" class="required">Ваше сообщение</label>
+						<textarea id="feedback" name="feedback" required></textarea>
+					</div>
+					
+					<button type="submit">Отправить ✨</button>
+				</form>
+			</div>
+		</div>
+	</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="#" aria-label="Home (scroll to top)" id="footer-home">🏠 Главная</a>
+        <a href="#" aria-label="Elvenradio" id="footer-tg">Elvenradio</a>
+        <a href="#" aria-label="Contact section" id="footer-contact">Контакты</a>
+      </div>
+      <div class="copyright">
+        © 2026 Арсений 'Elvendan' Павлов, НГТУ, группа 25-ИСз
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+	
+	// сброс состояния вкладок и кнопок
+    function deactivateAllTabs() {
+      tabBtns.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(panel => {
+        panel.classList.remove('active-panel');
+      });
+    }
+
+    // переход на вкладку
+    function activateTab(tabId) {
+      deactivateAllTabs();
+      const targetPanel = document.getElementById(tabId);
+      if (targetPanel) {
+        targetPanel.classList.add('active-panel');
+      };
+      // вкл кнопки
+      const correspondingBtn = Array.from(tabBtns).find(btn => btn.getAttribute('data-tab') === tabId);
+      if (correspondingBtn) {
+        correspondingBtn.classList.add('active');
+        correspondingBtn.setAttribute('aria-selected', 'true');
+      };
+      // наверх с анимацией (почему-то срабатывает только на второй раз)
+	  //console.log('test');
+	  window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // обработка кликов
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const tabValue = btn.getAttribute('data-tab');
+        if (tabValue) {
+          activateTab(tabValue);
+        }
+        // сразу обновляем адрес
+        window.location.hash = tabValue;
+      });
+    });
+
+    // переход по ссылке
+    function checkHashAndActivate() {
+      const hash = window.location.hash.substring(1);
+      if (hash && (hash === 'tab1' || hash === 'tab2' || hash === 'tab3' || hash === 'tab4' || hash === 'tab5')) {
+        activateTab(hash);
+      } else {
+        const activeExists = document.querySelector('.tab-btn.active');
+        if (!activeExists) {
+          activateTab('tab1');
+        }
+      }
+    }
+	
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && (hash === 'tab1' || hash === 'tab2' || hash === 'tab3' || hash === 'tab4' || hash === 'tab5')) {
+        activateTab(hash);
+      } else if (!hash) {
+        activateTab('tab1');
+      }
+    });
+
+    // ссылки внизу
+    const footerHomeLink = document.getElementById('footer-home');
+    const footerContactLink = document.getElementById('footer-contact');
+    const footerTgLink = document.getElementById('footer-tg');
+
+    if (footerHomeLink) {
+      footerHomeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        activateTab('tab1');
+        window.location.hash = 'tab1';
+      });
+    }
+    if (footerContactLink) {
+      footerContactLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        activateTab('tab5');
+        window.location.hash = 'tab5';
+      });
+    }
+    if (footerTgLink) {
+      footerTgLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open('https://t.me/elvenradio', '_blank');
+      });
+    }
+
+    // главная вкладка по умолчанию
+    const anyActivePanel = Array.from(panels).some(p => p.classList.contains('active-panel'));
+    if (!anyActivePanel) {
+      activateTab('tab1');
+      window.location.hash = 'tab1';
+    }
+	
+
+	// карусель
+    const images = document.querySelectorAll('.carousel-images img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let current = 0;
+        
+    function showImage(index) {
+        images.forEach(img => img.classList.remove('active'));
+        images[index].classList.add('active');
+    }
+        
+    function nextImage() {
+        current = (current + 1) % images.length;
+        showImage(current);
+		updateCaption();
+    }
+        
+    function prevImage() {
+        current = (current - 1 + images.length) % images.length;
+        showImage(current);
+		updateCaption();
+    }
+    
+	function updateCaption() {
+		const currentImage = images[current];
+		const title = currentImage.getAttribute('data-text');
+		console.log(title);
+		document.getElementById('caption-content').innerHTML = title;
+	}
+	
+    nextBtn.addEventListener('click', nextImage);
+    prevBtn.addEventListener('click', prevImage);
+	})();
+	
+	// форма обратной связи
+	document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const feedback = document.getElementById('feedback').value;
+            const messageBox = document.getElementById('messageBox');
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Введите корректный адрес.', 'error');
+                return;
+            }
+            
+            const formData = {
+                name: name,
+                email: email,
+                feedback: feedback,
+                date: new Date().toISOString()
+            };
+            
+            try {
+                // Сохраняем локально, бэкенд поднимать не будем
+                let feedbacks = localStorage.getItem('feedbacks');
+                feedbacks = feedbacks ? JSON.parse(feedbacks) : [];
+                feedbacks.push(formData);
+                localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+                
+                showMessage('Спасибо за сообщение!', 'success');
+                this.reset();
+                
+                setTimeout(() => {
+                    messageBox.innerHTML = '';
+                }, 5000);
+            } catch (error) {
+                showMessage('Что-то пошло не так.', 'error');
+            }
+        });
+        
+        function showMessage(text, type) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.innerHTML = `
+                <div class="message ${type}" style="display: block;">
+                    ${text}
+                </div>
+            `;
+            
+            setTimeout(() => {
+                const message = document.querySelector('.message');
+                if (message) message.remove();
+            }, 5000);
+        }
+	
+</script>
+</body>
+</html>
