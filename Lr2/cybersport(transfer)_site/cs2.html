@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 | Cybersport Transfers</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #fff; }
+
+        .header-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f1420;
+            padding: 15px 30px;
+            border-bottom: 2px solid #ff6b00;
+            flex-wrap: wrap;
+        }
+        .logo a { font-size: 24px; font-weight: bold; color: #ff6b00; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; }
+        .link a {
+            display: block; padding: 8px 16px; color: #fff; text-decoration: none;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .link a:hover, .link a.active { background: #ff6b00; color: #fff; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+        .section { margin-bottom: 50px; }
+        .section h2 {
+            font-size: 28px; margin-bottom: 20px; border-left: 4px solid #ff6b00;
+            padding-left: 15px;
+        }
+
+        .filter-buttons {
+            display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #1a1f2e; border: none; color: #fff; padding: 8px 20px;
+            border-radius: 30px; cursor: pointer; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover { background: #ff6b00; }
+
+        .players-grid, .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .player-card, .team-card {
+            background: #1a1f2e; border-radius: 15px; padding: 20px;
+            text-align: center; transition: transform 0.2s;
+        }
+        .player-card:hover, .team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .player-card img, .team-card img {
+            width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+            margin-bottom: 15px; border: 3px solid #ff6b00;
+        }
+        .player-card h3, .team-card h3 { font-size: 20px; margin-bottom: 5px; }
+        .player-card p, .team-card p { color: #aaa; font-size: 14px; margin-bottom: 10px; }
+        .rating {
+            display: inline-block; background: #ff6b00; padding: 5px 12px;
+            border-radius: 20px; font-weight: bold; margin-bottom: 10px;
+        }
+        .player-card a, .team-card a {
+            display: inline-block; background: #2a2f3e; color: #fff; padding: 6px 12px;
+            border-radius: 20px; text-decoration: none; font-size: 12px;
+            transition: 0.2s;
+        }
+        .player-card a:hover, .team-card a:hover { background: #ff6b00; }
+
+
+        footer { background: #0f1420; text-align: center; padding: 20px; margin-top: 40px; color: #888; }
+        .btn-up {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            border-radius: 50%; background: #ff6b00; color: white; border: none;
+            font-size: 24px; cursor: pointer; display: none; transition: 0.3s;
+        }
+        .btn-up:hover { background: #e55a00; transform: scale(1.1); }
+        @media (max-width: 768px) {
+            .header-menu { flex-direction: column; gap: 15px; }
+            .players-grid, .teams-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-menu">
+    <div class="logo"><a href="index.html">Cybersport Transfers</a></div>
+    <div class="nav-links">
+        <div class="link"><a href="index.html">Главная</a></div>
+        <div class="link"><a href="cs2.html" class="active">CS2</a></div>
+        <div class="link"><a href="dota2.html">Dota 2</a></div>
+        <div class="link"><a href="transfers.html">Трансферы</a></div>
+    </div>
+</div>
+
+<div class="container">
+    <div style="background: linear-gradient(90deg, #2c3e50, #1a1f2e); border-radius: 20px; padding: 30px; text-align: center; margin-bottom: 40px;">
+        <h1 style="color: #ff6b00;">CS2 — Рейтинг игроков и трансферы</h1>
+        <p>Лучшие киберспортсмены мира в дисциплине Counter-Strike 2</p>
+    </div>
+
+    <div class="filter-buttons" id="roleFilter">
+        <button data-role="all" class="filter-btn active">Все роли</button>
+        <button data-role="awper" class="filter-btn">🔫 AWP-снайпер</button>
+        <button data-role="rifle" class="filter-btn">🎯 Рифлер</button>
+        <button data-role="igl" class="filter-btn">🧠 Капитан (IGL)</button>
+    </div>
+
+    <div class="section">
+        <h2> Топ-игроки CS2</h2>
+        <div class="players-grid" id="playersGrid">
+            <div class="player-card" data-role="awper">
+                <img src="img/monesy.jpg" alt="m0NESY">
+                <h3>m0NESY</h3>
+                <p>G2 • AWPer</p>
+                <span class="rating">9.7</span>
+                <a href="player.html?id=m0NESY">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="rifle">
+                <img src="img/niko.jpg" alt="NiKo">
+                <h3>NiKo</h3>
+                <p>G2 • Рифлер</p>
+                <span class="rating">9.6</span>
+                <a href="player.html?id=NiKo">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="igl">
+                <img src="img/chopper.jpg" alt="chopper">
+                <h3>chopper</h3>
+                <p>Team Spirit • IGL</p>
+                <span class="rating">9.3</span>
+                <a href="player.html?id=chopper">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="rifle">
+                <img src="img/Zywoo.jpg" alt="ZywOo">
+                <h3>ZywOo</h3>
+                <p>Vitality • AWPer</p>
+                <span class="rating">9.8</span>
+                <a href="player.html?id=ZywOo">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="awper">
+                <img src="img/sh1ro.jpg" alt="sh1ro">
+                <h3>sh1ro</h3>
+                <p>Team Spirit • AWPer</p>
+                <span class="rating">9.5</span>
+                <a href="player.html?id=sh1ro">Подробнее</a>
+            </div>
+            </div>
+            <div class="player-card" data-role="rifle">
+                <img src="img/ropz.jpg" alt="ropz">
+                <h3>ropz</h3>
+                <p>FaZe • Рифлер</p>
+                <span class="rating">9.5</span>
+                <a href="player.html?id=ropz">Подробнее</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Лучшие команды CS2</h2>
+            </div>
+            <div class="team-card">
+                <img src="img/falcons.png" alt="Falcons">
+                <h3>Falcons</h3>
+                <p>Рейтинг: 9.6 | Призовые: $1M</p>
+                <a href="team.html?id=Falcons">Состав</a>
+            </div>
+            <div class="team-card">
+                <img src="img/spirit.png" alt="Team Spirit">
+                <h3>Team Spirit</h3>
+                <p>Рейтинг: 9.7 | Призовые: $4.5M</p>
+                <a href="team.html?id=Spirit">Состав</a>
+            </div>
+            <div class="team-card">
+                <img src="img/vitality.jpg" alt="Vitality">
+                <h3>Team Vitality</h3>
+                <p>Рейтинг: 9.8 | Призовые: $3.9M</p>
+                <a href="team.html?id=Vitality">Состав</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Cybersport Transfers</p>
+</footer>
+
+<button id="btnUp" class="btn-up">↑</button>
+
+<script>
+    let btn = document.getElementById('btnUp');
+    window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const filterBtns = document.querySelectorAll('#roleFilter .filter-btn');
+    const players = document.querySelectorAll('#playersGrid .player-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const role = btn.dataset.role;
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            players.forEach(player => {
+                if (role === 'all' || player.dataset.role === role) {
+                    player.style.display = '';
+                } else {
+                    player.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

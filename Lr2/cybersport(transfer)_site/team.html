@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cybersport Transfers</title>
+</head>
+<body>
+<div class="header-menu">
+    <div class="logo"><a href="index.html">Cybersport Transfers</a></div>
+    <div class="nav-links">
+        <div class="link"><a href="index.html">Главная</a></div>
+        <div class="link"><a href="cs2.html">CS2</a></div>
+        <div class="link"><a href="dota2.html">Dota 2</a></div>
+        <div class="link"><a href="transfers.html">Трансферы</a></div>
+    </div>
+</div>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #fff; }
+        .header-menu {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #0f1420; padding: 15px 30px; border-bottom: 2px solid #ff6b00;
+            flex-wrap: wrap;
+        }
+        .logo a { font-size: 24px; font-weight: bold; color: #ff6b00; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; }
+        .link a {
+            display: block; padding: 8px 16px; color: #fff; text-decoration: none;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .link a:hover { background: #ff6b00; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }   
+        .transfer-history, .achievements {
+            background: #1a1f2e; border-radius: 20px; padding: 20px; margin-bottom: 20px;
+        }
+        .transfer-item {
+            display: flex; justify-content: space-between; padding: 10px 0;
+            border-bottom: 1px solid #2a2f3e;
+        }
+        footer { background: #0f1420; text-align: center; padding: 20px; margin-top: 40px; color: #888; }
+        .btn-up {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            border-radius: 50%; background: #ff6b00; color: white; border: none;
+            font-size: 24px; cursor: pointer; display: none;
+        }
+        @media (max-width: 768px) {
+            .header-menu { flex-direction: column; gap: 15px; }
+            .player-profile { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+<div class="container">
+    <h1>Состав команды</h1>
+    <p>Team spirit</p> 
+    <p>Ukraine Yatoro	Illya Mulyarchuk	1	2020-12-19[2]</p>
+    <p>Russia Larl	Denis Sigitov	2	2022-12-08[3]</p>
+    <p>Russia Collapse	Magomed Khalilov	3	2020-12-19[2]</p>
+    <p>Russia rue	Alexandr Filin	4	2024-09-26[4]</p>
+    <p>Belarus panto 	Nikita Balaganin	5	2025-10-09[5]</p>
+    <a href="#" onclick="history.back();">← Назад</a>
+</div>
+<footer>© 2026 Cybersport Transfers</footer>
+<button id="btnUp" class="btn-up">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>

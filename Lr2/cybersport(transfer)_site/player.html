@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игрок | Cybersport Transfers</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #fff; }
+        .header-menu {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #0f1420; padding: 15px 30px; border-bottom: 2px solid #ff6b00;
+            flex-wrap: wrap;
+        }
+        .logo a { font-size: 24px; font-weight: bold; color: #ff6b00; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; }
+        .link a {
+            display: block; padding: 8px 16px; color: #fff; text-decoration: none;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .link a:hover { background: #ff6b00; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        .player-profile {
+            background: #1a1f2e; border-radius: 20px; padding: 30px;
+            display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+        }
+        .player-photo {
+            flex: 0 0 200px;
+        }
+        .player-photo img {
+            width: 100%; border-radius: 50%; border: 4px solid #ff6b00;
+        }
+        .player-info { flex: 1; }
+        .player-name { font-size: 36px; color: #ff6b00; margin-bottom: 10px; }
+        .player-team { font-size: 20px; margin-bottom: 10px; }
+        .player-role { background: #2a2f3e; display: inline-block; padding: 5px 15px; border-radius: 20px; margin-bottom: 20px; }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px; margin-top: 20px;
+        }
+        .stat-card {
+            background: #0f1420; padding: 15px; border-radius: 10px; text-align: center;
+        }
+        .stat-value { font-size: 28px; font-weight: bold; color: #ff6b00; }
+        .stat-label { font-size: 12px; color: #aaa; }
+        .transfer-history, .achievements {
+            background: #1a1f2e; border-radius: 20px; padding: 20px; margin-bottom: 20px;
+        }
+        .transfer-item {
+            display: flex; justify-content: space-between; padding: 10px 0;
+            border-bottom: 1px solid #2a2f3e;
+        }
+        footer { background: #0f1420; text-align: center; padding: 20px; margin-top: 40px; color: #888; }
+        .btn-up {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            border-radius: 50%; background: #ff6b00; color: white; border: none;
+            font-size: 24px; cursor: pointer; display: none;
+        }
+        @media (max-width: 768px) {
+            .header-menu { flex-direction: column; gap: 15px; }
+            .player-profile { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-menu">
+    <div class="logo"><a href="index.html">Cybersport Transfers</a></div>
+    <div class="nav-links">
+        <div class="link"><a href="index.html">Главная</a></div>
+        <div class="link"><a href="cs2.html">CS2</a></div>
+        <div class="link"><a href="dota2.html">Dota 2</a></div>
+        <div class="link"><a href="transfers.html">Трансферы</a></div>
+    </div>
+</div>
+
+<div class="container" id="playerContainer">
+    <div style="text-align: center;">Загрузка...</div>
+</div>
+
+<footer>
+    <p>© 2026 eSport Transfermarkt — CS2 и Dota 2 трансферы</p>
+</footer>
+
+<button id="btnUp" class="btn-up">↑</button>
+
+<script>
+    const playersData = {
+        // CS2
+        "m0NESY": {
+            name: "m0NESY",
+            fullName: "Илья Осипов",
+            game: "cs2",
+            role: "AWPer",
+            team: "Falcons",
+            teamPage: "team.html?id=Fs",
+            photo: "img/monesy.jpg",
+            rating: 9.7,
+            kda: 1.51,
+            headshots: 52,
+            prize: "849,945",
+            achievements: ["IEM Katowice 2023", "BLAST Premier World Final 2024"],
+            transfers:[{ from: "NAVI Junior", to: "G2", year: 2022, price: "$600,000"}]
+                      [{ from: "G2", to: "Falcons", year: 2025, price: "$2,500,000"}]
+                    },
+        "NiKo": {
+            name: "NiKo",
+            fullName: "Нико Ковач",
+            game: "cs2",
+            role: "Рифлер",
+            team: "Falcons",
+            teamPage: "team.html?id=Fs",
+            photo: "img/niko.jpg",
+            rating: 9.5,
+            kda: 1.38,
+            headshots: 52,
+            prize: "1,785,292",
+            achievements: ["IEM Katowice 2023", "ESL Pro League S17"],
+            transfers: [{from: "FaZe", to: "G2", year: 2021, price: "$1 000 000"}]
+                [{from: "G2", to: "Falcons", year: 2025, price: "$1 000 000"}]
+                },
+        "chopper": {
+            name: "chopper",
+            fullName: "Леонид Вишняков",
+            game: "CS2",
+            role: "IGL",
+            team: "Team Spirit",
+            teamPage: "team.html?id=TS",
+            photo: "img/chopper.jpg",
+            rating: 9,
+            kda: 1.21,
+            headshots: 59,
+            prize: "1,027,953",
+            achievements: ["Shanghai major"],
+            transfers: [{from: "free agent", to: "Team Spirit", year:2019,price: "free"}]
+                    },
+        "Zywoo": {
+            name: "Zywoo",
+            fullName: "Mathieu Herbaut",
+            game: "cs2",
+            role: "AWPer",
+            team: "Vitality",
+            teamPage: "team.html?id=Vy",
+            photo: "img/Zywoo.jpg",
+            rating: 9.8,
+            kda: 1.7,
+            headshots: 52,
+            prize: "1,786,229",
+            achievements: ["3x major winner","3x major mwp"],
+            transfers:[{from: "free agent", to: "Vitality", year: 2018, price: "free"}] 
+                },
+        "sh1ro": {
+            name: "sh1ro",
+            fullName: "Дмитрий Соколов",
+            game: "cs2",
+            role: "AWPer",
+            team: "Team Spirit",
+            teamPage: "team.html?id=TS",
+            photo: "img/sh1ro.jpg",
+            rating: 9.5,
+            kda: 1.44,
+            headshots: 29,
+            prize: "628,101",
+            achievements: ["Shanghai major","IEM Cologne 2025"],
+            transfers: [{from: "free agent", to: "Vitality", year: 2018, price: "free"}]
+                    },
+        "ropz": {
+            name: "ropz",
+            fullName: "Mathieu Herbaut",
+            game: "cs2",
+            role: "Рифлер",
+            team: "Vitality",
+            teamPage: "team.html?id=Vy",
+            photo: "img/ropz.jpg",
+            rating: 9.5,
+            kda: 1.21,
+            headshots: 52,
+            prize: "118,152",
+            achievements: ["PGL Antwerp 2022","BLAST Austin 2025","StarLadder Budapest 2025)"],
+            transfers: [{from: "free agent", to: "Vitality", year: 2018, price: "free"}] 
+                },
+        // Dota 2
+        "Yatoro": {
+            name: "Yatoro",
+            fullName: "Илья Мулярчук",
+            game: "Dota 2",
+            role: "Керри",
+            team: "Team Spirit",
+            teamPage: "team.html?id=TS",
+            photo: "img/yatoro.jpg",
+            rating: 9.8,
+            kda: 6.2,
+            avgGpm: 720,
+            prize: "3,400,000",
+            achievements: ["The International 10 Champion", "The International 12 Champion", "Riyadh Masters 2023"],
+            transfers: [{ from:"Yellow Submarine", to:"Team Spirit", year: 2020, price:"free" }]
+                    },
+        "Collapse": {
+            name: "Collapse",
+            fullName: "Магомед Халилов",
+            game: "Dota 2",
+            role: "Офлейнер",
+            team: "Team Spirit",
+            teamPage: "team.html?id=TS",
+            photo: "img/collapse.jpg",
+            rating: 9.7,
+            kda: 5.5,
+            avgGpm: 580,
+            prize: "6,080,229",
+            achievements: ["TI10 Champion", "TI12 Champion","Riyadh Masters 2023"],
+            transfers: [{from:"Yellow Submarine", to:"Team Spirit", year: 2020, price:"free"}]
+                    },
+        "Larl": {
+            name: "Larl",
+            fullName: "Денис Сигитов",
+            game: "Dota 2",
+            role: "Мидер",
+            team: "Team Spirit",
+            teamPage: "team.html?id=TS",
+            photo: "img/Larl.jpg",
+            rating: 9.4,
+            kda: 4.8,
+            avgGpm:630,
+            prize: "2,144,512",
+            achievements: ["TI12 Champion","Riyadh Masters 2023"],
+            transfers: [{from:"BetBoom", to:"Team Spirit", year: 2022, price:"$65000"}]
+                },
+        "Miposhka": {
+            name: "Miposhka",
+            fullName: "Ярослав Найденов",
+            game: "Dota 2",
+            role: "Саппорт",
+            team: "Team Spirit",
+            teamPage: "team.html?id=TS",
+            photo: "img/miposhka.jpg",
+            rating: 9.3,
+            kda: 3.5,
+            avgGpm: 310,
+            prize: "6,200,000",
+            achievements: ["TI10 Champion","TI12 Champion","Riyadh Masters 2023"],
+            transfers: [{from:"Yellow Submarine", to:"Team Spirit", year: 2020, price:"free"}]
+                     },
+        "dyrachyo": {
+            name: "dyrachyo",
+            fullName: "Антон Шкредов",
+            game: "Dota 2",
+            role: "Керри",
+            team: "none",
+            teamPage: "team.html?id=none",
+            photo: "img/dyrachyo.jpg",
+            rating: 9.3,
+            kda: 4.2,
+            avgGpm: 710,
+            prize: "1,506,570",
+            achievements: ["4x major winner"],
+            transfers: [{from:"Gaimin Gladiators", to:"free agent", year: 2024, price:"free"}]
+                       [{from:"free agent", to:"Tundra", year: 2025, price:"free"}]
+                    },
+        "Malr1ne": {
+            name: "Malr1ne",
+            fullName: "Станислав Поторак",
+            game: "Dota 2",
+            role: "Мидер",
+            team: "Falcons",
+            teamPage: "team.html?id=Fs",
+            photo: "img/Malr1ne.jpg",
+            rating: 9.6,
+            kda: 5.1,
+            avgGpm: 685,
+            prize: "1,185,064",
+            achievements: ["TI14 Champion"],
+            transfers: [{from:"nemiga", to:"free agent", year: 2023, price:"$100000"}]
+                       [{from:"free agent", to:"Falcons", year: 2023, price:"free"}]
+                    },
+        "ATF": {
+            name: "ATF",
+            fullName: "Ammar Al-Assaf",
+            game: "Dota 2",
+            role: "Офлейнер",
+            team: "Falcons",
+            teamPage: "team.html?id=Fs",
+            photo: "img/atf.jpg",
+            rating: 9.4,
+            kda: 4.2,
+            avgGpm: 615,
+            prize: "1,512,911",
+            achievements: ["TI14 Champion"],
+            transfers: [{from:"Entity", to:"free agent", year: 2023, price:"free"}]
+                       [{from:"free agent", to:"Falcons", year: 2023, price:"free"}]
+                    }
+        }
+
+    function getPlayerId() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');}
+
+    function renderPlayer(playerId) {
+        const player = playersData[playerId];
+        const container = document.getElementById('playerContainer');
+        if (!player) {
+            container.innerHTML = '<div style="background:#1a1f2e; padding:40px; text-align:center; border-radius:20px;"><h2>Игрок не найден</h2><a href="index.html">Вернуться на главную</a></div>';
+            return;
+        }
+
+        // Статистика зависит от игры
+        let statsHtml = '';
+        if (player.game === 'CS2') {
+            statsHtml = `
+                <div class="stat-card"><div class="stat-value">${player.kd}</div><div class="stat-label">K/D Ratio</div></div>
+                <div class="stat-card"><div class="stat-value">${player.headshots}%</div><div class="stat-label">Headshots</div></div>
+                <div class="stat-card"><div class="stat-value">$${player.prize.toLocaleString()}</div><div class="stat-label">Призовые</div></div>
+            `;
+        } else {
+            statsHtml = `
+                <div class="stat-card"><div class="stat-value">${player.kda}</div><div class="stat-label">KDA</div></div>
+                <div class="stat-card"><div class="stat-value">${player.avgGpm}</div><div class="stat-label">GPM</div></div>
+                <div class="stat-card"><div class="stat-value">$${player.prize.toLocaleString()}</div><div class="stat-label">Призовые</div></div>
+            `;
+        }
+
+        // История трансферов
+        let transfersHtml = '';
+        if (player.transfers && player.transfers.length > 0) {
+            transfersHtml = '<h3>История трансферов</h3>';
+            player.transfers.forEach(t => {
+                transfersHtml += `
+                    <div class="transfer-item">
+                        <span>${t.from} → ${t.to}</span>
+                        <span>${t.year}</span>
+                        <span style="color:#ff6b00;">${t.fee}</span>
+                    </div>
+                `;
+            });
+        } else {
+            transfersHtml = '<p>Нет данных о трансферах</p>';
+        }
+
+        // Достижения
+        let achievementsHtml = '<ul style="margin-left:20px;">';
+        player.achievements.forEach(ach => {
+            achievementsHtml += `<li>🏆 ${ach}</li>`;
+        });
+        achievementsHtml += '</ul>';
+
+        const html = `
+            <div class="player-profile">
+                <div class="player-photo">
+                    <img src="${player.photo}" alt="${player.name}" onerror="this.src='img/logo'">
+                </div>
+                <div class="player-info">
+                    <div class="player-name">${player.name}</div>
+                    <div class="player-team">Команда: <a href="${player.teamPage}" style="color:#ff6b00;">${player.team}</a></div>
+                    <div class="player-role">${player.game} • ${player.role}</div>
+                    <div class="stats-grid">${statsHtml}</div>
+                </div>
+            </div>
+            <div class="transfer-history">
+                ${transfersHtml}
+            </div>
+            <div class="achievements">
+                <h3>🏅 Достижения</h3>
+                ${achievementsHtml}
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+
+    // Кнопка наверх
+    let btn = document.getElementById('btnUp');
+    window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const playerId = getPlayerId();
+    if (playerId) {
+        renderPlayer(playerId);
+    } else {
+        document.getElementById('playerContainer').innerHTML = '<div style="background:#1a1f2e; padding:40px; text-align:center;">Не указан ID игрока</div>';
+    }
+</script>
+</body>
+</html>

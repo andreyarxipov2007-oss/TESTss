@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 | Cybersport Transfers</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #fff; }
+        .header-menu {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #0f1420; padding: 15px 30px; border-bottom: 2px solid #ff6b00;
+            flex-wrap: wrap;
+        }
+        .logo a { font-size: 24px; font-weight: bold; color: #ff6b00; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; }
+        .link a {
+            display: block; padding: 8px 16px; color: #fff; text-decoration: none;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .link a:hover, .link a.active { background: #ff6b00; color: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+        .section { margin-bottom: 50px; }
+        .section h2 {
+            font-size: 28px; margin-bottom: 20px; border-left: 4px solid #ff6b00;
+            padding-left: 15px;
+        }
+        .filter-buttons { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .filter-btn {
+            background: #1a1f2e; border: none; color: #fff; padding: 8px 20px;
+            border-radius: 30px; cursor: pointer; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover { background: #ff6b00; }
+        .players-grid, .teams-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .player-card, .team-card {
+            background: #1a1f2e; border-radius: 15px; padding: 20px;
+            text-align: center; transition: transform 0.2s;
+        }
+        .player-card:hover, .team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .player-card img, .team-card img {
+            width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+            margin-bottom: 15px; border: 3px solid #ff6b00;
+        }
+        .player-card h3, .team-card h3 { font-size: 20px; margin-bottom: 5px; }
+        .player-card p, .team-card p { color: #aaa; font-size: 14px; margin-bottom: 10px; }
+        .rating {
+            display: inline-block; background: #ff6b00; padding: 5px 12px;
+            border-radius: 20px; font-weight: bold; margin-bottom: 10px;
+        }
+        .player-card a, .team-card a {
+            display: inline-block; background: #2a2f3e; color: #fff; padding: 6px 12px;
+            border-radius: 20px; text-decoration: none; font-size: 12px;
+            transition: 0.2s;
+        }
+        .player-card a:hover, .team-card a:hover { background: #ff6b00; }
+        footer { background: #0f1420; text-align: center; padding: 20px; margin-top: 40px; color: #888; }
+        .btn-up {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            border-radius: 50%; background: #ff6b00; color: white; border: none;
+            font-size: 24px; cursor: pointer; display: none; transition: 0.3s;
+        }
+        .btn-up:hover { background: #e55a00; transform: scale(1.1); }
+        @media (max-width: 768px) {
+            .header-menu { flex-direction: column; gap: 15px; }
+            .players-grid, .teams-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-menu">
+    <div class="logo"><a href="index.html"> Cybersport Transfers</a></div>
+    <div class="nav-links">
+        <div class="link"><a href="index.html">Главная</a></div>
+        <div class="link"><a href="cs2.html">CS2</a></div>
+        <div class="link"><a href="dota2.html" class="active">Dota 2</a></div>
+        <div class="link"><a href="transfers.html">Трансферы</a></div>
+    </div>
+</div>
+
+<div class="container">
+    <div style="background: linear-gradient(90deg, #2c3e50, #1a1f2e); border-radius: 20px; padding: 30px; text-align: center; margin-bottom: 40px;">
+        <h1 style="color: #ff6b00;">Dota 2 — Рейтинг игроков и трансферы</h1>
+        <p>Лучшие игроки мира в самой популярной MOBA</p>
+    </div>
+
+    <div class="filter-buttons" id="roleFilter">
+        <button data-role="all" class="filter-btn active">Все позиции</button>
+        <button data-role="carry" class="filter-btn">🔫 Керри</button>
+        <button data-role="mid" class="filter-btn">⚡ Мидер</button>
+        <button data-role="offlane" class="filter-btn">🛡️ Офлейнер</button>
+        <button data-role="soft_support" class="filter-btn">💫 Саппорт 4</button>
+        <button data-role="hard_support" class="filter-btn">❤️ Саппорт 5</button>
+    </div>
+
+    <div class="section">
+        <h2> Топ-игроки Dota 2</h2>
+        <div class="players-grid" id="playersGrid">
+            <!-- Dota 2 игроки с ролями -->
+            <div class="player-card" data-role="carry">
+                <img src="img/yatoro.jpg" alt="Yatoro">
+                <h3>Yatoro</h3>
+                <p>Team Spirit • Керри</p>
+                <span class="rating">9.8</span>
+                <a href="player.html?id=Yatoro">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="mid">
+                <img src="img/Larl.jpg" alt="Larl">
+                <h3>Larl</h3>
+                <p>Team Spirit • Мидер</p>
+                <span class="rating">9.4</span>
+                <a href="player.html?id=Larl">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="offlane">
+                <img src="img/collapse.jpg" alt="Collapse">
+                <h3>Collapse</h3>
+                <p>Team Spirit • Офлейнер</p>
+                <span class="rating">9.7</span>
+                <a href="player.html?id=Collapse">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="hard_support">
+                <img src="img/miposhka.jpg" alt="Miposhka">
+                <h3>Miposhka</h3>
+                <p>Team Spirit • Саппорт 5</p>
+                <span class="rating">9.3</span>
+                <a href="player.html?id=Miposhka">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="carry">
+                <img src="img/dyrachyo.jpg" alt="dyrachyo">
+                <h3>dyrachyo</h3>
+                <p>Gaimin Gladiators • Керри</p>
+                <span class="rating">9.3</span>
+                <a href="player.html?id=dyrachyo">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="mid">
+                <img src="img/Malr1ne.jpg" alt="Malr1ne">
+                <h3>Malr1ne</h3>
+                <p>Team Falcons • Мидер</p>
+                <span class="rating">9.6</span>
+                <a href="player.html?id=Malr1ne">Подробнее</a>
+            </div>
+            <div class="player-card" data-role="offlane">
+                <img src="img/atf.jpg" alt="ATF">
+                <h3>ATF</h3>
+                <p>Team Falcons • Офлейнер</p>
+                <span class="rating">9.4</span>
+                <a href="player.html?id=ATF">Подробнее</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Лучшие команды Dota 2</h2>
+        <div class="teams-grid">
+            <div class="team-card">
+                <img src="img/spirit.png" alt="Team Spirit">
+                <h3>Team Spirit</h3>
+                <p>Рейтинг: 9.8 | Призовые: $30M</p>
+                <a href="team.html?id=SpiritDota">Состав</a>
+            </div>
+            </div>
+            <div class="team-card">
+                <img src="img/falcons.png" alt="Team Falcons">
+                <h3>Team Falcons</h3>
+                <p>Рейтинг: 9.6 | Призовые: $10M</p>
+                <a href="team.html?id=Falcons">Состав</a>
+            </div>
+            <div class="team-card">
+                <img src="img/BetBoom.jpg" alt="BetBoom">
+                <h3>BetBoom Team</h3>
+                <p>Рейтинг: 9.2 | Призовые: $5M</p>
+                <a href="team.html?id=BetBoom">Состав</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Cybersport Transfers</p>
+</footer>
+
+<button id="btnUp" class="btn-up">↑</button>
+
+<script>
+    let btn = document.getElementById('btnUp');
+    window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const filterBtns = document.querySelectorAll('#roleFilter .filter-btn');
+    const players = document.querySelectorAll('#playersGrid .player-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const role = btn.dataset.role;
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            players.forEach(player => {
+                if (role === 'all' || player.dataset.role === role) {
+                    player.style.display = '';
+                } else {
+                    player.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
