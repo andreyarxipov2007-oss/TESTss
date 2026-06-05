@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лабораторная работа</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Навигация -->
+  <nav>
+    <div class="logo">Лабораторная работа №2</div>
+    <ul>
+      <li><button class="tab-btn active" onclick="showTab('home', this)">Главная</button></li>
+      <li><button class="tab-btn" onclick="showTab('products', this)">Товары</button></li>
+      <li><button class="tab-btn" onclick="showTab('contacts', this)">Контакты</button></li>
+    </ul>
+  </nav>
+
+  <!-- Вкладка: Главная -->
+  <div id="home" class="tab">
+    <div class="hero">
+      <h1>Добро пожаловать!</h1>
+      <p>Лучшие смартфоны по выгодным ценам. Быстрая доставка по всей России.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>🚀 Быстрая доставка</h3>
+        <p>Доставляем смартфоны за 1–2 дня в любой город России.</p>
+      </div>
+      <div class="card">
+        <h3>✅ Гарантия</h3>
+        <p>Официальная гарантия 1 год на все устройства в нашем магазине.</p>
+      </div>
+      <div class="card">
+        <h3>💳 Рассрочка</h3>
+        <p>Покупайте в рассрочку на 12 месяцев без переплат и процентов.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Вкладка: Товары -->
+  <div id="products" class="tab hidden">
+    <div class="section-title">
+      <h2>Наши товары</h2>
+      <p>Выберите подходящий телефон</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card product-card">
+        <div class="phone-icon">📱</div>
+        <h3>Samsung Galaxy A15</h3>
+        <p class="price">15 990 ₽</p>
+        <ul>
+          <li>✔ Экран 6.5", 90 Гц</li>
+          <li>✔ Камера 50 МП</li>
+          <li>✔ Батарея 5000 мАч</li>
+          <li>✔ Android 14</li>
+        </ul>
+        <button class="buy-btn" onclick="addToCart('Samsung Galaxy A15', 15990)">В корзину</button>
+      </div>
+
+      <div class="card product-card">
+        <div class="phone-icon">📱</div>
+        <h3>iPhone 15</h3>
+        <p class="price">79 990 ₽</p>
+        <ul>
+          <li>✔ Экран 6.1", OLED</li>
+          <li>✔ Камера 48 МП</li>
+          <li>✔ Чип Apple A16</li>
+          <li>✔ iOS 17</li>
+        </ul>
+        <button class="buy-btn" onclick="addToCart('iPhone 15', 79990)">В корзину</button>
+      </div>
+
+      <div class="card product-card">
+        <div class="phone-icon">📱</div>
+        <h3>Xiaomi 14 Pro</h3>
+        <p class="price">64 990 ₽</p>
+        <ul>
+          <li>✔ Экран 6.73", AMOLED</li>
+          <li>✔ Камера 50 МП Leica</li>
+          <li>✔ Зарядка 120 Вт</li>
+          <li>✔ Android 14</li>
+        </ul>
+        <button class="buy-btn" onclick="addToCart('Xiaomi 14 Pro', 64990)">В корзину</button>
+      </div>
+
+    </div>
+
+    <!-- Скрипт 2: корзина -->
+    <div class="calculator">
+      <h3>🛒 Ваша корзина</h3>
+      <p id="cart-empty">Корзина пуста. Добавьте товары.</p>
+      <ul id="cart-list"></ul>
+      <p id="cart-total" style="display:none;">
+        Итого: <strong id="total-price">0 ₽</strong>
+      </p>
+      <button id="clear-btn" onclick="clearCart()" style="display:none;" class="clear-btn">Очистить корзину</button>
+    </div>
+  </div>
+
+  <!-- Вкладка: Контакты -->
+  <div id="contacts" class="tab hidden">
+    <div class="section-title">
+      <h2>Контакты</h2>
+      <p>Свяжитесь с нами любым удобным способом</p>
+    </div>
+
+    <div class="contacts-grid">
+      <div class="contact-info">
+        <p>📍 г. Н.Новгород, ул. Минина, 28Л, 5 корп. прямо до конца, 4 этаж</p>
+        <p>📞 +7 (999) 123-45-67</p>
+        <p>✉️ iritzf@nntu.ru</p>
+        <p>🕐 • пн-ср: с 10:00 до 16:00<br>
+                • чт: с 10:00 до 18:00<br>
+                • пт: с 10:00 до 14:00
+        </p>
+      </div>
+
+      <!-- Скрипт 3: форма -->
+      <form id="contact-form" onsubmit="sendForm(event)">
+        <input type="text" id="name" placeholder="Ваше имя" />
+        <input type="email" id="email" placeholder="Ваш e-mail" />
+        <textarea id="message" placeholder="Ваше сообщение" rows="4"></textarea>
+        <button type="submit">Отправить</button>
+        <p id="form-msg"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Лабораторная работа №2. Все права НЕ защищены.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

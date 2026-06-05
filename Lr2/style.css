@@ -1,0 +1,326 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #bdbbbb;
+  color: #333;
+}
+
+/* Навигация */
+nav {
+  background: #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 50px;
+}
+
+.logo {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.tab-btn {
+  background: none;
+  border: 2px solid transparent;
+  color: #ccc;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.tab-btn:hover {
+  color: white;
+  border-color: white;
+}
+
+.tab-btn.active {
+  background: #646565;
+  color: white;
+  border-color: #646565;
+}
+
+/* Вкладки */
+.tab {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Главная — hero */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #333434;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #787878;
+}
+
+/* Карточки */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 25px;
+  flex: 1;
+  min-width: 220px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333434;
+}
+
+.card p {
+  color: #787878;
+  line-height: 1.6;
+}
+
+.card ul {
+  list-style: none;
+  margin-top: 10px;
+  color: #555;
+  line-height: 2;
+}
+
+/* Цена */
+.price {
+  font-size: 26px;
+  font-weight: bold;
+  color: #308261 !important;
+  margin: 10px 0 !important;
+}
+
+/* Иконка телефона */
+.phone-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Карточка товара */
+.product-card {
+  text-align: center;
+  max-width: 280px;
+}
+
+.product-card ul {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* Кнопка "В корзину" */
+.buy-btn {
+  background: #414141;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.buy-btn:hover {
+  background: #818182;
+}
+
+/* Заголовок секции */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 30px;
+  color: #333434;
+}
+
+.section-title p {
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Корзина */
+.calculator {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.calculator h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333434;
+}
+
+.calculator p {
+  font-size: 16px;
+  color: #666;
+}
+
+#cart-list {
+  list-style: none;
+  margin: 10px 0;
+  text-align: left;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+#cart-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+  color: #444;
+  font-size: 15px;
+}
+
+#cart-total {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+}
+
+#cart-total strong {
+  color: #34db42;
+  font-size: 24px;
+}
+
+/* Кнопка очистки корзины */
+.clear-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 12px;
+  transition: background 0.3s;
+}
+
+.clear-btn:hover {
+  background: #e48b81;
+}
+
+/* Контакты */
+.contacts-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  flex: 1;
+  min-width: 220px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  line-height: 2.2;
+  font-size: 16px;
+  color: #555;
+}
+
+form {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  flex: 1;
+  min-width: 260px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input,
+form textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #464646;
+}
+
+form button[type="submit"] {
+  background: #252525;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+form button[type="submit"]:hover {
+  background: #595959;
+}
+
+#form-msg {
+  font-size: 14px;
+  min-height: 20px;
+}
+
+/* Футер */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #282828;
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 40px;
+}
