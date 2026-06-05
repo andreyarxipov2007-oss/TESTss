@@ -1,3 +1,4 @@
 Проверочный файл для коммита
 new Test
-conflict Test
+conflict Test!!!
+!
