@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo/logo1.png" alt="Логотип">
+        </div>
+        <nav>
+            <a href="index.html" class="active">Главная</a>
+            <a href="sections.html">Тренировки</a>
+            <a href="season-tickets.html">Абонементы</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Авто слайдер -->
+        <div class="slider-auto">
+            <div class="slider-container" id="autoSlider">
+                <div class="slide active">
+                    <img src="img/stock/1.jpg" alt="Акция 1">
+                </div>
+                <div class="slide">
+                    <img src="img/stock/2.png" alt="Акция 2">
+                </div>
+                <div class="slide">
+                    <img src="img/stock/3.jpg" alt="Акция 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Ручной слайдер -->
+        <h2 class="section-title">Наш клуб</h2>
+        <div class="slider-manual">
+            <button class="slider-btn prev" id="prevBtn">❮</button>
+            <div class="slider-manual-container" id="manualSlider">
+                <img src="img/club/1.jpg" alt="Клуб 1">
+                <img src="img/club/2.jpg" alt="Клуб 2">
+                <img src="img/club/3.jpg" alt="Клуб 3">
+            </div>
+            <button class="slider-btn next" id="nextBtn">❯</button>
+        </div>
+        <div class="dots" id="dots"></div>
+
+        <div class="advantages">
+            <div class="advantage-card">
+                <h3>Профессиональные тренеры</h3>
+                <p>Сертифицированные специалисты с многолетним опытом</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Современное оборудование</h3>
+                <p>Новейшие тренажеры премиум-класса</p>
+            </div>
+            <div class="advantage-card">
+                <h3>Удобное расположение</h3>
+                <p>В центре города</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OCEANIS. Все права защищены</p>
+        <p>г. Нижний Новгород, пр. Гагарина, 35, корп.3 | Тел: 8 (831) 2-172-172</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
