@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тарифы | IRON FLEX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">IRON<span>FLEX</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="services.html" class="active">Услуги</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container page-wrapper">
+        <h1 style="text-align:center; font-family:'Oswald'; font-size:3.5rem; margin-bottom:50px; text-transform: uppercase;">Клубные карты</h1>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3 class="card-plan">SMART</h3>
+                <div class="card-price">2 900 <span>₽ / мес</span></div>
+                <ul class="specs-list">
+                    <li class="inc">Тренажерный зал</li>
+                    <li class="inc">Доступ с 07:00 до 17:00</li>
+                    <li class="inc">Душ</li>
+                    <li class="exc">Персональный шкафчик</li>
+                    <li class="exc">Групповые занятия</li>
+                </ul>
+                <button class="btn" onclick="openOrder('SMART')">Выбрать SMART</button>
+            </div>
+
+            <div class="price-card featured">
+                <h3 class="card-plan">PRO-CLUB</h3>
+                <div class="card-price">4 500 <span>₽ / мес</span></div>
+                <ul class="specs-list">
+                    <li class="inc">Тренажерный зал</li>
+                    <li class="inc">Безлимит 24/7</li>
+                    <li class="inc">Финская сауна и душ</li>
+                    <li class="inc">Персональный шкафчик</li>
+                    <li class="inc">Групповые занятия</li>
+                </ul>
+                <button class="btn" onclick="openOrder('PRO-CLUB')">Заказать PRO</button>
+            </div>
+        </div>
+
+        <div class="calc-section">
+            <h2 style="font-family:'Oswald'; margin-bottom:20px; text-transform: uppercase;">Рассчитай выгоду</h2>
+            <p style="font-size: 1.2rem;">Срок абонемента: <span id="m-count" style="color:var(--primary); font-weight:bold;">6</span> мес.</p>
+            <input type="range" id="range-slider" min="1" max="12" value="6" style="width:100%; max-width:500px; margin: 25px 0; accent-color: var(--primary);">
+            <p>Твоя скидка составит:</p>
+            <strong id="res-val">0 ₽</strong>
+        </div>
+    </main>
+
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrder()" style="cursor:pointer; position:absolute; right:20px; top:10px; font-size:30px;">&times;</span>
+            <h2 style="font-family:'Oswald'; color:var(--primary); text-transform: uppercase;">Заявка</h2>
+            <p id="plan-text" style="margin-top:10px;"></p>
+            <input type="text" id="phone" placeholder="+7 (___) ___-__-__">
+            <button class="btn" style="width:100%" onclick="send()">Отправить</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
